@@ -12,9 +12,10 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
+import { Link } from 'react-router-dom';
 
-const pages = ['Products', 'Pricing', 'Blog'];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+const pages = ['Produtos', 'Categorias'];
+const settings = ['Perfil', 'Conta', 'Logout'];
 
 function Navbar() {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
@@ -115,6 +116,7 @@ function Navbar() {
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
+              <Link to='/home' >
               <Button
                 key={page}
                 onClick={handleCloseNavMenu}
@@ -122,6 +124,7 @@ function Navbar() {
               >
                 {page}
               </Button>
+              </Link>
             ))}
           </Box>
 
