@@ -2,11 +2,11 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
 import Footer from './components/estaticos/footer/Footer';
 import Navbar from './components/estaticos/navbar/Navbar';
-import Login from './paginas/login/Login';
-import Home from './paginas/home/Home';
 import ListaPostagem from './components/postagens/listapostagem/ListaPostagem';
 import ListaTema from './components/temas/listatema/ListaTema';
 import CadastroUsuario from './paginas/cadastroUsuario/CadastroUsuario';
+import Home from './paginas/home/Home';
+import Login from './paginas/login/Login';
 
 function App() {
 
