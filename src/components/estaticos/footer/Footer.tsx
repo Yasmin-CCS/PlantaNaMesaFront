@@ -16,7 +16,7 @@ function Footer() {
                         </Box>
                         <Box display="flex" alignItems="center" justifyContent="center">
 
-                            <a href="https://www.linkedin.com/in/giovanni-santos-5395551b7/" target="_blank" rel="noopener noreferrer">
+                            <a href="https://www.linkedin.com/in/planta-na-mesa-828a1b272/" target="_blank" rel="noopener noreferrer">
                                 <LinkedInIcon className='redes'/>
                             </a>
                             <a href="https://github.com/PI-PLANTA-NA-MESA/Planta-na-Mesa" target="_blank" rel="noopener noreferrer">
