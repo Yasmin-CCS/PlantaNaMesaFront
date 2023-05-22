@@ -14,8 +14,32 @@ import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import { Link } from 'react-router-dom';
 
-const pages = ['Produtos', 'Categorias'];
-const settings = ['Perfil', 'Conta', 'Logout'];
+
+const pages = [
+  {
+    nome: 'Produtos',
+    link: '/home',
+  },
+  {
+    nome: 'Categorias',
+    link: '/login',
+  },
+];
+
+const settings = [
+  {
+    nome: 'Perfil',
+    link: '/home',
+  },
+  {
+    nome: 'Conta',
+    link: '/login',
+  },
+  {
+    nome: 'Logout',
+    link: '/login'
+  }
+];
 
 function Navbar() {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
@@ -40,7 +64,6 @@ function Navbar() {
     <AppBar position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
           <Typography
             variant="h6"
             noWrap
@@ -56,20 +79,20 @@ function Navbar() {
               textDecoration: 'none',
             }}
           >
-            LOGO
+            Plant
           </Typography>
 
-          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
-            <IconButton
+          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }} >
+            <Button
               size="large"
               aria-label="account of current user"
               aria-controls="menu-appbar"
               aria-haspopup="true"
               onClick={handleOpenNavMenu}
               color="inherit"
-            >
-              <MenuIcon />
-            </IconButton>
+            >  
+            </Button>
+
             <Menu
               id="menu-appbar"
               anchorEl={anchorElNav}
@@ -89,13 +112,13 @@ function Navbar() {
               }}
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+                <MenuItem key={page.nome} onClick={handleCloseNavMenu}>
+                  <Typography textAlign="center">{page.nome}</Typography>
                 </MenuItem>
               ))}
             </Menu>
           </Box>
-          <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+          
           <Typography
             variant="h5"
             noWrap
@@ -116,20 +139,20 @@ function Navbar() {
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
-              <Link to='/home' >
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
-              >
-                {page}
-              </Button>
+              <Link to={page.link} >
+                <Button
+                  key={page.nome}
+                  onClick={handleCloseNavMenu}
+                  sx={{ my: 2, color: 'white', display: 'block' }}
+                >
+                  {page.nome}
+                </Button>
               </Link>
             ))}
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
+            <Tooltip title="Open settings" children={undefined}>
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
               </IconButton>
@@ -150,11 +173,15 @@ function Navbar() {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
+              
               {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
+                <Link to ={setting.link}>
+                <MenuItem key={setting.nome} onClick={handleCloseUserMenu}>
+                  <Typography textAlign="center">{setting.nome}</Typography>
                 </MenuItem>
+                </Link>
               ))}
+             
             </Menu>
           </Box>
         </Toolbar>
