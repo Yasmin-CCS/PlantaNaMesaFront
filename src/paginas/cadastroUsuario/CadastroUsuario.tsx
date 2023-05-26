@@ -2,7 +2,7 @@ import { Button, Grid, TextField, Typography } from '@material-ui/core';
 import { Box } from '@mui/material';
 import { ChangeEvent, useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import User from '../../models/User';
+import Usuario from '../../models/Usuario';
 import { cadastroUsuario } from '../../services/Service';
 import './CadastroUsuario.css';
 
@@ -10,7 +10,7 @@ function CadastroUsuario() {
 
     let navigate = useNavigate();
     const [confirmarSenha,setConfirmarSenha] = useState<String>("")
-    const [user, setUser] = useState<User>(
+    const [user, setUser] = useState<Usuario>(
         {
             id: 0,
             nome: '',
@@ -18,7 +18,7 @@ function CadastroUsuario() {
             senha: ''
         })
 
-    const [userResult, setUserResult] = useState<User>(
+    const [userResult, setUserResult] = useState<Usuario>(
         {
             id: 0,
             nome: '',

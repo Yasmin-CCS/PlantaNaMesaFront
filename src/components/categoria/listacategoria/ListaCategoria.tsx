@@ -1,27 +1,58 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 import { Card, CardActions, CardContent, Button, Typography } from '@material-ui/core';
 import { Box } from '@mui/material';
-import './ListaTema.css';
+import './ListaCategoria.css';
+import Categoria from '../../../models/Categoria';
+import { TokenState } from '../../../store/tokens/TokensReducer';
+import { useSelector } from 'react-redux';
+import { busca } from '../../../services/Service';
 
-function ListaTema() {
+function ListaCategoria() {
+    const [categoria, setCategoria] = useState<Categoria[]>([])
+    const navigate = useNavigate();
+    const token = useSelector<TokenState, TokenState["token"]>(
+        (state) => state.token
+    );
+
+    async function getCategoria() {
+        await busca('/categorias', setCategoria, {
+            headers: {
+                Authorization: token
+            }
+        })
+    }
+
+    useEffect(() => {
+        getCategoria()
+    }, [categoria.length])
+
+    useEffect(() => {
+        if (token === '') {
+            alert('Por favor efetue o Login para acessar esta página')
+            navigate('/login')
+        }
+    }, [token])
 
     return (
         <>
+        {categoria.map((categoria)=>(
             <Box m={2} >
                 <Card variant="outlined">
                     <CardContent>
                         <Typography color="textSecondary" gutterBottom>
-                            Tema
+                            Categoria
                         </Typography>
                         <Typography variant="h5" component="h2">
-                            Minha descrição
+                            {categoria.descricao}
+                        </Typography>
+                        <Typography variant="h5" component="h2">
+                            {categoria.nome}
                         </Typography>
                     </CardContent>
                     <CardActions>
                         <Box display="flex" justifyContent="center" mb={1.5} >
-
-                            <Link to="" className="text-decorator-none">
+                            <Link to={`/categoriascadastro/${categoria.id}`} className="text-decorator-none">
                                 <Box mx={1}>
                                     <Button variant="contained" className="marginLeft" size='small' color="primary" >
                                         atualizar
@@ -39,9 +70,10 @@ function ListaTema() {
                     </CardActions>
                 </Card>
             </Box>
+            ))}
         </>
     );
 }
 
 
-export default ListaTema;
+export default ListaCategoria;

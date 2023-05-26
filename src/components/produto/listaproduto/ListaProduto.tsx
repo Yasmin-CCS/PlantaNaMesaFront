@@ -1,10 +1,40 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 import { Card, CardActions, CardContent, Button, Typography } from '@material-ui/core';
 import { Box } from '@mui/material';
-import './ListaPostagem.css';
+import './ListaProduto.css';
+import { busca } from '../../../services/Service';
+import Produto from '../../../models/Produto';
+import { useSelector } from 'react-redux';
+import { TokenState } from '../../../store/tokens/TokensReducer';
 
-function ListaPostagem() {
+
+function ListaProduto() {
+    const navigate = useNavigate();
+    const [produto, setProduto] = useState<Produto[]>([])
+    const token = useSelector<TokenState, TokenState["token"]>(
+        (state) => state.token
+    );
+
+
+    async function getProduto() {
+        await busca('/produto', setProduto, {
+            headers: {
+                Authorization: token
+            }
+        })
+    }
+
+    useEffect(() => {
+        getProduto()
+    }, [produto.length])
+
+    useEffect(() => {
+        if (token == '') {
+            alert('Por favor efetue o Login para acessar essa página');
+            navigate('/login')
+        }
+    }, [token])
 
     return (
         <>
@@ -27,7 +57,7 @@ function ListaPostagem() {
                     <CardActions>
                         <Box display="flex" justifyContent="center" mb={1.5}>
 
-                            <Link to="" className="text-decorator-none" >
+                            <Link to="/cadastrarprodutos" className="text-decorator-none" >
                                 <Box mx={1}>
                                     <Button variant="contained" className="marginLeft" size='small' color="primary" >
                                         atualizar
@@ -48,4 +78,4 @@ function ListaPostagem() {
         </>)
 }
 
-export default ListaPostagem;
+export default ListaProduto;
