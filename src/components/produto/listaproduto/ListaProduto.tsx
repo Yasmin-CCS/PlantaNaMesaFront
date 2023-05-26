@@ -6,7 +6,7 @@ import './ListaProduto.css';
 import { busca } from '../../../services/Service';
 import Produto from '../../../models/Produto';
 import { useSelector } from 'react-redux';
-import { TokenState } from '../../../store/tokens/tokensReducer';
+import { TokenState } from '../../../store/tokens/TokensReducer';
 
 
 function ListaProduto() {

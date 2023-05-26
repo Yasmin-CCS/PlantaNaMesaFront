@@ -23,7 +23,7 @@ const pages = [
   },
   {
     nome:'Novo Produto',
-    link:'/categorias',
+    link:'/cadastrarprodutos',
   },
   {
     nome: 'Categorias',
@@ -31,7 +31,7 @@ const pages = [
   },
   {
     nome:'Nova Categoria',
-    link:'/categorias',
+    link:'/categoriascadastro',
   }
 
 ];
