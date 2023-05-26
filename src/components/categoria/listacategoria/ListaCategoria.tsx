@@ -1,10 +1,38 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 import { Card, CardActions, CardContent, Button, Typography } from '@material-ui/core';
 import { Box } from '@mui/material';
 import './ListaCategoria.css';
+import Categoria from '../../../models/Categoria';
+import { TokenState } from '../../../store/tokens/tokensReducer';
+import { useSelector } from 'react-redux';
+import { busca } from '../../../services/Service';
 
 function ListaCategoria() {
+    const [categoria, setCategoria] = useState<Categoria[]>([])
+    const navigate = useNavigate();
+    const token = useSelector<TokenState, TokenState["token"] >(
+        (state) => state.token
+      );
+
+    async function getCategoria() {
+        await busca('/categorias', setCategoria, {
+            headers: {
+                Authorization: token
+            }
+        })
+    }
+
+    useEffect (() => {
+        getCategoria()
+    }, [categoria.length])
+
+    useEffect (() => {
+        if(token === ''){
+            alert('Por favor efetue o Login para acessar esta página')
+            navigate('/login')
+        }
+    }, [token])
 
     return (
         <>

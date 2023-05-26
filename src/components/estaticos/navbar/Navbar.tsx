@@ -19,12 +19,21 @@ function Navbar() {
 const pages = [
   {
     nome: 'Produtos',
-    link: '/home',
+    link: '/produtos',
+  },
+  {
+    nome:'Novo Produto',
+    link:'/categorias',
   },
   {
     nome: 'Categorias',
-    link: '/login',
+    link: '/categorias',
   },
+  {
+    nome:'Nova Categoria',
+    link:'/categorias',
+  }
+
 ];
 
 const settings = [
@@ -75,7 +84,7 @@ const settings = [
               fontFamily: 'monospace',
               fontWeight: 700,
               letterSpacing: '.3rem',
-              color: 'inherit',
+              color: 'secondary',
               textDecoration: 'none',
             }}
           >
@@ -89,8 +98,8 @@ const settings = [
               aria-controls="menu-appbar"
               aria-haspopup="true"
               onClick={handleOpenNavMenu}
-              color="inherit"
-            >  
+              color="secondary"
+            > 
             </Button>
 
             <Menu
