@@ -2,9 +2,9 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { Card, CardActions, CardContent, Button, Typography } from '@material-ui/core';
 import { Box } from '@mui/material';
-import './ListaPostagem.css';
+import './ListaCategoria.css';
 
-function ListaPostagem() {
+function ListaCategoria() {
 
     return (
         <>
@@ -12,22 +12,16 @@ function ListaPostagem() {
                 <Card variant="outlined">
                     <CardContent>
                         <Typography color="textSecondary" gutterBottom>
-                            Postagens
+                            Tema
                         </Typography>
                         <Typography variant="h5" component="h2">
-                            Título
-                        </Typography>
-                        <Typography variant="body2" component="p">
-                            Texto da Postagem
-                        </Typography>
-                        <Typography variant="body2" component="p">
-                            Tema
+                            Minha descrição
                         </Typography>
                     </CardContent>
                     <CardActions>
-                        <Box display="flex" justifyContent="center" mb={1.5}>
+                        <Box display="flex" justifyContent="center" mb={1.5} >
 
-                            <Link to="" className="text-decorator-none" >
+                            <Link to="" className="text-decorator-none">
                                 <Box mx={1}>
                                     <Button variant="contained" className="marginLeft" size='small' color="primary" >
                                         atualizar
@@ -45,7 +39,9 @@ function ListaPostagem() {
                     </CardActions>
                 </Card>
             </Box>
-        </>)
+        </>
+    );
 }
 
-export default ListaPostagem;
+
+export default ListaCategoria;
