@@ -10,7 +10,8 @@ import ListaCategoria from './components/categoria/listacategoria/ListaCategoria
 import ListaProduto from './components/produto/listaproduto/ListaProduto';
 import FormularioProduto from './components/produto/cadastroProduto/CadastroProduto';
 import { Provider } from 'react-redux';
-import store from './store/store';
+import store from './store/Store';
+import CadastroCategoria from './components/categoria/cadastroCategoria/CadastroCategoria';
 
 function App() {
 
@@ -24,6 +25,8 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/home" element={<Home />} />
           <Route path="/cadastrousuario" element={<CadastroUsuario />} />
+          <Route path="/categoriascadastro/:id" element={<CadastroCategoria />} />
+          <Route path="/categoriascadastro" element={<CadastroCategoria />} />
           <Route path="/categorias" element={<ListaCategoria />} />
           <Route path="/produtos" element={<ListaProduto />} />
           <Route path="/cadastrarprodutos" element={<FormularioProduto />} />

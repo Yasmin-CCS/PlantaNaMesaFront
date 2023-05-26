@@ -7,7 +7,7 @@ import { login } from '../../services/Service';
 import './Login.css';
 import UsuarioLogin from '../../models/UsuarioLogin';
 import { useDispatch } from 'react-redux';
-import { addToken } from '../../store/tokens/action';
+import { addToken } from '../../store/tokens/Action';
 
 function Login() {
 
