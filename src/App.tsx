@@ -1,17 +1,17 @@
-import React from 'react';
+import { Provider } from 'react-redux';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
+import ListaCategoria from './components/categoria/listacategoria/ListaCategoria';
 import Footer from './components/estaticos/footer/Footer';
 import Navbar from './components/estaticos/navbar/Navbar';
+import FormularioProduto from './components/produto/cadastroProduto/CadastroProduto';
+import ListaProduto from './components/produto/listaproduto/ListaProduto';
 import CadastroUsuario from './paginas/cadastroUsuario/CadastroUsuario';
 import Home from './paginas/home/Home';
 import Login from './paginas/login/Login';
-import ListaCategoria from './components/categoria/listacategoria/ListaCategoria';
-import ListaProduto from './components/produto/listaproduto/ListaProduto';
-import FormularioProduto from './components/produto/cadastroProduto/CadastroProduto';
-import { Provider } from 'react-redux';
 import store from './store/Store';
 import CadastroCategoria from './components/categoria/cadastroCategoria/CadastroCategoria';
+
 
 function App() {
 
@@ -25,12 +25,12 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/home" element={<Home />} />
           <Route path="/cadastrousuario" element={<CadastroUsuario />} />
-          <Route path="/categoriascadastro/:id" element={<CadastroCategoria />} />
-          <Route path="/categoriascadastro" element={<CadastroCategoria />} />
-          <Route path="/categorias" element={<ListaCategoria />} />
           <Route path="/produtos" element={<ListaProduto />} />
           <Route path="/cadastrarprodutos" element={<FormularioProduto />} />
           <Route path="/cadastrarprodutos/:id" element={<FormularioProduto />} />
+          <Route path="/categorias" element={<ListaCategoria />} />
+          <Route path="/categoriascadastro" element={<CadastroCategoria />} />
+          <Route path="/categoriascadastro/:id" element={<CadastroCategoria />} />
         </Routes>
       </div>
       <Footer />
