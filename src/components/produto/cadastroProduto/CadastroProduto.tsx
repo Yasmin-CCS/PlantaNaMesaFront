@@ -34,8 +34,8 @@ function FormularioProduto() {
     validade:'',
     descricao: '',
     quantidade:0,
-    kit:false, //ver se é melhor true
     valor:0,
+    kit:true,
     categoria: null,
     usuario: null,
   });
@@ -143,6 +143,16 @@ return (
           }
         />
         <TextField
+          name="validade"
+          fullWidth
+          margin="normal"
+          label="Validade do Produto"
+          value={produto.validade}
+          onChange={(event: ChangeEvent<HTMLInputElement>) =>
+            updateModel(event)
+          }
+        />
+        <TextField
           name="descricao"
           fullWidth
           margin="normal"
@@ -150,6 +160,39 @@ return (
           rows={4}
           label="Descricao do Produto"
           value={produto.descricao}
+          onChange={(event: ChangeEvent<HTMLInputElement>) =>
+            updateModel(event)
+          }
+        />
+        <TextField
+          name="quantidade"
+          fullWidth
+          margin="normal"
+          multiline
+          label="Quantidade do Produto"
+          value={produto.quantidade}
+          onChange={(event: ChangeEvent<HTMLInputElement>) =>
+            updateModel(event)
+          }
+        />
+        <TextField
+          name="Kit"
+          fullWidth
+          margin="normal"
+          multiline
+          label="Vc quer adicionar ao carrinho "
+          value={produto.kit}
+          onChange={(event: ChangeEvent<HTMLInputElement>) =>
+            updateModel(event)
+          }
+        />
+        <TextField
+          name="valor"
+          fullWidth
+          margin="normal"
+          multiline
+          label="Qual o preço do seu Produto ?"
+          value={produto.valor}
           onChange={(event: ChangeEvent<HTMLInputElement>) =>
             updateModel(event)
           }
@@ -175,7 +218,6 @@ return (
           </Select>
           <FormHelperText>Escolha uma categoria</FormHelperText>
         </FormControl>
-
         <Button type="submit" variant="contained" color="primary" fullWidth disabled={categoria.id === 0}>
           {id !== undefined ? 'Atualizar Produto' : 'Cadastrar Produto'}
         </Button>
