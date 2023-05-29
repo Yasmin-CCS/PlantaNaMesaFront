@@ -1,5 +1,4 @@
 import Categoria from "./Categoria"
-import Usuario from "./Usuario"
 
 interface Produto {
 
@@ -9,9 +8,8 @@ interface Produto {
   descricao: string
   quantidade: number
   valor: number
-  kit:boolean
+  foto: string
   categoria?: Categoria | null
-  usuario?: Usuario | null
   
 }
 

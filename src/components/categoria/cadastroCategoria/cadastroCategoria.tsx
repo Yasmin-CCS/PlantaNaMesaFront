@@ -4,7 +4,7 @@ import * as reactRedux from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import Categoria from "../../../models/Categoria";
 import { buscaId, post, put } from "../../../services/Service";
-import { TokenState } from "../../../store/tokens/TokensReducer";
+import { TokenState } from "../../../store/tokens/tokensReducer";
 
 function CadastroCategoria() {
 
@@ -101,16 +101,6 @@ function CadastroCategoria() {
                 </Typography>
 
                 <TextField
-                    value={categoria.descricao}
-                    onChange={(e: ChangeEvent<HTMLInputElement>) => updatedCategoria(e)}
-                    id="descricao"
-                    label="descricao"
-                    variant="outlined"
-                    name="descricao"
-                    margin="normal"
-                    fullWidth
-                />
-                <TextField
                     value={categoria.nome}
                     onChange={(e: ChangeEvent<HTMLInputElement>) => updatedCategoria(e)}
                     id="nome"
@@ -120,6 +110,18 @@ function CadastroCategoria() {
                     margin="normal"
                     fullWidth
                 />
+
+                <TextField
+                    value={categoria.descricao}
+                    onChange={(e: ChangeEvent<HTMLInputElement>) => updatedCategoria(e)}
+                    id="descricao"
+                    label="descricao"
+                    variant="outlined"
+                    name="descricao"
+                    margin="normal"
+                    fullWidth
+                />
+                
                 <Button type="submit" variant="contained" color="primary" disabled={categoria.descricao.length < 4}>
                     {id !== undefined ? 'Atualizar' : 'Cadastrar'}
                 </Button>

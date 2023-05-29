@@ -4,13 +4,16 @@ import { Card, CardActions, CardContent, Button, Typography } from '@material-ui
 import { Box } from '@mui/material';
 import './ListaCategoria.css';
 import Categoria from '../../../models/Categoria';
-import { TokenState } from '../../../store/tokens/TokensReducer';
 import { useSelector } from 'react-redux';
 import { busca } from '../../../services/Service';
+import { TokenState } from '../../../store/tokens/tokensReducer';
 
 function ListaCategoria() {
+
     const [categoria, setCategoria] = useState<Categoria[]>([])
+
     const navigate = useNavigate();
+    
     const token = useSelector<TokenState, TokenState["token"]>(
         (state) => state.token
     );
@@ -44,10 +47,10 @@ function ListaCategoria() {
                             Categoria
                         </Typography>
                         <Typography variant="h5" component="h2">
-                            {categoria.descricao}
+                            {categoria.nome}
                         </Typography>
                         <Typography variant="h5" component="h2">
-                            {categoria.nome}
+                            {categoria.descricao}
                         </Typography>
                     </CardContent>
                     <CardActions>
