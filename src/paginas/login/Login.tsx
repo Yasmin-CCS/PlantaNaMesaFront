@@ -1,17 +1,17 @@
 import React, { useState, useEffect, ChangeEvent } from 'react';
 import { Grid, Typography, TextField, Button } from '@material-ui/core';
-import { Box } from '@mui/material';
 import { Link, useNavigate } from 'react-router-dom';
 import { login } from '../../services/Service';
 import './Login.css';
 import UsuarioLogin from '../../models/UsuarioLogin';
 import { useDispatch } from 'react-redux';
-import { addToken } from '../../store/tokens/Action';
+import { addId, addToken } from '../../store/tokens/Action';
 import { toast } from 'react-toastify';
+import { Box } from '@mui/material';
 
 function Login() {
 
-    let navigate = useNavigate();
+    const navigate = useNavigate();
     const dispatch = useDispatch();
     const [token, setToken] = useState('');
     
@@ -19,8 +19,18 @@ function Login() {
         id: 0,
         usuario: '',
         senha: '',
+        foto: '',
         token: ''
     })
+
+    const [respUserLogin, setRespUserLogin] = useState<UsuarioLogin>({
+        id: 0,
+        usuario: '',
+        senha: '',
+        foto: '',
+        token: ''
+    })
+
     function updatedModel(e: ChangeEvent<HTMLInputElement>) {
         setUserLogin({
             ...userLogin,
@@ -38,7 +48,7 @@ function Login() {
     async function onSubmit(e: ChangeEvent<HTMLFormElement>) {
         e.preventDefault();
         try {
-            await login (`/usuarios/logar`, userLogin,setToken)
+            await login (`/usuarios/logar`, userLogin, setRespUserLogin)
             toast.success('usuario logado com sucesso',{
                 position: 'top-right',
                 autoClose: 2000,
@@ -62,6 +72,14 @@ function Login() {
             });
         }
     }
+
+    useEffect(() => {
+        if (respUserLogin.token !== "") {
+          dispatch(addToken(respUserLogin.token));
+          dispatch(addId(respUserLogin.id.toString()));
+          navigate("/home");
+        }
+      }, [respUserLogin.token]);
 
 
     return (

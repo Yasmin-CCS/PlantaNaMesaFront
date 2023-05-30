@@ -1,5 +1,4 @@
 import { Button, Card, CardActions, CardContent, Typography } from '@material-ui/core';
-import { Box } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
@@ -8,6 +7,7 @@ import { busca } from '../../../services/Service';
 import './ListaProduto.css';
 import { toast } from 'react-toastify';
 import { TokenState } from '../../../store/tokens/tokensReducer';
+import { Box } from '@mui/material';
 
 
 function ListaProduto() {
@@ -57,36 +57,49 @@ function ListaProduto() {
                                 <Typography color="textSecondary" gutterBottom>
                                     Produtos
                                 </Typography>
+                                
+                                <Typography variant="body2" component="p">
+                                    Usuário: {produto.usuario?.nome}
+                                </Typography>
+
                                 <img src={produto.foto} alt="" />
                                 <Typography variant="h5" component="h2">
                                     {produto.nome}
                                 </Typography>
+
                                 <Typography variant="body2" component="p">
                                     {produto.categoria?.descricao}
                                 </Typography>
+
                                 <Typography variant="body2" component="p">
                                     {produto.descricao}
                                 </Typography>
-                                <Typography variant="body2" component="p">
-                                    {produto.Usuario?.nome}
-                                </Typography>
+                                
                                 <Typography variant="body2" component="p">
                                     {produto.valor}
                                 </Typography>
+
                             </CardContent>
                             <CardActions>
                                 <Box display="flex" justifyContent="center" mb={1.5}>
                                     <Link to={`/cadastrarprodutos/${produto.id}`} className="text-decorator-none" >
                                         <Box mx={1}>
                                             <Button variant="contained" className="marginLeft" size='small' color="primary" >
-                                                atualizar
+                                                Atualizar
                                             </Button>
                                         </Box>
                                     </Link>
                                     <Link to={`/deletarProduto/${produto.id}`} className="text-decorator-none">
                                         <Box mx={1}>
                                             <Button variant="contained" size='small' color="secondary">
-                                                deletar
+                                                Deletar
+                                            </Button>
+                                        </Box>
+                                    </Link>
+                                    <Link to="" className="text-decorator-none">
+                                        <Box mx={1}>
+                                            <Button variant="contained" size='small' color="default">
+                                                Detalhar
                                             </Button>
                                         </Box>
                                     </Link>
