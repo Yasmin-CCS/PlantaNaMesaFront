@@ -2,17 +2,17 @@ import { Container, Box, Typography, TextField, FormControl, InputLabel, Select,
 import { ChangeEvent, useEffect, useState } from "react";
 import { busca, buscaId, put, post} from "../../../services/Service";
 import { useNavigate, useParams } from "react-router-dom";
-import { useSelector } from "react-redux";
-import { TokenState } from "../../../store/tokens/TokensReducer";
+import { useDispatch, useSelector } from "react-redux";
+import { TokenState } from "../../../store/tokens/tokensReducer";
 import Categoria from "../../../models/Categoria";
 import Produto from "../../../models/Produto";
-
-
-
+import { addToken } from "../../../store/tokens/action";
 
 function FormularioProduto() {
 
   const navigate = useNavigate();
+
+  const dispatch = useDispatch();
   const token = useSelector<TokenState, TokenState["token"] >(
     (state) => state.token
   );
@@ -34,10 +34,9 @@ function FormularioProduto() {
     validade:'',
     descricao: '',
     quantidade:0,
-    kit:false, //ver se é melhor true
     valor:0,
-    categoria: null,
-    usuario: null,
+    foto:'',
+    categoria: null
   });
 
   useEffect(() => {
@@ -57,7 +56,7 @@ function FormularioProduto() {
     } catch (error: any) {
       if (error.toString().contains('403')) {
         alert('Token expirado, logue novamente');
-
+        dispatch(addToken(''));
         navigate('/login');
     }
   }
@@ -97,7 +96,7 @@ function FormularioProduto() {
     event.preventDefault();
     if (id !== undefined) {
       try {
-        await put('/produto', produto, setProduto, {
+        await put('/produtos', produto, setProduto, {
           headers: {
             Authorization: token,
           },
@@ -109,6 +108,7 @@ function FormularioProduto() {
       }
     } else {
       try {
+        console.log(produto)
         await post('/produtos', produto, setProduto, {
           headers: {
             Authorization: token,
@@ -128,9 +128,11 @@ return (
   <Container maxWidth="sm">
     <Box my={2}>
       <form onSubmit={onSubmit}>
+        
         <Typography variant="h4" align="center">
-          Formulário de {id !== undefined ? ' atualização ' : ' cadastro '} de postagem
+          {id !== undefined ? ' Atualização ' : ' Cadastro '} de Produto
         </Typography>
+        
         <TextField
           name="nome"
           fullWidth
@@ -143,13 +145,58 @@ return (
           }
         />
         <TextField
+          name="validade"
+          fullWidth
+          margin="normal"
+          label="Validade do Produto"
+          value={produto.validade}
+          onChange={(event: ChangeEvent<HTMLInputElement>) =>
+            updateModel(event)
+          }
+        />
+        <TextField
           name="descricao"
           fullWidth
           margin="normal"
           multiline
-          rows={4}
+          rows={2}
           label="Descricao do Produto"
           value={produto.descricao}
+          onChange={(event: ChangeEvent<HTMLInputElement>) =>
+            updateModel(event)
+          }
+        />
+        <TextField
+          name="quantidade"
+          type="number"
+          fullWidth
+          margin="normal"
+          multiline
+          label="Quantidade do Produto"
+          value={produto.quantidade}
+          onChange={(event: ChangeEvent<HTMLInputElement>) =>
+            updateModel(event)
+          }
+        />
+        <TextField
+          name="foto"
+          fullWidth
+          margin="normal"
+          multiline
+          label="Coloque a foto do produto"
+          value={produto.foto}
+          onChange={(event: ChangeEvent<HTMLInputElement>) =>
+            updateModel(event)
+          }
+        />
+        <TextField
+          name="valor"
+          type="number"
+          fullWidth
+          margin="normal"
+          multiline
+          label="Qual o preço do seu Produto ?"
+          value={produto.valor}
           onChange={(event: ChangeEvent<HTMLInputElement>) =>
             updateModel(event)
           }
@@ -173,12 +220,13 @@ return (
               </MenuItem>
             ))}
           </Select>
-          <FormHelperText>Escolha uma categoria</FormHelperText>
+          <FormHelperText>Escolha uma Categoria</FormHelperText>
         </FormControl>
-
+        
         <Button type="submit" variant="contained" color="primary" fullWidth disabled={categoria.id === 0}>
           {id !== undefined ? 'Atualizar Produto' : 'Cadastrar Produto'}
         </Button>
+
       </form>
     </Box>
   </Container>
