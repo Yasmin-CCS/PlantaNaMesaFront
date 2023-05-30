@@ -54,12 +54,10 @@ function ListaProduto() {
                     <Box m={2} >
                         <Card variant="outlined">
                             <CardContent>
-                            <Typography color="textSecondary" gutterBottom>
+                                <Typography color="textSecondary" gutterBottom>
                                     Produtos
                                 </Typography>
-                            <Typography variant="body2" component="p">
-                                    {produto.foto}
-                                </Typography>
+                                <img src={produto.foto} alt="" />
                                 <Typography variant="h5" component="h2">
                                     {produto.nome}
                                 </Typography>
@@ -78,7 +76,7 @@ function ListaProduto() {
                             </CardContent>
                             <CardActions>
                                 <Box display="flex" justifyContent="center" mb={1.5}>
-                                    <Link to={`/formularioproduto/${produto.id}`} className="text-decorator-none" >
+                                    <Link to={`/cadastrarprodutos/${produto.id}`} className="text-decorator-none" >
                                         <Box mx={1}>
                                             <Button variant="contained" className="marginLeft" size='small' color="primary" >
                                                 atualizar
@@ -101,4 +99,4 @@ function ListaProduto() {
         </>
     )
 }
-            export default ListaProduto;
+export default ListaProduto;
