@@ -1,55 +1,58 @@
-import * as React from 'react';
+import { purple, red } from '@material-ui/core/colors';
 import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import Menu from '@mui/material/Menu';
-import MenuIcon from '@mui/icons-material/Menu';
-import Container from '@mui/material/Container';
 import Avatar from '@mui/material/Avatar';
+import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
-import Tooltip from '@mui/material/Tooltip';
+import Container from '@mui/material/Container';
+import IconButton from '@mui/material/IconButton';
+import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-import AdbIcon from '@mui/icons-material/Adb';
+import Toolbar from '@mui/material/Toolbar';
+import Tooltip from '@mui/material/Tooltip';
+import Typography from '@mui/material/Typography';
+import * as React from 'react';
 import { Link } from 'react-router-dom';
 
 function Navbar() {
-  
-const pages = [
-  {
-    nome: 'Produtos',
-    link: '/produtos',
-  },
-  {
-    nome:'Novo Produto',
-    link:'/cadastrarprodutos',
-  },
-  {
-    nome: 'Categorias',
-    link: '/categorias',
-  },
-  {
-    nome:'Nova Categoria',
-    link:'/categoriascadastro',
-  }
 
-];
+  const pages = [
+    {
+      nome: 'Home',
+      link: '/home',
+    },
+    {
+      nome: 'Produtos',
+      link: '/produtos',
+    },
+    {
+      nome: 'Novo Produto',
+      link: '/cadastrarprodutos',
+    },
+    {
+      nome: 'Categorias',
+      link: '/categorias',
+    },
+    {
+      nome: 'Nova Categoria',
+      link: '/categoriascadastro',
+    }
 
-const settings = [
-  {
-    nome: 'Perfil',
-    link: '/home',
-  },
-  {
-    nome: 'Conta',
-    link: '/login',
-  },
-  {
-    nome: 'Logout',
-    link: '/login'
-  }
-];
+  ];
+
+  const settings = [
+    {
+      nome: 'Perfil',
+      link: '/home',
+    },
+    {
+      nome: 'Conta',
+      link: '/login',
+    },
+    {
+      nome: 'Logout',
+      link: '/login'
+    }
+  ];
 
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
@@ -70,7 +73,7 @@ const settings = [
   };
 
   return (
-    <AppBar position="static">
+    <AppBar position="static" style={{backgroundColor: "gray"}} >
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Typography
@@ -99,7 +102,7 @@ const settings = [
               aria-haspopup="true"
               onClick={handleOpenNavMenu}
               color="secondary"
-            > 
+            >
             </Button>
 
             <Menu
@@ -127,7 +130,7 @@ const settings = [
               ))}
             </Menu>
           </Box>
-          
+
           <Typography
             variant="h5"
             noWrap
@@ -182,15 +185,15 @@ const settings = [
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              
+
               {settings.map((setting) => (
-                <Link to ={setting.link}>
-                <MenuItem key={setting.nome} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting.nome}</Typography>
-                </MenuItem>
+                <Link to={setting.link}>
+                  <MenuItem key={setting.nome} onClick={handleCloseUserMenu}>
+                    <Typography textAlign="center">{setting.nome}</Typography>
+                  </MenuItem>
                 </Link>
               ))}
-             
+
             </Menu>
           </Box>
         </Toolbar>

@@ -5,17 +5,19 @@ import { Link, useNavigate } from 'react-router-dom';
 import Usuario from '../../models/Usuario';
 import { cadastroUsuario } from '../../services/Service';
 import './CadastroUsuario.css';
+import { toast } from 'react-toastify';
 
 function CadastroUsuario() {
 
-    let navigate = useNavigate();
-    const [confirmarSenha,setConfirmarSenha] = useState<String>("")
+    const navigate = useNavigate();
+
     const [user, setUser] = useState<Usuario>(
         {
             id: 0,
             nome: '',
             usuario: '',
-            senha: ''
+            senha: '',
+            foto: ''
         })
 
     const [userResult, setUserResult] = useState<Usuario>(
@@ -23,20 +25,15 @@ function CadastroUsuario() {
             id: 0,
             nome: '',
             usuario: '',
-            senha: ''
+            senha: '',
+            foto: ''
         })
 
-    useEffect(() => {
-        if (userResult.id != 0) {
-            navigate("/login")
-        }
-    }, [userResult])
+    const [confirmarSenha, setConfirmarSenha] = useState<String>("")
 
-
-    function confirmarSenhaHandle(e: ChangeEvent<HTMLInputElement>){
+    function confirmarSenhaHandle(e: ChangeEvent<HTMLInputElement>) {
         setConfirmarSenha(e.target.value)
     }
-
 
     function updatedModel(e: ChangeEvent<HTMLInputElement>) {
 
@@ -46,44 +43,146 @@ function CadastroUsuario() {
         })
 
     }
-    async function onSubmit(e: ChangeEvent<HTMLFormElement>) {
+    async function cadastrar(e: ChangeEvent<HTMLFormElement>) {
         e.preventDefault()
-        if(confirmarSenha == user.senha){
-        cadastroUsuario(`/usuarios/cadastrar`, user, setUserResult)
-        alert('Usuario cadastrado com sucesso')
-        }else{
-            alert('Dados inconsistentes. Favor verificar as informações de cadastro.')
+        if (user.senha === confirmarSenha && user.senha.length >= 8) {
+
+            try {
+                await cadastroUsuario('/usuarios/cadastrar', user, setUserResult);
+                alert('Usuário cadastrado com sucesso')
+            } catch (error) {
+                // se der erro no cadastro, por exemplo por e-mail repetido, vai cair nessa msg de erro
+                alert('Falha ao cadastrar o usuário, verifique os campos');
+            }
+        } else {
+            // aqui é a mensagem de erro para o caso dos campos de senha estarem diferentes, vai avisar, e apagar os dois campos
+            alert('Os campos de Senha e Confirmar Senha estão diferentes');
+            setUser({ ...user, senha: '' });
+            setConfirmarSenha('')
         }
     }
+
+    useEffect(() => {
+        if (userResult.id != 0) {
+            navigate("/login");
+        }
+    }, [userResult]);
+
+    function voltar() {
+        navigate('/login')
+    }
+
     return (
-        <Grid container direction='row' justifyContent='center' alignItems='center'>
-            <Grid item xs={6} className='imagem2'></Grid>
-            <Grid item xs={6} alignItems='center'>
-                <Box paddingX={10}>
-                    <form onSubmit={onSubmit}>
-                        <Typography variant='h3' gutterBottom color='textPrimary' component='h3' align='center' className='textos2'>Cadastrar</Typography>
-                        <TextField value={user.nome} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedModel(e)} id='nome' label='nome' variant='outlined' name='nome' margin='normal' fullWidth />
-                        <TextField value={user.usuario} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedModel(e)}id='usuario' label='usuario' variant='outlined' name='usuario' margin='normal'fullWidth />
-                        <TextField value={user.senha} onChange={(e: ChangeEvent<HTMLInputElement>) => updatedModel(e)}id='senha' label='senha' variant='outlined' name='senha' margin='normal' type='password' fullWidth />
-                        <TextField value={confirmarSenha} onChange={(e: ChangeEvent<HTMLInputElement>) => confirmarSenhaHandle(e)}id='confirmarSenha' label='confirmarSenha' variant='outlined' name='confirmarSenha' margin='normal' type='password' fullWidth />
-                        <Box marginTop={2} textAlign='center'>
-                            <Link to='/login' className='text-decorator-none'>
-                                <Button variant='contained' color='secondary' className='btnCancelar'>
+        <Grid
+            container
+            direction="row"
+            justifyContent="center"
+            alignItems="center"
+            className="fundo"
+        >
+            <Grid alignItems="center" xs={12}>
+                <Box paddingX={0}>
+                    <form onSubmit={cadastrar} className="form">
+                        <Typography
+                            variant="h3"
+                            gutterBottom
+                            color="textPrimary"
+                            component="h3"
+                            align="center"
+                            className="textos2"
+                        >
+                            Cadastrar Usuário
+                        </Typography>
+
+                        <TextField
+                            value={user.nome}
+                            onChange={(event: ChangeEvent<HTMLInputElement>) =>
+                                updatedModel(event)
+                            }
+                            id="nome"
+                            label="Nome"
+                            variant="outlined"
+                            name="nome"
+                            margin="normal"
+                            fullWidth
+                        />
+
+                        <TextField
+                            value={user.usuario}
+                            onChange={(event: ChangeEvent<HTMLInputElement>) =>
+                                updatedModel(event)
+                            }
+                            id="usuario"
+                            label="Usuário"
+                            type="email"
+                            required
+                            variant="outlined"
+                            name="usuario"
+                            margin="normal"
+                            fullWidth
+                        />
+
+                        <TextField
+                            value={user.senha}
+                            onChange={(event: ChangeEvent<HTMLInputElement>) =>
+                                updatedModel(event)
+                            }
+                            id="senha"
+                            label="Senha"
+                            variant="outlined"
+                            name="senha"
+                            margin="normal"
+                            type="password"
+                            fullWidth
+                        />
+
+                        <TextField
+                            value={confirmarSenha}
+                            onChange={(event: ChangeEvent<HTMLInputElement>) =>
+                                confirmarSenhaHandle(event)
+                            }
+                            id="confirmarSenha"
+                            label="Confirmar Senha"
+                            variant="outlined"
+                            name="confirmarSenha"
+                            margin="normal"
+                            type="password"
+                            fullWidth
+                        />
+
+                        <TextField
+                            value={user.foto}
+                            onChange={(event: ChangeEvent<HTMLInputElement>) =>
+                                updatedModel(event)
+                            }
+                            id="foto"
+                            label="Foto"
+                            variant="outlined"
+                            name="foto"
+                            margin="normal"
+                            type="normal"
+                            fullWidth
+                        />
+
+                        <Box marginTop={2} textAlign="center">
+                            <Link to="/login" className="text-decorator-none">
+                                <Button
+                                    variant="contained"
+                                    color="secondary"
+                                    className="btnCancelar"
+                                    onClick={voltar}
+                                >
                                     Cancelar
                                 </Button>
                             </Link>
-                            <Link to='/login' className='text-decorator-none'>
-                            <Button type='submit' variant='contained' color='primary'>
-                                    Cadastrar
+
+                            <Button type="submit" variant="contained" color="primary">
+                                Cadastrar
                             </Button>
-                            </Link>
                         </Box>
                     </form>
                 </Box>
             </Grid>
-
-
-
         </Grid>
     );
 }

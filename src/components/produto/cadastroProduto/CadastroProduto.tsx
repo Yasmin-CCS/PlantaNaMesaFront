@@ -31,7 +31,7 @@ function FormularioProduto() {
   const [produto, setProduto] = useState<Produto>({
     id: 0,
     nome:'',
-    validade:'',
+    validade: new Date(),
     descricao: '',
     quantidade:0,
     valor:0,
@@ -146,6 +146,7 @@ return (
         />
         <TextField
           name="validade"
+          type = "date"
           fullWidth
           margin="normal"
           label="Validade do Produto"

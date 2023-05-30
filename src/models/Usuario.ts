@@ -3,7 +3,7 @@ interface Usuario {
   nome: string;
   usuario: string;
   senha: string;
-  foto: null;
+  foto: string | null;
 }
 
 export default Usuario;
