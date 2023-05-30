@@ -6,8 +6,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { TokenState } from "../../../store/tokens/tokensReducer";
 import Categoria from "../../../models/Categoria";
 import Produto from "../../../models/Produto";
-import { addToken } from "../../../store/tokens/action";
+import { addToken } from "../../../store/tokens/Action";
 import { toast } from "react-toastify";
+import Usuario from "../../../models/Usuario";
 
 function FormularioProduto() {
 
@@ -37,8 +38,21 @@ function FormularioProduto() {
     quantidade:0,
     valor:0,
     foto:'',
-    categoria: null
+    categoria: null,
+    usuario: null
   });
+
+  const userId = useSelector<TokenState, TokenState['id']>(
+    (state) => state.id
+  )
+
+  const [usuario, setUsuario] = useState<Usuario>({
+    id: +userId,
+    nome: '',
+    usuario: '',
+    senha: '',
+    foto: ''
+  })
 
   useEffect(() => {
     if(token === '') {
@@ -108,6 +122,7 @@ function FormularioProduto() {
     setProduto({
       ...produto,
       categoria: categoria,
+      usuario: usuario
     });
   }, [categoria]);
 

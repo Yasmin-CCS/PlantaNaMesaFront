@@ -10,7 +10,7 @@ interface Produto {
   valor: number;
   foto: string;
   categoria?: Categoria | null;
-  Usuario?: Usuario | null;
+  usuario?: Usuario | null;
 }
 
 export default Produto;
