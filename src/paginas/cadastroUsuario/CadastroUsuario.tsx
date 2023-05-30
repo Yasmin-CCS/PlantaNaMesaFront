@@ -49,14 +49,39 @@ function CadastroUsuario() {
 
             try {
                 await cadastroUsuario('/usuarios/cadastrar', user, setUserResult);
-                alert('Usuário cadastrado com sucesso')
+                toast.success('Usuário cadastrado com sucesso',{
+                    position: 'top-right',
+                    autoClose: 2000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: false,
+                    draggable: false,
+                    theme: "colored",
+                    progress: undefined, 
+                });
             } catch (error) {
-                // se der erro no cadastro, por exemplo por e-mail repetido, vai cair nessa msg de erro
-                alert('Falha ao cadastrar o usuário, verifique os campos');
+                toast.error('Falha ao cadastrar o usuário, verifique os campos',{
+                    position: 'top-right',
+                    autoClose: 2000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: false,
+                    draggable: false,
+                    theme: "colored",
+                    progress: undefined, 
+                });
             }
         } else {
-            // aqui é a mensagem de erro para o caso dos campos de senha estarem diferentes, vai avisar, e apagar os dois campos
-            alert('Os campos de Senha e Confirmar Senha estão diferentes');
+            toast.error('Os campos de Senha e Confirmar Senha estão diferentes',{
+                position: 'top-right',
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: false,
+                theme: "colored",
+                progress: undefined, 
+            });
             setUser({ ...user, senha: '' });
             setConfirmarSenha('')
         }

@@ -7,6 +7,7 @@ import Categoria from '../../../models/Categoria';
 import { useSelector } from 'react-redux';
 import { busca } from '../../../services/Service';
 import { TokenState } from '../../../store/tokens/tokensReducer';
+import { toast } from 'react-toastify';
 
 function ListaCategoria() {
 
@@ -31,8 +32,17 @@ function ListaCategoria() {
     }, [categoria.length])
 
     useEffect(() => {
-        if (token === '') {
-            alert('Por favor efetue o Login para acessar esta página')
+            if (token == '') {
+                toast.error('Você precisa estar logado',{
+                    position: 'top-right',
+                    autoClose: 2000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: false,
+                    draggable: false,
+                    theme: "colored",
+                    progress: undefined, 
+                });
             navigate('/login')
         }
     }, [token])

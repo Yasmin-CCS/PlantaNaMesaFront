@@ -7,6 +7,7 @@ import { TokenState } from "../../../store/tokens/tokensReducer";
 import Categoria from "../../../models/Categoria";
 import Produto from "../../../models/Produto";
 import { addToken } from "../../../store/tokens/action";
+import { toast } from "react-toastify";
 
 function FormularioProduto() {
 
@@ -41,7 +42,16 @@ function FormularioProduto() {
 
   useEffect(() => {
     if(token === '') {
-      alert('Por favor efetue o login para acessar essa página')
+      toast.error('Por favor efetue o login para acessar essa página',{
+        position: 'top-right',
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: false,
+        theme: "colored",
+        progress: undefined, 
+    });
       navigate('/login')
     }
   }, [])
@@ -55,7 +65,16 @@ function FormularioProduto() {
       });
     } catch (error: any) {
       if (error.toString().contains('403')) {
-        alert('Token expirado, logue novamente');
+        toast.error('Token expirado, logue novamente',{
+          position: 'top-right',
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: false,
+          draggable: false,
+          theme: "colored",
+          progress: undefined, 
+      });
         dispatch(addToken(''));
         navigate('/login');
     }
@@ -101,10 +120,29 @@ function FormularioProduto() {
             Authorization: token,
           },
         });
-        alert('Atualização realizada com sucesso')
+        toast.success('Atualização realizada com sucesso',{
+          position: 'top-right',
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: false,
+          draggable: false,
+          theme: "colored",
+          progress: undefined, 
+      });
         navigate('/produtos')
       } catch (error) {
-        alert('Algo de errado aconteceu');
+
+        toast.error('Algo de errado aconteceu',{
+          position: 'top-right',
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: false,
+          draggable: false,
+          theme: "colored",
+          progress: undefined, 
+      });
       }
     } else {
       try {
@@ -114,10 +152,28 @@ function FormularioProduto() {
             Authorization: token,
           }
         });
-        alert('Produto cadastrado com sucesso')
+        toast.success('Produto cadastrado com sucesso',{
+          position: 'top-right',
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: false,
+          draggable: false,
+          theme: "colored",
+          progress: undefined, 
+      });
         navigate('/produtos')
       } catch (error) {
-        alert('deu erro');
+        toast.error('Deu erro',{
+          position: 'top-right',
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: false,
+          draggable: false,
+          theme: "colored",
+          progress: undefined, 
+      });
       }
     }
     }

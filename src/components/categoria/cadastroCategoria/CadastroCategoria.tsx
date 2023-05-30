@@ -5,6 +5,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import Categoria from "../../../models/Categoria";
 import { buscaId, post, put } from "../../../services/Service";
 import { TokenState } from "../../../store/tokens/tokensReducer";
+import { toast } from "react-toastify";
 
 function CadastroCategoria() {
 
@@ -45,7 +46,16 @@ function CadastroCategoria() {
 
     useEffect(() => {
         if (token === "") {
-            alert("Você precisa estar logado");
+            toast.error('Você precisa estar logado',{
+                position: 'top-right',
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: false,
+                theme: "colored",
+                progress: undefined, 
+            });
             navigate("/login");
         }
     }, [token]);
@@ -68,10 +78,28 @@ function CadastroCategoria() {
                         Authorization: token,
                     },
                 });
-                alert("Categoria atualizada com sucesso!");
+                toast.success('Categoria atualizada com sucesso!',{
+                    position: 'top-right',
+                    autoClose: 2000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: false,
+                    draggable: false,
+                    theme: "colored",
+                    progress: undefined, 
+                });
                 back();
             } catch (error) {
-                alert("Não foi possível atualizadar a categoria!");
+                toast.error('Não foi possível atualizadar a categoria!',{
+                    position: 'top-right',
+                    autoClose: 2000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: false,
+                    draggable: false,
+                    theme: "colored",
+                    progress: undefined, 
+                });
             }
         } else {
             try {
@@ -80,10 +108,29 @@ function CadastroCategoria() {
                         Authorization: token,
                     },
                 });
-                alert("Categoria cadastrada com Sucesso!");
+
+                toast.success('Categoria cadastrada com Sucesso!',{
+                    position: 'top-right',
+                    autoClose: 2000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: false,
+                    draggable: false,
+                    theme: "colored",
+                    progress: undefined, 
+                });
                 back();
             } catch (error) {
-                alert("Não foi possível cadastrar a Categoria!");
+                toast.error('Não foi possível cadastrar a Categoria!',{
+                    position: 'top-right',
+                    autoClose: 2000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: false,
+                    draggable: false,
+                    theme: "colored",
+                    progress: undefined, 
+                });
             }
         }
     }

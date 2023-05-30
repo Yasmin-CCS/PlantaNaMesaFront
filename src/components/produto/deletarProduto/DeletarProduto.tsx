@@ -6,8 +6,8 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { toast } from "react-toastify";
 import { buscaId, deleteId } from '../../../services/Service';
 import { TokenState } from "../../../store/tokens/tokensReducer";
-import './DeletarPostagem.css';
 import Produto from "../../../models/Produto";
+
 
 function DeletarProduto() {
     let navigate = useNavigate();
