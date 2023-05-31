@@ -55,26 +55,6 @@ function DetalheProduto() {
     }
   }, [id])
 
-  const carrinho = useSelector<TokenState, TokenState['produtos']>(
-    (state) => state.produtos
-  );
-
-  let valorTotal=0
-
-  function buy(){
-    dispatch(removeItem([]))
-    toast.success('Compra realizada com sucesso', {
-      position: 'top-right',
-      autoClose: 2000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: false,
-      draggable: false,
-      theme: "colored",
-      progress: undefined,
-  });
-    navigate('/home')
-  }
 
   return (
     <>
