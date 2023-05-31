@@ -13,7 +13,7 @@ function Carrinho() {
   );
   const token = useSelector<TokenState, TokenState["token"]>(
     (state) => state.token
-);
+  );
 
   let valorTotal = 0
   const dispatch = useDispatch()
@@ -32,28 +32,25 @@ function Carrinho() {
     navigate('/home')
   }
 
-  var Carrinho;
 
-  if(token != "") {
-  Carrinho = 
-  <h1>asdfasdf</h1>
-  {carrinho.map(item => (
-    <form onSubmit={buy}>
-      <p>{item.nome}</p>
-      <p>{item.valor}</p>
-      <img src={item.foto} alt={item.nome} />
-      valor total: {carrinho.map((price) => {
-        { valorTotal = valorTotal + price.valor }
-      })}{valorTotal}
-
-      <Button type='submit'></Button>
-
-    </form>
-  ))}}
-
+  {
+    carrinho.map(item => (
+      <>
+        <p>{item.nome}</p>
+        <p>{item.valor}</p>
+        <img src={item.foto} alt={item.nome} />
+      </>
+    )
+    )
+  }
   return (
     <>
-    {Carrinho}
+      valor total: {carrinho.map((price) => {
+        { valorTotal = valorTotal + price.valor }
+      })}
+      {valorTotal}
+      <Button onClick={buy}>Finalizar compra</Button>
+      <Link to={"/produtos"}><Button >Continuar comprando</Button></Link>
     </>
   )
 }

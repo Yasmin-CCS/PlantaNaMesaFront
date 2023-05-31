@@ -10,7 +10,11 @@ import { Button } from "@material-ui/core"
 
 
 function DetalheProduto() {
-  
+  const token = useSelector<TokenState, TokenState["token"]>(
+    (state) => state.token
+  );
+
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const { id } = useParams<{ id: string }>()
@@ -27,19 +31,17 @@ function DetalheProduto() {
     usuario: null
   })
 
-
-  const dispatch = useDispatch()
-  const token = useSelector<TokenState, TokenState["token"]>(
-    (state) => state.token);
-
   async function addCarrinho() {
     dispatch(addToCart(produto))
-    // navigate('/carrinho')
+    navigate('/carrinho');
   }
 
   async function getProdutoUnico(id: string) {
     try {
-      await buscaId(`/produtos/${id}`, setProduto, '')
+      await buscaId(`/produtos/${id}`, setProduto,{headers: {
+        Authorization: token
+    }})
+
       console.log(produto);
     } catch (error) {
       console.log(error);
@@ -55,12 +57,10 @@ function DetalheProduto() {
 
   return (
     <>
-          <p>{produto.nome}</p>
-          <p>{produto.valor}</p>
-          <img src={produto.foto} alt={produto.nome} />
-          <Link to='/carrinho'>
-          <Button onClick={addCarrinho}> Adicionar ao carrinho</Button>
-          </Link>
+      <p>{produto.nome}</p>
+      <p>{produto.valor}</p>
+      <img src={produto.foto} alt={produto.nome} />
+      <Button onClick={addCarrinho}> Adicionar ao carrinho</Button>
     </>
   )
 }
