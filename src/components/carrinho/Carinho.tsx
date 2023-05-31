@@ -49,7 +49,8 @@ function Carrinho() {
         { valorTotal = valorTotal + price.valor }
       })}
       {valorTotal}
-      <Button onClick={buy}></Button>
+      <Button onClick={buy}>Finalizar compra</Button>
+      <Link to={"/produtos"}><Button >Continuar comprando</Button></Link>
     </>
   )
 }
