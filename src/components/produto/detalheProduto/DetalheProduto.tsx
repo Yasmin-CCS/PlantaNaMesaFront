@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { useNavigate, useParams } from "react-router-dom"
+import { Link, useNavigate, useParams } from "react-router-dom"
 import Produto from "../../../models/Produto"
 import { buscaId } from "../../../services/Service"
 import { useDispatch, useSelector } from "react-redux"
@@ -34,15 +34,12 @@ function DetalheProduto() {
 
   async function addCarrinho() {
     dispatch(addToCart(produto))
+    // navigate('/carrinho')
   }
 
   async function getProdutoUnico(id: string) {
     try {
-      await buscaId(`/produtos/${id}`, setProduto, {
-        headers: {
-          Authorization: token
-        }
-      })
+      await buscaId(`/produtos/${id}`, setProduto, '')
       console.log(produto);
     } catch (error) {
       console.log(error);
@@ -58,17 +55,12 @@ function DetalheProduto() {
 
   return (
     <>
-      {carrinho.map(item => (
-        <form onSubmit={addCarrinho}>
-          <p>{item.nome}</p>
-          <p>{item.valor}</p>
-          <img src={item.foto} alt={item.nome} />
-          valor total: {carrinho.map((price) =>{
-            {valorTotal = valorTotal + price.valor}
-          })}{valorTotal}
-          <Button type='submit'></Button>
-          </form>
-      ))}
+          <p>{produto.nome}</p>
+          <p>{produto.valor}</p>
+          <img src={produto.foto} alt={produto.nome} />
+          <Link to='/carrinho'>
+          <Button onClick={addCarrinho}> Adicionar ao carrinho</Button>
+          </Link>
     </>
   )
 }
