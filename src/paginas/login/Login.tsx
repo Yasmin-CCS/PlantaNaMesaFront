@@ -10,8 +10,11 @@ import { toast } from "react-toastify";
 import { Box } from "@mui/material";
 
 function Login() {
+
   const navigate = useNavigate();
+
   const dispatch = useDispatch();
+
   const [token, setToken] = useState("");
 
   const [userLogin, setUserLogin] = useState<UsuarioLogin>({
@@ -44,12 +47,13 @@ function Login() {
     }
   }, [token]);
 
-  async function onSubmit(e: ChangeEvent<HTMLFormElement>) {
-    e.preventDefault();
+  async function onSubmit(event: ChangeEvent<HTMLFormElement>) {
+    event.preventDefault();
     try {
       await login(`/usuarios/logar`, userLogin, setRespUserLogin);
-      toast.success("usuario logado com sucesso", {
-        position: "top-right",
+
+      toast.success("Usuário logado com sucesso!", {
+        position: "top-center",
         autoClose: 2000,
         hideProgressBar: false,
         closeOnClick: true,
@@ -57,10 +61,11 @@ function Login() {
         draggable: false,
         theme: "colored",
         progress: undefined,
-      });
+      }); 
     } catch (error) {
-      toast.error("Dados de usuario inconsistente. Erro ao logar!", {
-        position: "top-right",
+
+      toast.success("Usuário ou senha inválidos!", {
+        position: "top-center",
         autoClose: 2000,
         hideProgressBar: false,
         closeOnClick: true,
@@ -68,7 +73,7 @@ function Login() {
         draggable: false,
         theme: "colored",
         progress: undefined,
-      });
+      }); 
     }
   }
 
