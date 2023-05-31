@@ -15,11 +15,14 @@ import DeletarProduto from './components/produto/deletarProduto/DeletarProduto';
 import DetalheProduto from './components/produto/detalheProduto/DetalheProduto'
 import store from './store/Store';
 import Carrinho from './components/carrinho/Carinho';
+import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css'
 
 function App() {
 
   return (
     <Provider store={store}>
+      <ToastContainer />
     <BrowserRouter>
       <Navbar />
       <div style={{ minHeight: '100vh' }}>
