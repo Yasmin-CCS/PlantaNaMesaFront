@@ -14,7 +14,7 @@ import * as React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { TokenState } from '../../../store/tokens/tokensReducer';
-import { addToken } from '../../../store/tokens/action';
+import { addToken } from '../../../store/tokens/Action';
 import { toast } from 'react-toastify';
 
 function Navbar() {
@@ -60,6 +60,10 @@ function Navbar() {
     {
       nome: 'Nova Categoria',
       link: '/categoriascadastro',
+    },
+    {
+      nome: 'Carrinho',
+      link: '/carrinho',
     }
 
   ];
