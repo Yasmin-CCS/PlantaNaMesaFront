@@ -14,13 +14,13 @@ export const login = async (url: any, dados: any, setDado: any) => {
   setDado(resposta.data);
 };
 
-export const busca = async(url: any, setDado: any, heeader: any) => {
-  const resposta = await api.get(url, heeader)
+export const busca = async(url: any, setDado: any, header: any) => {
+  const resposta = await api.get(url, header)
   setDado(resposta.data)
 }
 
-export const buscaId = async(url: any, setDado: any, heeader: any) => {
-  const resposta = await api.get(url, heeader)
+export const buscaId = async(url: any, setDado: any, header: any) => {
+  const resposta = await api.get(url, header)
   setDado(resposta.data)
 }
 
