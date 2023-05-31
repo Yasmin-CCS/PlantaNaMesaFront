@@ -11,7 +11,7 @@ import { Box } from '@mui/material';
 
 
 function ListaProduto() {
-    let navigate = useNavigate();
+    const navigate = useNavigate();
     const [produto, setProduto] = useState<Produto[]>([])
     const token = useSelector<TokenState, TokenState["token"]>(
         (state) => state.token
@@ -96,7 +96,7 @@ function ListaProduto() {
                                             </Button>
                                         </Box>
                                     </Link>
-                                    <Link to="" className="text-decorator-none">
+                                    <Link to={`/produtos/${produto.id}`} className="text-decorator-none">
                                         <Box mx={1}>
                                             <Button variant="contained" size='small' color="default">
                                                 Detalhar
