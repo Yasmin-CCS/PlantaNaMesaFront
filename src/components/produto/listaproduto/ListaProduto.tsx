@@ -52,8 +52,15 @@ function ListaProduto() {
             {
                 produto.map(produto => (
                     <Box m={2} >
-                        <Card variant="outlined">
-                            <CardContent>
+                        <Card variant="outlined" className='flip-card'>
+                            
+                            <CardContent className='flip-card-inner'>
+
+                                <Card className='flip-card-front'>
+                                    <img src={produto.foto} alt="" className='img'/>
+                                </Card>
+
+                                <Card className='flip-card-back'>
                                 <Typography color="textSecondary" gutterBottom>
                                     Produtos
                                 </Typography>
@@ -62,7 +69,7 @@ function ListaProduto() {
                                     Usuário: {produto.usuario?.nome}
                                 </Typography>
 
-                                <img src={produto.foto} alt="" />
+                                
                                 <Typography variant="h5" component="h2">
                                     {produto.nome}
                                 </Typography>
@@ -79,8 +86,6 @@ function ListaProduto() {
                                     {produto.valor}
                                 </Typography>
 
-                            </CardContent>
-                            <CardActions>
                                 <Box display="flex" justifyContent="center" mb={1.5}>
                                     <Link to={`/cadastrarprodutos/${produto.id}`} className="text-decorator-none" >
                                         <Box mx={1}>
@@ -104,6 +109,11 @@ function ListaProduto() {
                                         </Box>
                                     </Link>
                                 </Box>
+
+                                </Card>
+                            </CardContent>
+                            <CardActions>
+                                
                             </CardActions>
                         </Card>
                     </Box>
