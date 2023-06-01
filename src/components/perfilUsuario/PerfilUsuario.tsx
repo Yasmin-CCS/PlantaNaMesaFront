@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import Usuario from "../../models/Usuario";
-import { TokenState } from "../../store/tokens/tokensReducer";
+import { TokenState } from "../../store/tokens/TokensReducer";
 import { Container, Grid } from "@mui/material";
 
 function PerfilUsuario(){

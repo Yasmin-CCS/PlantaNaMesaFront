@@ -6,7 +6,7 @@ import './ListaCategoria.css';
 import Categoria from '../../../models/Categoria';
 import { useSelector } from 'react-redux';
 import { busca } from '../../../services/Service';
-import { TokenState } from '../../../store/tokens/tokensReducer';
+import { TokenState } from '../../../store/tokens/TokensReducer';
 import { toast } from 'react-toastify';
 
 function ListaCategoria() {

@@ -4,7 +4,7 @@ import Produto from "../../../models/Produto";
 import { buscaId } from "../../../services/Service";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../../../store/tokens/Action";
-import { TokenState } from "../../../store/tokens/tokensReducer";
+import { TokenState } from "../../../store/tokens/TokensReducer";
 import { toast } from "react-toastify";
 import "./DetalheProduto.css";
 import { Box, Button, Grid } from "@mui/material";

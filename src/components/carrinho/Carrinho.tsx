@@ -3,7 +3,7 @@ import { removeItem } from "../../store/tokens/Action";
 import { useDispatch, useSelector } from "react-redux";
 import { Button } from "@material-ui/core";
 import { useNavigate } from "react-router-dom";
-import { TokenState } from "../../store/tokens/tokensReducer";
+import { TokenState } from "../../store/tokens/TokensReducer";
 import { useEffect } from "react";
 import { Box, Grid, Typography } from "@mui/material";
 

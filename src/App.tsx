@@ -14,7 +14,7 @@ import DeletarCategoria from './components/categoria/deletarCategoria/DeletarCat
 import DeletarProduto from './components/produto/deletarProduto/DeletarProduto';
 import DetalheProduto from './components/produto/detalheProduto/DetalheProduto'
 import store from './store/Store';
-import Carrinho from './components/carrinho/Carinho';
+import Carrinho from './components/carrinho/Carrinho';
 import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css'
 
