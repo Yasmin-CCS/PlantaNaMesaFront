@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import Usuario from "../../models/Usuario";
 import { TokenState } from "../../store/tokens/TokensReducer";
@@ -10,24 +10,13 @@ function PerfilUsuario(){
         (state) => state.id
         )
 
-        const [usuario, setUsuario] = useState<Usuario>({
-            id: +userId,
-            nome: '',
-            usuario: '',
-            foto: '',
-            senha: '',
-            })
-
-            //  async function getUserById(id: number) {
-            //      await buscaId(`/usuarios/${id}`, setUsuario, {
-            //      headers: {Authorization: token}
-            //      })
-            //      }
-
-                // useEffect(() => {
-                //     getUserById(+userId)
-                //     }, [])
-                
+      //  const [usuario, setUsuario] = useState<Usuario>({
+            // id: +userId,
+            // nome: '',
+            // usuario: '',
+            // foto: '',
+            // senha: '',
+            // })
 
     return(
         <>
@@ -37,7 +26,7 @@ function PerfilUsuario(){
         <Grid container>
 
             <Grid xs={3} alignItems='center' justifyContent='center'>
-                  {/* <Avatar src={usuario.foto} alt="" style={{width: '15rem', height: '15rem', margin: '0 auto'}} />  */}
+                  <Avatar src={usuario.foto} alt="" style={{width: '15rem', height: '15rem', margin: '0 auto'}} /> 
                 
             </Grid>
 
