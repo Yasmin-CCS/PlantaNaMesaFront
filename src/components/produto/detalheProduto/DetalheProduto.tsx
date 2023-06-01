@@ -1,15 +1,3 @@
-<<<<<<< HEAD
-import { useEffect, useState } from "react"
-import { Link, useNavigate, useParams } from "react-router-dom"
-import Produto from "../../../models/Produto"
-import { buscaId } from "../../../services/Service"
-import { useDispatch, useSelector } from "react-redux"
-import { addToCart, removeItem } from "../../../store/tokens/Action"
-import { TokenState } from "../../../store/tokens/TokensReducer"
-import { toast } from "react-toastify"
-import { Button } from "@material-ui/core"
-
-=======
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import Produto from "../../../models/Produto";
@@ -21,7 +9,6 @@ import { toast } from "react-toastify";
 import "./DetalheProduto.css";
 import { Box, Button, Grid } from "@mui/material";
 import { Typography } from "@material-ui/core";
->>>>>>> 1c349edfad4b0ceccfb947c703cf502564cba774
 
 function DetalheProduto() {
   const token = useSelector<TokenState, TokenState["token"]>(

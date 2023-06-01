@@ -5,7 +5,7 @@ import { Typography, Grid } from '@material-ui/core';
 import { Box } from '@mui/material';
 import './Footer.css'
 import { useSelector } from 'react-redux';
-import { TokenState } from '../../../store/tokens/TokensReducer';
+import { TokenState } from '../../../store/tokens/tokensReducer';
 
 function Footer() {
     const token = useSelector<TokenState, TokenState["token"]>(

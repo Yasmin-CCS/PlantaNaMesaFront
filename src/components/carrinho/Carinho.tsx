@@ -2,15 +2,10 @@ import { toast } from "react-toastify";
 import { removeItem } from "../../store/tokens/Action";
 import { useDispatch, useSelector } from "react-redux";
 import { Button } from "@material-ui/core";
-<<<<<<< HEAD
-import { Link, useNavigate } from "react-router-dom";
-import { TokenState } from "../../store/tokens/TokensReducer";
-=======
 import { useNavigate } from "react-router-dom";
 import { TokenState } from "../../store/tokens/tokensReducer";
 import { useEffect } from "react";
 import { Box, Grid, Typography } from "@mui/material";
->>>>>>> 1c349edfad4b0ceccfb947c703cf502564cba774
 
 function Carrinho() {
   const navigate = useNavigate();

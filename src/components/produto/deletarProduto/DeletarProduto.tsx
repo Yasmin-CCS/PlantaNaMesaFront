@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import { useNavigate, useParams } from 'react-router-dom';
 import { toast } from "react-toastify";
 import { buscaId, deleteId } from '../../../services/Service';
-import { TokenState } from "../../../store/tokens/TokensReducer";
+import { TokenState } from "../../../store/tokens/tokensReducer";
 import Produto from "../../../models/Produto";
 
 
