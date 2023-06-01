@@ -4,7 +4,7 @@ import * as reactRedux from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import Categoria from "../../../models/Categoria";
 import { buscaId, post, put } from "../../../services/Service";
-import { TokenState } from "../../../store/tokens/tokensReducer";
+import { TokenState } from "../../../store/tokens/TokensReducer";
 import { toast } from "react-toastify";
 
 function CadastroCategoria() {

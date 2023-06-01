@@ -1,3 +1,16 @@
+<<<<<<< HEAD
+import { Button, Card, CardActions, CardContent, Typography } from '@material-ui/core';
+import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
+import Produto from '../../../models/Produto';
+import { busca } from '../../../services/Service';
+import './ListaProduto.css';
+import { toast } from 'react-toastify';
+import { TokenState } from '../../../store/tokens/TokensReducer';
+import { Box } from '@mui/material';
+
+=======
 import {
   Button,
   Card,
@@ -14,6 +27,7 @@ import "./ListaProduto.css";
 import { toast } from "react-toastify";
 import { TokenState } from "../../../store/tokens/tokensReducer";
 import { Box, Grid } from "@mui/material";
+>>>>>>> 1c349edfad4b0ceccfb947c703cf502564cba774
 
 function ListaProduto() {
   const navigate = useNavigate();

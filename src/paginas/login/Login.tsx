@@ -11,19 +11,17 @@ import { Box } from "@mui/material";
 
 function Login() {
 
-  const navigate = useNavigate();
-
-  const dispatch = useDispatch();
-
-  const [token, setToken] = useState("");
-
-  const [userLogin, setUserLogin] = useState<UsuarioLogin>({
-    id: 0,
-    usuario: "",
-    senha: "",
-    foto: "",
-    token: "",
-  });
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+    const [token, setToken] = useState('');
+    
+    const [userLogin, setUserLogin] = useState<UsuarioLogin>({
+        id: 0,
+        usuario: '',
+        senha: '',
+        foto: '',
+        token: ''
+    })
 
   const [respUserLogin, setRespUserLogin] = useState<UsuarioLogin>({
     id: 0,
@@ -40,50 +38,48 @@ function Login() {
     });
   }
 
-  useEffect(() => {
-    if (token != "") {
-      dispatch(addToken(token));
-      navigate("/home");
+    useEffect(()=>{
+        if(token != ''){
+            dispatch(addToken(token))
+            navigate('/home')
+        }
+    },[token])
+
+    async function onSubmit(e: ChangeEvent<HTMLFormElement>) {
+        e.preventDefault();
+        try {
+            await login (`/usuarios/logar`, userLogin, setRespUserLogin)
+            toast.success('usuario logado com sucesso',{
+                position: 'top-right',
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: false,
+                theme: "colored",
+                progress: undefined, 
+            });
+        } catch (error) {
+            toast.error('Dados de usuario inconsistente. Erro ao logar!',{
+                position: 'top-right',
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: false,
+                theme: "colored",
+                progress: undefined, 
+            });
+        }
     }
-  }, [token]);
 
-  async function onSubmit(event: ChangeEvent<HTMLFormElement>) {
-    event.preventDefault();
-    try {
-      await login(`/usuarios/logar`, userLogin, setRespUserLogin);
-
-      toast.success("Usuário logado com sucesso!", {
-        position: "top-center",
-        autoClose: 2000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: false,
-        draggable: false,
-        theme: "colored",
-        progress: undefined,
-      }); 
-    } catch (error) {
-
-      toast.success("Usuário ou senha inválidos!", {
-        position: "top-center",
-        autoClose: 2000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: false,
-        draggable: false,
-        theme: "colored",
-        progress: undefined,
-      }); 
-    }
-  }
-
-  useEffect(() => {
-    if (respUserLogin.token !== "") {
-      dispatch(addToken(respUserLogin.token));
-      dispatch(addId(respUserLogin.id.toString()));
-      navigate("/home");
-    }
-  }, [respUserLogin.token]);
+    useEffect(() => {
+        if (respUserLogin.token !== "") {
+          dispatch(addToken(respUserLogin.token));
+          dispatch(addId(respUserLogin.id.toString()));
+          navigate("/home");
+        }
+      }, [respUserLogin.token]);
 
   return (
     <>

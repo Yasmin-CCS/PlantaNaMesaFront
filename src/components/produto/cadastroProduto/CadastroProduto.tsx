@@ -3,7 +3,7 @@ import { ChangeEvent, useEffect, useState } from "react";
 import { busca, buscaId, put, post} from "../../../services/Service";
 import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { TokenState } from "../../../store/tokens/tokensReducer";
+import { TokenState } from "../../../store/tokens/TokensReducer";
 import Categoria from "../../../models/Categoria";
 import Produto from "../../../models/Produto";
 import { addToken } from "../../../store/tokens/Action";
