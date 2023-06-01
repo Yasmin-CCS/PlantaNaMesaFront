@@ -14,7 +14,7 @@ function Login() {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const [token, setToken] = useState('');
-    
+
     const [userLogin, setUserLogin] = useState<UsuarioLogin>({
         id: 0,
         usuario: '',
@@ -38,18 +38,18 @@ function Login() {
         })
     }
 
-    useEffect(()=>{
-        if(token != ''){
+    useEffect(() => {
+        if (token != '') {
             dispatch(addToken(token))
             navigate('/home')
         }
-    },[token])
+    }, [token])
 
     async function onSubmit(e: ChangeEvent<HTMLFormElement>) {
         e.preventDefault();
         try {
-            await login (`/usuarios/logar`, userLogin, setRespUserLogin)
-            toast.success('usuario logado com sucesso',{
+            await login(`/usuarios/logar`, userLogin, setRespUserLogin)
+            toast.success('usuario logado com sucesso', {
                 position: 'top-right',
                 autoClose: 2000,
                 hideProgressBar: false,
@@ -57,10 +57,10 @@ function Login() {
                 pauseOnHover: false,
                 draggable: false,
                 theme: "colored",
-                progress: undefined, 
+                progress: undefined,
             });
         } catch (error) {
-            toast.error('Dados de usuario inconsistente. Erro ao logar!',{
+            toast.error('Dados de usuario inconsistente. Erro ao logar!', {
                 position: 'top-right',
                 autoClose: 2000,
                 hideProgressBar: false,
@@ -68,18 +68,18 @@ function Login() {
                 pauseOnHover: false,
                 draggable: false,
                 theme: "colored",
-                progress: undefined, 
+                progress: undefined,
             });
         }
     }
 
     useEffect(() => {
         if (respUserLogin.token !== "") {
-          dispatch(addToken(respUserLogin.token));
-          dispatch(addId(respUserLogin.id.toString()));
-          navigate("/home");
+            dispatch(addToken(respUserLogin.token));
+            dispatch(addId(respUserLogin.id.toString()));
+            navigate("/home");
         }
-      }, [respUserLogin.token]);
+    }, [respUserLogin.token]);
 
 
     return (

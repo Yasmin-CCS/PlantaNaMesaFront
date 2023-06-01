@@ -4,7 +4,7 @@ import Produto from "../../../models/Produto"
 import { buscaId } from "../../../services/Service"
 import { useDispatch, useSelector } from "react-redux"
 import { addToCart, removeItem } from "../../../store/tokens/Action"
-import { TokenState } from "../../../store/tokens/tokensReducer"
+import { TokenState } from "../../../store/tokens/TokensReducer"
 import { toast } from "react-toastify"
 import { Button } from "@material-ui/core"
 

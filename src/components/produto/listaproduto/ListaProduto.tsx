@@ -6,7 +6,7 @@ import Produto from '../../../models/Produto';
 import { busca } from '../../../services/Service';
 import './ListaProduto.css';
 import { toast } from 'react-toastify';
-import { TokenState } from '../../../store/tokens/tokensReducer';
+import { TokenState } from '../../../store/tokens/TokensReducer';
 import { Box } from '@mui/material';
 
 
