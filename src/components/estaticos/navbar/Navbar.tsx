@@ -13,7 +13,11 @@ import Typography from '@mui/material/Typography';
 import * as React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
+<<<<<<< HEAD
 import { TokenState } from '../../../store/tokens/TokensReducer';
+=======
+import { TokenState } from '../../../store/tokens/tokensReducer';
+>>>>>>> 1c349edfad4b0ceccfb947c703cf502564cba774
 import { addToken } from '../../../store/tokens/Action';
 import { toast } from 'react-toastify';
 
@@ -60,6 +64,10 @@ function Navbar() {
     {
       nome: 'Nova Categoria',
       link: '/categoriascadastro',
+    },
+    {
+      nome: 'Carrinho',
+      link: '/carrinho',
     }
 
   ];

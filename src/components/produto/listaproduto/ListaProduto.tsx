@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { Button, Card, CardActions, CardContent, Typography } from '@material-ui/core';
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
@@ -9,107 +10,147 @@ import { toast } from 'react-toastify';
 import { TokenState } from '../../../store/tokens/TokensReducer';
 import { Box } from '@mui/material';
 
+=======
+import {
+  Button,
+  Card,
+  CardActions,
+  CardContent,
+  Typography,
+} from "@material-ui/core";
+import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { Link, useNavigate } from "react-router-dom";
+import Produto from "../../../models/Produto";
+import { busca } from "../../../services/Service";
+import "./ListaProduto.css";
+import { toast } from "react-toastify";
+import { TokenState } from "../../../store/tokens/tokensReducer";
+import { Box, Grid } from "@mui/material";
+>>>>>>> 1c349edfad4b0ceccfb947c703cf502564cba774
 
 function ListaProduto() {
-    const navigate = useNavigate();
-    const [produto, setProduto] = useState<Produto[]>([])
-    const token = useSelector<TokenState, TokenState["token"]>(
-        (state) => state.token
-    );
+  const navigate = useNavigate();
+  const [produto, setProduto] = useState<Produto[]>([]);
+  const token = useSelector<TokenState, TokenState["token"]>(
+    (state) => state.token
+  );
 
+  async function getProduto() {
+    await busca("/produtos", setProduto, {
+      headers: {
+        Authorization: token,
+      },
+    });
+  }
 
-    async function getProduto() {
-        await busca('/produtos', setProduto, {
-            headers: {
-                Authorization: token
-            }
-        })
+  useEffect(() => {
+    getProduto();
+  }, [produto.length]);
+
+  useEffect(() => {
+    if (token == "") {
+      toast.error("Você precisa estar logado", {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: false,
+        theme: "colored",
+        progress: undefined,
+      });
+      navigate("/login");
     }
+  }, [token]);
 
-    useEffect(() => {
-        getProduto()
-    }, [produto.length])
-
-    useEffect(() => {
-        if (token == "") {
-            toast.error('Você precisa estar logado', {
-                position: 'top-right',
-                autoClose: 2000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: false,
-                draggable: false,
-                theme: "colored",
-                progress: undefined,
-            });
-            navigate("/login")
-
-        }
-    }, [token])
-
-    return (
+  return (
+    <>
+      {produto.map((produto) => (
         <>
-            {
-                produto.map(produto => (
-                    <Box m={2} >
-                        <Card variant="outlined">
-                            <CardContent>
-                                <Typography color="textSecondary" gutterBottom>
-                                    Produtos
-                                </Typography>
-                                
-                                <Typography variant="body2" component="p">
-                                    Usuário: {produto.usuario?.nome}
-                                </Typography>
+          <Grid className="flip-card">
+            
+            <Box className="flip-card-inner">
+             
+              <Box className="flip-card-front">
+                <img src={produto.foto} alt="" className="img" />
+              </Box>
+             
+              <Box className="flip-card-back">
+                <Typography color="textSecondary" gutterBottom>
+                  Produto
+                </Typography>
 
-                                <img src={produto.foto} alt="" />
-                                <Typography variant="h5" component="h2">
-                                    {produto.nome}
-                                </Typography>
+                <Typography variant="body2" component="p">
+                  Usuário: {produto.usuario?.nome}
+                </Typography>
 
-                                <Typography variant="body2" component="p">
-                                    {produto.categoria?.descricao}
-                                </Typography>
+                <Typography variant="body2" component="p">
+                  Nome: {produto.nome}
+                </Typography>
 
-                                <Typography variant="body2" component="p">
-                                    {produto.descricao}
-                                </Typography>
-                                
-                                <Typography variant="body2" component="p">
-                                    {produto.valor}
-                                </Typography>
+                {/* <Typography variant="body2" component="p">
+                        Categoria: {produto.categoria?.nome}
+                        </Typography>
 
-                            </CardContent>
-                            <CardActions>
-                                <Box display="flex" justifyContent="center" mb={1.5}>
-                                    <Link to={`/cadastrarprodutos/${produto.id}`} className="text-decorator-none" >
-                                        <Box mx={1}>
-                                            <Button variant="contained" className="marginLeft" size='small' color="primary" >
-                                                Atualizar
-                                            </Button>
-                                        </Box>
-                                    </Link>
-                                    <Link to={`/deletarProduto/${produto.id}`} className="text-decorator-none">
-                                        <Box mx={1}>
-                                            <Button variant="contained" size='small' color="secondary">
-                                                Deletar
-                                            </Button>
-                                        </Box>
-                                    </Link>
-                                    <Link to={`/produtos/${produto.id}`} className="text-decorator-none">
-                                        <Box mx={1}>
-                                            <Button variant="contained" size='small' color="default">
-                                                Detalhar
-                                            </Button>
-                                        </Box>
-                                    </Link>
-                                </Box>
-                            </CardActions>
-                        </Card>
+                    <Typography variant="body2" component="p">
+                    Descrição: {produto.descricao}
+                    </Typography> */}
+
+                <Typography variant="body2" component="p">
+                  Valor: ${produto.valor}
+                </Typography>
+
+                <Box display="flex" justifyContent="center" mb={1.5}>
+                  <Link
+                    to={`/cadastrarprodutos/${produto.id}`}
+                    className="text-decorator-none"
+                  >
+                    <Box mx={1}>
+                      <Button
+                        variant="contained"
+                        className="marginLeft"
+                        size="small"
+                        color="primary"
+                      >
+                        Atualizar
+                      </Button>
                     </Box>
-                ))
-            }
+                  </Link>
+                  <Link
+                    to={`/deletarProduto/${produto.id}`}
+                    className="text-decorator-none"
+                  >
+                    <Box mx={1}>
+                      <Button
+                        variant="contained"
+                        size="small"
+                        color="secondary"
+                      >
+                        Deletar
+                      </Button>
+                    </Box>
+                  </Link>
+                  <Link
+                    to={`/produtos/${produto.id}`}
+                    className="text-decorator-none"
+                  >
+                    <Box mx={1}>
+                      <Button variant="contained" size="small" color="default">
+                        Detalhar
+                      </Button>
+                    </Box>
+                  </Link>
+                </Box>
+              </Box>
+            </Box>
+          </Grid>
+          
+          <Box m={2}></Box>
+          
         </>
-    )
+      ))}
+    </>
+  );
 }
 export default ListaProduto;
