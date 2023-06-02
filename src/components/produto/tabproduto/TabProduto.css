@@ -1,3 +1,9 @@
 .titulo {
   font-weight: bold;
 }
+
+.sobrenos{
+  gap: 5px !important;
+  display: flex;
+  flex-direction: column;
+}

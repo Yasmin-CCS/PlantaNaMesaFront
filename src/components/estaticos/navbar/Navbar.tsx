@@ -68,21 +68,6 @@ function Navbar() {
 
   ];
 
-  // const settings = [
-  //   {
-  //     nome: 'Perfil',
-  //     link: '/home',
-  //   },
-  //   {
-  //     nome: 'Conta',
-  //     link: '/login',
-  //   },
-  //   {
-  //     nome: 'Logout',
-  //     link: onClick={goLogout}
-  //   }
-  // ];
-
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
 
@@ -108,23 +93,24 @@ function Navbar() {
       <AppBar position="static" style={{ backgroundColor: "gray" }} >
         <Container maxWidth="xl">
           <Toolbar disableGutters>
-            <Typography
-              variant="h6"
-              noWrap
-              component="a"
-              href="/"
-              sx={{
-                mr: 2,
-                display: { xs: 'none', md: 'flex' },
-                fontFamily: 'monospace',
-                fontWeight: 700,
-                letterSpacing: '.3rem',
-                color: 'secondary',
-                textDecoration: 'none',
-              }}
-            >
-              Plant
-            </Typography>
+            <Link to='/home'>
+              <Typography
+                variant="h6"
+                noWrap
+                component="a"
+                sx={{
+                  mr: 2,
+                  display: { xs: 'none', md: 'flex' },
+                  fontFamily: 'monospace',
+                  fontWeight: 700,
+                  letterSpacing: '.3rem',
+                  color: 'secondary',
+                  textDecoration: 'none',
+                }}
+              >
+                Plant
+              </Typography>
+            </Link>
 
             <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }} >
               <Button
@@ -217,26 +203,19 @@ function Navbar() {
                 open={Boolean(anchorElUser)}
                 onClose={handleCloseUserMenu}
               >
-
-                {/* {settings.map((setting) => (
-                <Link to={setting.link}>
-                  <MenuItem key={setting.nome} onClick={handleCloseUserMenu}>
-                    <Typography textAlign="center">{setting.nome}</Typography>
-                  </MenuItem>
-                </Link>
-              ))} */}
-
                 <MenuItem onClick={handleCloseUserMenu}>
-                <Box className='Box' mx={1} >
-                            <Typography className='Typography Typography:hover' variant="h6" color="inherit">
-                                Conta
-                            </Typography>
-                        </Box>
+                  <Box className='Box' mx={1} >
+                    <Link to=''>
+                      <Typography className='Typography Typography:hover' variant="h6" color="inherit">
+                        Conta
+                      </Typography>
+                    </Link>
+                  </Box>
                   <Box className='Box' mx={1} onClick={goLogout} >
-                            <Typography className='Typography Typography:hover' variant="h6" color="inherit">
-                                Logout
-                            </Typography>
-                        </Box>
+                    <Typography className='Typography Typography:hover' variant="h6" color="inherit">
+                      Logout
+                    </Typography>
+                  </Box>
                 </MenuItem>
 
 

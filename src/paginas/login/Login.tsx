@@ -53,7 +53,7 @@ function Login() {
       await login(`/usuarios/logar`, userLogin, setRespUserLogin);
 
       toast.success("Usuário logado com sucesso!", {
-        position: "top-center",
+        position: "top-right",
         autoClose: 2000,
         hideProgressBar: false,
         closeOnClick: true,
@@ -64,8 +64,8 @@ function Login() {
       }); 
     } catch (error) {
 
-      toast.success("Usuário ou senha inválidos!", {
-        position: "top-center",
+      toast.error("Usuário ou senha inválidos!", {
+        position: "top-right",
         autoClose: 2000,
         hideProgressBar: false,
         closeOnClick: true,

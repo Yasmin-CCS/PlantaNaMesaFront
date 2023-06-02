@@ -6,9 +6,10 @@ import { Box } from "@mui/material";
 import { Link } from "react-router-dom";
 import "./CadastroUsuario.css";
 import { cadastroUsuario } from "../../services/Service";
+import { toast } from "react-toastify";
 
 function CadastroUsuario() {
-  
+
   // constante para efetuar a navegação do usuário por dentro da lógica
   const navigate = useNavigate();
 
@@ -19,7 +20,7 @@ function CadastroUsuario() {
     usuario: "",
     foto: "",
     senha: ""
-    
+
   });
 
   // state que vai receber a resposta do backend, para verificar se veio tudo ok
@@ -55,14 +56,41 @@ function CadastroUsuario() {
       // caso passe pelo IF, vai executar a tentativa de cadastro, e dar o alerta de sucesso
       try {
         await cadastroUsuario('/usuarios/cadastrar', usuario, setUsuarioResult);
-        alert('Usuário cadastrado com sucesso')
+        toast.success('Usuário Cadastrado com sucesso', {
+          position: 'top-right',
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: false,
+          draggable: false,
+          theme: "colored",
+          progress: undefined,
+        });
       } catch (error) {
         // se der erro no cadastro, por exemplo por e-mail repetido, vai cair nessa msg de erro
-        alert('Falha ao cadastrar o usuário, verifique os campos');
+        toast.error('Por favor confira os dados para efetuar o cadastro', {
+          position: 'top-right',
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: false,
+          draggable: false,
+          theme: "colored",
+          progress: undefined,
+        });
       }
     } else {
       // aqui é a mensagem de erro para o caso dos campos de senha estarem diferentes, vai avisar, e apagar os dois campos
-      alert('Os campos de Senha e Confirmar Senha estão diferentes');
+      toast.error('Senha e confirmar senha estão diferentes, confirmar por gentileza', {
+        position: 'top-right',
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: false,
+        theme: "colored",
+        progress: undefined,
+      });
       setUsuario({ ...usuario, senha: '' });
       setConfirmarSenha('')
     }
@@ -77,7 +105,7 @@ function CadastroUsuario() {
 
   // função de navegação para o botão de cancelar
   // (só fiz essa função pq se eu usasse o Link no botão, quebrava o meu layout, ela não é necessária, da pra fazer com Link mesmo)
-  function voltar(){
+  function voltar() {
     navigate('/login')
   }
 
@@ -132,9 +160,9 @@ function CadastroUsuario() {
             />
 
             <TextField
-             error={usuario.senha.length < 8 && usuario.senha.length > 0}
-             value={usuario.senha}
-             helperText={usuario.senha.length < 8 && usuario.senha.length > 0 ? 'a senha tem que ser maior ou = a 8 caracteres' : ''}
+              error={usuario.senha.length < 8 && usuario.senha.length > 0}
+              value={usuario.senha}
+              helperText={usuario.senha.length < 8 && usuario.senha.length > 0 ? 'Senha tem que ser maior ou = a 8 caracteres' : ''}
               onChange={(event: ChangeEvent<HTMLInputElement>) =>
                 updateModel(event)
               }
@@ -148,9 +176,9 @@ function CadastroUsuario() {
             />
 
             <TextField
-            error={confirmarSenha.length < 8 && confirmarSenha.length > 0}
-            value={confirmarSenha}
-            helperText={confirmarSenha.length < 8 && confirmarSenha.length > 0 ? 'a senha tem que ser maior ou = a 8 caracteres' : ''}
+              error={confirmarSenha.length < 8 && confirmarSenha.length > 0}
+              value={confirmarSenha}
+              helperText={confirmarSenha.length < 8 && confirmarSenha.length > 0 ? 'Senha diferente do campo de confirmação' : ''}
               onChange={(event: ChangeEvent<HTMLInputElement>) =>
                 confirmarSenhaHandle(event)
               }
