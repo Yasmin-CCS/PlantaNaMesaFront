@@ -34,7 +34,16 @@ function CadastroCategoria() {
                 },
             });
         } catch (error) {
-            alert("A Categoria não existe");
+            toast.error('Categoria não existe', {
+                position: 'top-right',
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: false,
+                theme: "colored",
+                progress: undefined,
+            });
         }
     }
 
@@ -46,7 +55,7 @@ function CadastroCategoria() {
 
     useEffect(() => {
         if (token === "") {
-            toast.error('Você precisa estar logado',{
+            toast.error('Você precisa estar logado', {
                 position: 'top-right',
                 autoClose: 2000,
                 hideProgressBar: false,
@@ -54,7 +63,7 @@ function CadastroCategoria() {
                 pauseOnHover: false,
                 draggable: false,
                 theme: "colored",
-                progress: undefined, 
+                progress: undefined,
             });
             navigate("/login");
         }
@@ -78,7 +87,7 @@ function CadastroCategoria() {
                         Authorization: token,
                     },
                 });
-                toast.success('Categoria atualizada com sucesso!',{
+                toast.success('Categoria atualizada com sucesso!', {
                     position: 'top-right',
                     autoClose: 2000,
                     hideProgressBar: false,
@@ -86,11 +95,11 @@ function CadastroCategoria() {
                     pauseOnHover: false,
                     draggable: false,
                     theme: "colored",
-                    progress: undefined, 
+                    progress: undefined,
                 });
                 back();
             } catch (error) {
-                toast.error('Não foi possível atualizadar a categoria!',{
+                toast.error('Não foi possível atualizadar a categoria!', {
                     position: 'top-right',
                     autoClose: 2000,
                     hideProgressBar: false,
@@ -98,7 +107,7 @@ function CadastroCategoria() {
                     pauseOnHover: false,
                     draggable: false,
                     theme: "colored",
-                    progress: undefined, 
+                    progress: undefined,
                 });
             }
         } else {
@@ -109,7 +118,7 @@ function CadastroCategoria() {
                     },
                 });
 
-                toast.success('Categoria cadastrada com Sucesso!',{
+                toast.success('Categoria cadastrada com Sucesso!', {
                     position: 'top-right',
                     autoClose: 2000,
                     hideProgressBar: false,
@@ -117,11 +126,11 @@ function CadastroCategoria() {
                     pauseOnHover: false,
                     draggable: false,
                     theme: "colored",
-                    progress: undefined, 
+                    progress: undefined,
                 });
                 back();
             } catch (error) {
-                toast.error('Não foi possível cadastrar a Categoria!',{
+                toast.error('Não foi possível cadastrar a Categoria!', {
                     position: 'top-right',
                     autoClose: 2000,
                     hideProgressBar: false,
@@ -129,7 +138,7 @@ function CadastroCategoria() {
                     pauseOnHover: false,
                     draggable: false,
                     theme: "colored",
-                    progress: undefined, 
+                    progress: undefined,
                 });
             }
         }
@@ -168,7 +177,7 @@ function CadastroCategoria() {
                     margin="normal"
                     fullWidth
                 />
-                
+
                 <Button type="submit" variant="contained" color="primary" disabled={categoria.descricao.length < 4}>
                     {id !== undefined ? 'Atualizar' : 'Cadastrar'}
                 </Button>

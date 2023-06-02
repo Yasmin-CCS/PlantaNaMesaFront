@@ -9,6 +9,8 @@ import Produto from "../../../models/Produto";
 import { addToken } from "../../../store/tokens/Action";
 import { toast } from "react-toastify";
 import Usuario from "../../../models/Usuario";
+import InputAdornment from "@mui/material/InputAdornment";
+
 
 function FormularioProduto() {
 
@@ -215,12 +217,13 @@ return (
             updateModel(event)
           }
         />
+        <InputLabel>Validade do Produto</InputLabel>
         <TextField
           name="validade"
           type = "date"
           fullWidth
           margin="normal"
-          label="Validade do Produto"
+          helperText="Validade do Produto"
           value={produto.validade}
           onChange={(event: ChangeEvent<HTMLInputElement>) =>
             updateModel(event)
@@ -244,6 +247,9 @@ return (
           fullWidth
           margin="normal"
           multiline
+          InputProps={{
+            startAdornment:<InputAdornment position="start">R$</InputAdornment>
+            }}
           label="Quantidade do Produto"
           value={produto.quantidade}
           onChange={(event: ChangeEvent<HTMLInputElement>) =>
@@ -267,7 +273,10 @@ return (
           fullWidth
           margin="normal"
           multiline
-          label="Qual o preço do seu Produto ?"
+          defaultValue="somente números"
+          InputProps={{
+          startAdornment:<InputAdornment position="start">R$</InputAdornment>
+          }}
           value={produto.valor}
           onChange={(event: ChangeEvent<HTMLInputElement>) =>
             updateModel(event)
