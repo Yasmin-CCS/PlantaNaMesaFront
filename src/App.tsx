@@ -17,6 +17,9 @@ import store from './store/Store';
 import Carrinho from './components/carrinho/Carrinho';
 import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css'
+import ContaUsuario from './paginas/contaUsuario/ContaUsuario';
+import AtualizarCadastro from './paginas/atualizarCadastro/AtualizarCadastro';
+
 
 function App() {
 
@@ -31,6 +34,8 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/home" element={<Home />} />
           <Route path="/cadastrousuario" element={<CadastroUsuario />} />
+           <Route path="/contaUsuario" element={<ContaUsuario />} />
+           <Route path="/atualizarCadastro" element={<AtualizarCadastro />} />
           <Route path="/produtos" element={<ListaProduto />} />
           <Route path="/produtos/:id" element={<DetalheProduto />} />
           <Route path="/carrinho" element={<Carrinho />} />
@@ -41,6 +46,7 @@ function App() {
           <Route path="/categoriascadastro" element={<CadastroCategoria />} />
           <Route path="/categoriascadastro/:id" element={<CadastroCategoria />} />
           <Route path="/deletarCategoria/:id" element={<DeletarCategoria />} />
+
         </Routes>
       </div>
       <Footer />

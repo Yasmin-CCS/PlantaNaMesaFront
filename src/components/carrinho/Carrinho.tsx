@@ -2,7 +2,7 @@ import { toast } from "react-toastify";
 import { removeItem } from "../../store/tokens/Action";
 import { useDispatch, useSelector } from "react-redux";
 import { Button } from "@material-ui/core";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { TokenState } from "../../store/tokens/TokensReducer";
 import { useEffect } from "react";
 import { Box, Grid, Typography } from "@mui/material";
@@ -53,26 +53,23 @@ function Carrinho() {
 
   return (
     <>
-
-      <h1>Produtos Adicionados</h1>
+ 
+      <Typography align="center" variant="h4">
+        Produtos Adicionados
+      </Typography>
+      
 
       {carrinho.map((item) => (
         <>
-          <Grid container my={2} px={4}>
+        
+          <Grid container my={2} px={4} alignItems="center">
             <Box display="flex" flexWrap={"wrap"} width={"100%"}>
-              <Grid
-                item
-                xs={3}
-                border={1}
-                borderRadius={2}
-                borderColor={"lightgray"}
-                p={2}
-              >
-                <Typography>Nome: {item.nome}</Typography>
+              <Grid item xs={2} border={2} borderRadius={1} borderColor={"black"} p={1}>
+                <Typography>{item.nome}</Typography>
 
+                <img src={item.foto} alt={item.nome} width={200} height={200}/>
+              
                 <Typography>Valor: {item.valor}</Typography>
-
-                <img src={item.foto} alt={item.nome} />
               </Grid>
             </Box>
           </Grid>
@@ -80,14 +77,33 @@ function Carrinho() {
       ))}
 
       <>
-        valor total:{" "}
+
+      <Typography align="center">
+        {" "}
         {carrinho.map((price) => {
           {
             valorTotal = valorTotal + price.valor;
           }
         })}
-        <h2>{valorTotal}</h2>
-        <Button onClick={buy}>Finalizar compra</Button>
+
+        <h3>Valor Total: R${valorTotal}</h3>
+
+        </Typography>
+        <Box marginTop={2} textAlign="center">
+              <Link to="/produtos">
+                <Button
+                  variant="contained"
+                  color="secondary"
+                  className="btnCancelar"
+                >
+                  Voltar
+                </Button>
+              </Link>
+
+              <Button type="submit" variant="contained" color="primary" onClick={buy}>
+              Comprar
+              </Button>
+            </Box>
       </>
     </>
   );

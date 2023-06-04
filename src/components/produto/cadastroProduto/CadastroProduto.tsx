@@ -1,7 +1,17 @@
-import { Container, Box, Typography, TextField, FormControl, InputLabel, Select, MenuItem, FormHelperText, Button } from "@material-ui/core";
+import {
+  Box,
+  Typography,
+  TextField,
+  FormControl,
+  InputLabel,
+  Select,
+  MenuItem,
+  FormHelperText,
+  Button,
+} from "@material-ui/core";
 import { ChangeEvent, useEffect, useState } from "react";
-import { busca, buscaId, put, post} from "../../../services/Service";
-import { useNavigate, useParams } from "react-router-dom";
+import { busca, buscaId, put, post } from "../../../services/Service";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { TokenState } from "../../../store/tokens/TokensReducer";
 import Categoria from "../../../models/Categoria";
@@ -10,17 +20,15 @@ import { addToken } from "../../../store/tokens/Action";
 import { toast } from "react-toastify";
 import Usuario from "../../../models/Usuario";
 import InputAdornment from "@mui/material/InputAdornment";
-
+import { Grid } from "@mui/material";
 
 function FormularioProduto() {
-
   const navigate = useNavigate();
 
   const dispatch = useDispatch();
-  const token = useSelector<TokenState, TokenState["token"] >(
+  const token = useSelector<TokenState, TokenState["token"]>(
     (state) => state.token
   );
-  
 
   const { id } = useParams<{ id: string }>();
 
@@ -28,87 +36,85 @@ function FormularioProduto() {
 
   const [categoria, setCategoria] = useState<Categoria>({
     id: 0,
-    nome:'',
-    descricao: ''
+    nome: "",
+    descricao: "",
   });
 
   const [produto, setProduto] = useState<Produto>({
     id: 0,
-    nome:'',
+    nome: "",
     validade: new Date(),
-    descricao: '',
-    quantidade:0,
-    valor:0,
-    foto:'',
+    descricao: "",
+    quantidade: 0,
+    valor: 0,
+    foto: "",
     categoria: null,
-    usuario: null
+    usuario: null,
   });
 
-  const userId = useSelector<TokenState, TokenState['id']>(
-    (state) => state.id
-  )
+  const userId = useSelector<TokenState, TokenState["id"]>((state) => state.id);
 
   const [usuario, setUsuario] = useState<Usuario>({
     id: +userId,
-    nome: '',
-    usuario: '',
-    senha: '',
-    foto: ''
-  })
+    nome: "",
+    usuario: "",
+    senha: "",
+    foto: "",
+  });
 
   useEffect(() => {
-    if(token === '') {
-      toast.error('Por favor efetue o login para acessar essa página',{
-        position: 'top-right',
+    if (token === "") {
+      toast.error("Por favor efetue o login para acessar essa página", {
+        position: "top-right",
         autoClose: 2000,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: false,
         draggable: false,
         theme: "colored",
-        progress: undefined, 
-    });
-      navigate('/login')
+        progress: undefined,
+      });
+      navigate("/login");
     }
-  }, [])
+  }, []);
 
-  async function getCategorias(){
+  async function getCategorias() {
     try {
-      await busca ('/categorias', setCategorias, {
+      await busca("/categorias", setCategorias, {
         headers: {
           Authorization: token,
         },
       });
     } catch (error: any) {
-      if (error.toString().contains('403')) {
-        toast.error('Token expirado, logue novamente',{
-          position: 'top-right',
+      if (error.toString().contains("403")) {
+        toast.error("Token expirado, logue novamente", {
+          position: "top-right",
           autoClose: 2000,
           hideProgressBar: false,
           closeOnClick: true,
           pauseOnHover: false,
           draggable: false,
           theme: "colored",
-          progress: undefined, 
-      });
-        dispatch(addToken(''));
-        navigate('/login');
+          progress: undefined,
+        });
+        dispatch(addToken(""));
+        navigate("/login");
+      }
     }
   }
-}
 
   async function getProdutoById(id: string) {
-    await busca(`/produtos/${id}`,setProduto, {
+    await busca(`/produtos/${id}`, setProduto, {
       headers: {
-        Authorization: token
-      }
-    })
+        Authorization: token,
+      },
+    });
   }
 
   useEffect(() => {
     getCategorias();
-    if(id !== undefined) {
-      getProdutoById(id)
+    if (id !== undefined) {
+      getProdutoById(id);
     }
   }, []);
 
@@ -124,7 +130,7 @@ function FormularioProduto() {
     setProduto({
       ...produto,
       categoria: categoria,
-      usuario: usuario
+      usuario: usuario,
     });
   }, [categoria]);
 
@@ -132,186 +138,208 @@ function FormularioProduto() {
     event.preventDefault();
     if (id !== undefined) {
       try {
-        await put('/produtos', produto, setProduto, {
+        await put("/produtos", produto, setProduto, {
           headers: {
             Authorization: token,
           },
         });
-        toast.success('Atualização realizada com sucesso',{
-          position: 'top-right',
+        toast.success("Atualização realizada com sucesso", {
+          position: "top-right",
           autoClose: 2000,
           hideProgressBar: false,
           closeOnClick: true,
           pauseOnHover: false,
           draggable: false,
           theme: "colored",
-          progress: undefined, 
-      });
-        navigate('/produtos')
+          progress: undefined,
+        });
+        navigate("/produtos");
       } catch (error) {
-
-        toast.error('Algo de errado aconteceu',{
-          position: 'top-right',
+        toast.error("Algo de errado aconteceu", {
+          position: "top-right",
           autoClose: 2000,
           hideProgressBar: false,
           closeOnClick: true,
           pauseOnHover: false,
           draggable: false,
           theme: "colored",
-          progress: undefined, 
-      });
+          progress: undefined,
+        });
       }
     } else {
       try {
-        console.log(produto)
-        await post('/produtos', produto, setProduto, {
+        console.log(produto);
+        await post("/produtos", produto, setProduto, {
           headers: {
             Authorization: token,
-          }
+          },
         });
-        toast.success('Produto cadastrado com sucesso',{
-          position: 'top-right',
+        toast.success("Produto cadastrado com sucesso", {
+          position: "top-right",
           autoClose: 2000,
           hideProgressBar: false,
           closeOnClick: true,
           pauseOnHover: false,
           draggable: false,
           theme: "colored",
-          progress: undefined, 
-      });
-        navigate('/produtos')
+          progress: undefined,
+        });
+        navigate("/produtos");
       } catch (error) {
-        toast.error('Deu erro',{
-          position: 'top-right',
+        toast.error("Deu erro", {
+          position: "top-right",
           autoClose: 2000,
           hideProgressBar: false,
           closeOnClick: true,
           pauseOnHover: false,
           draggable: false,
           theme: "colored",
-          progress: undefined, 
-      });
+          progress: undefined,
+        });
       }
     }
-    }
-  
+  }
 
+  function voltar() {
+    navigate("/home");
+  }
 
-return (
-  <Container maxWidth="sm">
-    <Box my={2}>
-      <form onSubmit={onSubmit}>
-        
-        <Typography variant="h4" align="center">
-          {id !== undefined ? ' Atualização ' : ' Cadastro '} de Produto
-        </Typography>
-        
-        <TextField
-          name="nome"
-          fullWidth
-          margin="normal"
-          label="Nome do Produto"
-          helperText='Pelo menos 5 caracteres'
-          value={produto.nome}
-          onChange={(event: ChangeEvent<HTMLInputElement>) =>
-            updateModel(event)
-          }
-        />
-        <InputLabel>Validade do Produto</InputLabel>
-        <TextField
-          name="validade"
-          type = "date"
-          fullWidth
-          margin="normal"
-          helperText="Validade do Produto"
-          value={produto.validade}
-          onChange={(event: ChangeEvent<HTMLInputElement>) =>
-            updateModel(event)
-          }
-        />
-        <TextField
-          name="descricao"
-          fullWidth
-          margin="normal"
-          multiline
-          rows={2}
-          label="Descricao do Produto"
-          value={produto.descricao}
-          onChange={(event: ChangeEvent<HTMLInputElement>) =>
-            updateModel(event)
-          }
-        />
-        <TextField
-          name="quantidade"
-          type="number"
-          fullWidth
-          margin="normal"
-          multiline
-          InputProps={{
-            startAdornment:<InputAdornment position="start">R$</InputAdornment>
-            }}
-          label="Quantidade do Produto"
-          value={produto.quantidade}
-          onChange={(event: ChangeEvent<HTMLInputElement>) =>
-            updateModel(event)
-          }
-        />
-        <TextField
-          name="foto"
-          fullWidth
-          margin="normal"
-          multiline
-          label="Coloque a foto do produto"
-          value={produto.foto}
-          onChange={(event: ChangeEvent<HTMLInputElement>) =>
-            updateModel(event)
-          }
-        />
-        <TextField
-          name="valor"
-          type="number"
-          fullWidth
-          margin="normal"
-          multiline
-          defaultValue="somente números"
-          InputProps={{
-          startAdornment:<InputAdornment position="start">R$</InputAdornment>
-          }}
-          value={produto.valor}
-          onChange={(event: ChangeEvent<HTMLInputElement>) =>
-            updateModel(event)
-          }
-        />
+  return (
+    <Grid
+      container
+      direction="row"
+      justifyContent="center"
+      alignItems="center"
+      className="fundo"
+    >
+      <Grid container xs={8} justifyContent="space-around">
+        <Grid item xs={6}>
+          {/* <Container xs={4} className='background-form'maxWidth="sm"> */}
+          <Box my={2}>
+            <form onSubmit={onSubmit}>
+              <Typography className="text bold" variant="h4" align="center">
+                {id !== undefined ? " Atualizar" : " Cadastrar "} Produto:
+              </Typography>
+              <TextField
+                name="nome"
+                fullWidth
+                margin="normal"
+                label="Nome do produto"
+                error={produto.nome.length < 5 && produto.nome.length > 0}
+                helperText="Pelo menos 5 caracteres"
+                value={produto.nome}
+                onChange={(event: ChangeEvent<HTMLInputElement>) =>
+                  updateModel(event)
+                }
+              />
 
-        <FormControl fullWidth margin="normal">
-          <InputLabel id="selectTema">Categoria</InputLabel>
-          <Select
-            labelId="selectTema"
-            onChange={(event) =>
-              buscaId(`/categorias/${event.target.value}`, setCategoria, {
-                headers: {
-                  Authorization: token,
-                },
-              })
-            }
-          >
-            {categorias.map((categoria) => (
-              <MenuItem key={categoria.id} value={categoria.id}>
-                {categoria.descricao}
-              </MenuItem>
-            ))}
-          </Select>
-          <FormHelperText>Escolha uma Categoria</FormHelperText>
-        </FormControl>
-        
-        <Button type="submit" variant="contained" color="primary" fullWidth disabled={categoria.id === 0}>
-          {id !== undefined ? 'Atualizar Produto' : 'Cadastrar Produto'}
-        </Button>
+              <TextField
+                name="foto"
+                fullWidth
+                margin="normal"
+                multiline
+                label="Coloque a foto do produto"
+                value={produto.foto}
+                onChange={(event: ChangeEvent<HTMLInputElement>) =>
+                  updateModel(event)
+                }
+              />
 
-      </form>
-    </Box>
-  </Container>
-);
+              <TextField
+                name="descricao"
+                fullWidth
+                margin="normal"
+                multiline
+                rows={4}
+                label="Descrição do produto"
+                value={produto.descricao}
+                onChange={(event: ChangeEvent<HTMLInputElement>) =>
+                  updateModel(event)
+                }
+              />
+
+              <InputLabel>Validade do Produto</InputLabel>
+              <TextField
+                name="validade"
+                type="date"
+                fullWidth
+                margin="normal"
+                helperText="Validade do Produto"
+                value={produto.validade}
+                onChange={(event: ChangeEvent<HTMLInputElement>) =>
+                  updateModel(event)
+                }
+              />
+
+              <TextField
+                name="quantidade"
+                type="number"
+                fullWidth
+                margin="normal"
+                multiline
+                label="Quantidade do Produto"
+                value={produto.quantidade}
+                onChange={(event: ChangeEvent<HTMLInputElement>) =>
+                  updateModel(event)
+                }
+              />
+
+              <TextField
+                name="valor"
+                fullWidth
+                margin="normal"
+                multiline
+                label="Preço"
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">R$</InputAdornment>
+                  ),
+                }}
+                value={produto.valor}
+                onChange={(event: ChangeEvent<HTMLInputElement>) =>
+                  updateModel(event)
+                }
+              />
+
+              <FormControl fullWidth margin="normal">
+                <InputLabel id="selectCategoria">Categoria</InputLabel>
+                <Select
+                  labelId="selectCategoria"
+                  onChange={(event) =>
+                    buscaId(`/categorias/${event.target.value}`, setCategoria, {
+                      headers: {
+                        Authorization: token,
+                      },
+                    })
+                  }
+                >
+                  {categorias.map((categoria) => (
+                    <MenuItem key={categoria.id} value={categoria.id}>
+                      {categoria.descricao}
+                    </MenuItem>
+                  ))}
+                </Select>
+                <FormHelperText>
+                  Escolha um categoria para a sua produto
+                </FormHelperText>
+              </FormControl>
+              <Box>
+                <Button
+                  className="btn mg-top"
+                  type="submit"
+                  variant="contained"
+                  color="primary"
+                  disabled={categoria.id === 0}
+                >
+                  {id !== undefined ? "Atualizar Produto" : "Cadastrar Produto"}
+                </Button>
+              </Box>
+            </form>
+          </Box>
+        </Grid>
+      </Grid>
+    </Grid>
+  );
 }
 
 export default FormularioProduto;

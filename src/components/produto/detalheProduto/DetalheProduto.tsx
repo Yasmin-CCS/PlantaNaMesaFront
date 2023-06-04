@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import Produto from "../../../models/Produto";
 import { buscaId } from "../../../services/Service";
 import { useDispatch, useSelector } from "react-redux";
@@ -50,6 +50,16 @@ function DetalheProduto() {
 
   async function addCarrinho() {
     dispatch(addToCart(produto));
+    toast.success("Produto Adicionado ao Carrinho!", {
+      position: "top-right",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: false,
+      theme: "colored",
+      progress: undefined,
+    });
     navigate("/produtos");
   }
 
@@ -74,33 +84,39 @@ function DetalheProduto() {
   }, [id]);
 
   return (
-    // <>
-    //   <p>{produto.nome}</p>
-    //   <p>{produto.valor}</p>
-    //   <img src={produto.foto} alt={produto.nome} />
-    //
-    // </>
 
     <>
       <Grid container my={2} px={4}>
-        <Box display="flex" flexWrap={"wrap"} width={"100%"}>
-          <Grid
-            item
-            xs={3}
-            border={1}
-            borderRadius={2}
-            borderColor={"lightgray"}
-            p={2}
-          >
-            <Typography>Nome: {produto.nome}</Typography>
+        
+        <Box display="flex" flexWrap={"wrap"} width={"100%"} justifyContent="center">
 
-            <Typography>Valor: {produto.valor}</Typography>
+          <Grid item xs={8} border={5} borderRadius={2} borderColor={"black"} p={3} >
+          
+          <Typography variant="h5" align="center"> {produto.nome}</Typography>
+          <br></br>
+            <img src={produto.foto} alt={produto.nome} className="img_desc" />
+            <br></br>
+            <br></br>
+            <Typography>Descrição: {produto.descricao}</Typography>
+            <br></br>
+            <Typography>Valor: R$ {produto.valor}</Typography>
+            <br></br>
+            <Box marginTop={2} textAlign="center">
+              <Link to="/produtos">
+                <Button
+                  variant="contained"
+                  color="secondary"
+                  className="btnCancelar"
+                >
+                  Cancelar
+                </Button>
+              </Link>
 
-            <img src={produto.foto} alt={produto.nome} />
-
-            <Box display={"flex"} gap={4}>
-              <Button onClick={addCarrinho}> Adicionar ao carrinho</Button>
+              <Button type="submit" variant="contained" color="primary" onClick={addCarrinho}>
+              Adicionar ao Carrinho
+              </Button>
             </Box>
+
           </Grid>
         </Box>
       </Grid>
