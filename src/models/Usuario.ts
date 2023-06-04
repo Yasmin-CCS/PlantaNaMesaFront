@@ -6,7 +6,7 @@ interface Usuario {
   usuario: string;
   senha: string;
   foto: string | null;
-  postagem?: Produto[];
+  produto?: Produto[];
 }
 
 export default Usuario;

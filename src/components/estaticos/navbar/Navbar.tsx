@@ -90,10 +90,10 @@ function Navbar() {
 
   if (token != "") {
     navbarComponent =
-      <AppBar position="static" style={{ backgroundColor: "gray" }} >
+      <AppBar position="static" style={{ backgroundColor: "gray" }} className='text-decorator-none'>
         <Container maxWidth="xl">
           <Toolbar disableGutters>
-            <Link to='/home'>
+            <Link to='/home' className='text-decorator-none'>
               <Typography
                 variant="h6"
                 noWrap
@@ -205,7 +205,7 @@ function Navbar() {
               >
                 <MenuItem onClick={handleCloseUserMenu}>
                   <Box className='Box' mx={1} >
-                    <Link to=''>
+                    <Link to='/contaUsuario'>
                       <Typography className='Typography Typography:hover' variant="h6" color="inherit">
                         Conta
                       </Typography>
