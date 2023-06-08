@@ -1,7 +1,7 @@
 import Produto from "../../models/Produto";
 
 export type Action = {
-  type: "ADD_TOKEN" | "ADD_ID" | "REMOVE_ITEM" | "ADD_TO_CART";
+  type: "ADD_TOKEN" | "ADD_ID" | "REMOVE_ITEM" | "ADD_TO_CART" | "REMOVE_TO_CART";
   payload: any
 };
 
@@ -17,6 +17,11 @@ export const addId = (id: string): Action => ({
 
 export const addToCart = (id: Produto): Action => ({
   type: "ADD_TO_CART",
+  payload: id,
+});
+
+export const removeToCart = (id: Produto): Action => ({
+  type: "REMOVE_TO_CART",
   payload: id,
 });
 
