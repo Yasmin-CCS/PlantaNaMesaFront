@@ -20,7 +20,7 @@ export const addToCart = (id: Produto): Action => ({
   payload: id,
 });
 
-export const removeToCart = (id: Produto[]): Action => ({
+export const removeToCart = (id: Produto): Action => ({
   type: "REMOVE_TO_CART",
   payload: id,
 });

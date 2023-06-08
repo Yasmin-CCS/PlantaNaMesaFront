@@ -8,6 +8,7 @@ import { useEffect } from "react";
 import { Box, Grid, Typography } from "@mui/material";
 import './Carrinho.css';
 import DisabledByDefaultIcon from '@mui/icons-material/DisabledByDefault';
+import Produto from "../../models/Produto";
 
 
 function Carrinho() {
@@ -54,8 +55,9 @@ function Carrinho() {
     navigate("/home");
   }
 
-  function removeFromCart(id: number) {
-    dispatch(removeToCart(carrinho.filter((item) => { return item.id !== id })));
+
+  function removeFromCart(item: Produto) {
+    dispatch(removeToCart(item));
     toast.success("Produto removido com sucesso!", {
       position: "top-right",
       autoClose: 2000,
@@ -85,7 +87,7 @@ function Carrinho() {
                 <Typography>{item.nome}</Typography>
                 <img className="img_listCart" src={item.foto} alt={item.nome} />
                 <Typography>Valor: R$ {item.valor}</Typography>
-                <Button type="submit" color="primary" onClick={() => removeFromCart(item.id)}>
+                <Button type="submit" color="primary" onClick={() => removeFromCart(item)}>
                   <DisabledByDefaultIcon />
                 </Button>
               </Grid>

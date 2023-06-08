@@ -13,11 +13,6 @@ const initialState = {
   id: "",
   produtos: [],
 };
-const updatedState={
-  token: initialState.token,
-  id: "",
-  produtos: [],
-}
 
 export const tokenReducer = (
   state: TokenState = initialState,
@@ -45,7 +40,7 @@ export const tokenReducer = (
     case "REMOVE_TO_CART": {
       return {
         ...state,
-        produtos: [...state.produtos, action.payload],
+        produtos: [...state.produtos.filter((item)=> item !== action.payload)],
       };
     }
 
