@@ -49,7 +49,7 @@ function ListaProduto() {
                 </Box>
                 <Box className="flip-card-back">
                   <Typography color="textSecondary" gutterBottom>
-                    Produto
+                    Produto.
                   </Typography>
 
                   <Typography variant="body2" component="p">
