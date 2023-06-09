@@ -36,26 +36,8 @@ function ListaProduto() {
   //   navigate(/produtos/${produtoId});
   // };
 
-  useEffect(() => {
-    if (token == "") {
-      toast.error("VocÃª precisa estar logado", {
-        position: "top-right",
-        autoClose: 2000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: false,
-        draggable: false,
-        theme: "colored",
-        progress: undefined,
-      });
-      navigate("/login");
-    }
-  }, [token]);
-
   return (
     <>
-
-
 
       <Grid container className="fundo" justifyItems="center">
         <Grid xs={4}></Grid>
