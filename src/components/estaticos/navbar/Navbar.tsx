@@ -1,4 +1,3 @@
-import { purple, red } from '@material-ui/core/colors';
 import AppBar from '@mui/material/AppBar';
 import Avatar from '@mui/material/Avatar';
 import Box from '@mui/material/Box';
@@ -10,17 +9,28 @@ import MenuItem from '@mui/material/MenuItem';
 import Toolbar from '@mui/material/Toolbar';
 import Tooltip from '@mui/material/Tooltip';
 import Typography from '@mui/material/Typography';
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { TokenState } from '../../../store/tokens/TokensReducer';
 import { addToken } from '../../../store/tokens/Action';
 import { toast } from 'react-toastify';
+import './Navbar.css'
+import Usuario from '../../../models/Usuario';
 
 function Navbar() {
   const token = useSelector<TokenState, TokenState["token"]>(
     (state) => state.token
   );
+  const userId = useSelector<TokenState, TokenState["id"]>((state) => state.id);
+
+  const [usuario, setUsuario] = useState<Usuario>({
+    id: +userId,
+    nome: "",
+    usuario: "",
+    senha: "",
+    foto: "",
+  });
 
   let navigate = useNavigate();
   const dispatch = useDispatch();
@@ -65,14 +75,7 @@ function Navbar() {
       nome: 'Carrinho',
       link: '/carrinho',
     },
-    {
-      nome: 'Login',
-      link: '/login',
-    },
-    {
-      nome: 'Cadastrar',
-      link: '/cadastrousuario',
-    },
+   
 
   ];
 
@@ -98,10 +101,10 @@ function Navbar() {
 
   if (token != "") {
     navbarComponent =
-      <AppBar position="static" style={{ backgroundColor: "gray" }} className='text-decorator-none'>
-        <Container maxWidth="xl">
+      <AppBar position="static" className='Nav-style'>
+        <Container maxWidth="xl" >
           <Toolbar disableGutters>
-            <Link to='/home' className='text-decorator-none'>
+            <Link to='/home' >
               <Typography
                 variant="h6"
                 noWrap
@@ -116,7 +119,7 @@ function Navbar() {
                   textDecoration: 'none',
                 }}
               >
-                Plant
+                <Avatar src='/src/assets/icones/mudinha.png'></Avatar>
               </Typography>
             </Link>
 
@@ -173,7 +176,8 @@ function Navbar() {
                 textDecoration: 'none',
               }}
             >
-              LOGO
+              <Avatar src='/src/assets/icones/mudinha.png'></Avatar>
+
             </Typography>
             <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
               {pages.map((page) => (
@@ -189,10 +193,11 @@ function Navbar() {
               ))}
             </Box>
 
+            {/* aqui trocamos o icone da bolinha navbar  */}
             <Box sx={{ flexGrow: 0 }}>
-              <Tooltip title="Open settings">
+              <Tooltip title="outras opições">
                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                  <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                <Avatar src={usuario.foto} alt={`Foto de perfil de ${usuario.nome}`} />
                 </IconButton>
               </Tooltip>
               <Menu
@@ -211,10 +216,10 @@ function Navbar() {
                 open={Boolean(anchorElUser)}
                 onClose={handleCloseUserMenu}
               >
-                <MenuItem onClick={handleCloseUserMenu}>
-                  <Box className='Box' mx={1} >
+                <MenuItem onClick={handleCloseUserMenu} >
+                  <Box className='Box' mx={1}>
                     <Link to='/contaUsuario'>
-                      <Typography className='Typography Typography:hover' variant="h6" color="inherit">
+                      <Typography className='' variant="h6" color="inherit">
                         Conta
                       </Typography>
                     </Link>

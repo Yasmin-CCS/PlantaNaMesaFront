@@ -1,50 +1,127 @@
-/* Tela de Login */
-*,
-*:before,
-*:after{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-}
 
-.fundo {
-    background-image: url('/src/assets/LogoFundo.png');
+*{
+    text-decoration: none;
+    margin: 0px;
+}
+.fundocd {
+    background-image: url('/src/assets/verde.png') ;
     background-repeat: no-repeat;
-    width: 100vh;
-    min-height: 100vh;
+    width: auto;
+    height: 100vh;
     background-size: cover;
-    background-position: center;
+    background-position:center;
+    justify-content:center;
+    align-items: center ;
+    display: flex;
 }
-
-
-.form{
-    height: 520px;
-    width: 400px;
-    background-color: rgba(19, 19, 19, 0.13);
-    position: absolute;
-    transform: translate(-50%,-50%);
-    top: 50%;
-    left: 50%;
-    border-radius: 10px;
-    backdrop-filter: blur(10px);
-    border: 2px solid rgba(255,255,255,0.1);
-    box-shadow: 0 0 40px rgba(8,7,16,0.6);
-    padding: 50px 35px;
-}
-.form *{
-    font-family: Georgia, serif !important;
-    color: #ffffff !important;
-    letter-spacing: 0.5px;
-    outline: none;
-    border: none;
-}
-.form h3{
-    font-size: 32px;
-    font-weight: 500;
-    line-height: 42px;
+.Titulo-Prod{
+    color: #467002e2;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 36px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     text-align: center;
+    margin-top: 30px;
+    margin-bottom: 10px !important;
+    margin-right: 250px !important;
+
+}
+.digita{
+    height: 55px;
+    background: #f8f8f8e3;
+
 }
 
-.btnCancelar{
-    margin-right: 50px !important;
+.input-grid{
+    position:absolute;
+    width: 666px;
+    height: 400px;
+    padding: 100px;
+    margin-right: 100px !important;
 }
+
+.input1{
+    display: flex;
+    width: 500px;
+    flex-direction: column;
+    gap: 8px;    
+}
+
+.input2{
+    display: flex;
+    flex-direction: row;
+    margin-top: 30px;
+    gap:15px
+    }
+
+.input-desc{
+
+    display: flex;
+    background: #f8f8f8e3;
+    background-position:center;
+    border-radius: 20px;
+    width: 800px;
+    height: 100px;
+    margin-right: 10px;
+    margin-top: 30px;
+    padding: 10px;
+  
+}
+
+.input-imag{
+    position: absolute;
+    padding: 35px 10px !important;
+    left: 550px;
+    top: 80px;
+    border-radius: 25px;
+}
+.pacote{
+    position: absolute;
+    color: var(--marrom4);
+    margin-left: 220px !important;
+    background: #f8f8f8e3;
+    padding: 100px 100px ;
+    margin-bottom: 20px;
+    border-radius: 25px;
+}
+
+.bolsa{
+    background-color: var(--rosa2) !important;
+    height: 24vh !important;
+    text-align: center !important;
+    place-items: center !important;
+    display: flex !important;
+    justify-content: center;
+    position: relative !important;
+    width: 100% !important;
+  }
+.propriedade-imag{
+    max-width: 250px !important;
+    border-radius: 16px !important;
+  }
+
+.formcd{
+    background-color: rgba(241, 238, 238, 0.383);
+    display: block;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.178);
+    box-shadow: 0 0 40px rgba(184, 183, 187, 0.708);
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.318));
+    padding: 15px;
+}
+
+.card-geral{
+    width: 500px !important;
+    height: 300px !important;
+}
+.botao{
+    display: flex;
+    justify-content:space-evenly;
+    margin-top: 15px;
+    align-items: center;
+}
+

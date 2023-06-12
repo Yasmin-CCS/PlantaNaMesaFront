@@ -123,7 +123,7 @@ function ListaProduto() {
 
                     <Box display="flex" justifyContent="center" mb={1.5}>
                       <Link
-                        to={`/produtos/${produto.id}`}
+                        to={`/modalProduto/${produto.id}`}
                         className="text-decorator-none"
                       >
                         <Box mx={1}>

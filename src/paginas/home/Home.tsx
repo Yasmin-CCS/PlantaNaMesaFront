@@ -1,31 +1,37 @@
 import React from 'react';
-import {Typography, Grid, Button} from '@material-ui/core';
-import {Box} from '@mui/material';
+import { Typography, Grid, Button } from '@material-ui/core';
+import { Box } from '@mui/material';
 import './Home.css';
 import TabProduto from '../../components/produto/tabproduto/TabProduto';
 
 function Home() {
     return (
         <>
-            <Grid container direction="row" justifyContent="center" alignItems="center" className='caixa'>
-                <Grid alignItems="center" item xs={6}>
-                    <Box paddingX={20} >
-                        <Typography variant="h3" gutterBottom color="textPrimary" component="h3" align="center" className='titulo'>Seja bem vindo(a)!</Typography>
-                        <Typography variant="h5" gutterBottom color="textPrimary" component="h5" align="center" className='titulo'>expresse aqui os seus pensamentos e opiniões!</Typography>
-                    </Box>
-                    <Box display="flex" justifyContent="center">
-                        <Box marginRight={1}>
-                        </Box>
-                        <Button variant="outlined" className='botao'>Ver Produtos</Button>
-                    </Box>
-                </Grid>
-                <Grid item xs={6} >
-                    <img src="/src/assets/LogoFundo.png" alt="" width="500px" height="500px" />
-                </Grid>
+        <Grid container  className='geral' 
+        item xs={12}>
+            <Box className="carousel-wrapper">
+                <span id="item-1"></span>
+                <span id="item-2"></span>
+                <span id="item-3"></span>
+                    <div className="carousel-item item-1">
+                        <a className="arrow arrow-prev" href="#item-3"></a>
+                        <a className="arrow arrow-next" href="#item-2"></a>
+                    </div>
+
+                    <div className="carousel-item item-2">
+                        <a className="arrow arrow-prev" href="#item-1"></a>
+                        <a className="arrow arrow-next" href="#item-3"></a>
+                    </div>
+
+                    <div className="carousel-item item-3">
+                        <a className="arrow arrow-prev" href="#item-2"></a>
+                        <a className="arrow arrow-next" href="#item-1"></a>
+                    </div>
+            </Box>
                 <Grid xs={12} className='produtos'>
-                    <TabProduto/>
+                    <TabProduto />
                 </Grid>
-            </Grid>
+        </Grid>
         </>
     );
 }
