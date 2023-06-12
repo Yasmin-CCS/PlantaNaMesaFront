@@ -1,17 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import "./ContaUsuario.css";
-import {
-  Grid,
-  Typography,
-  Box,
-  Button
-} from "@mui/material";
+import { Grid, Typography, Box, Button } from "@mui/material";
 import { Link } from "react-router-dom";
 import Usuario from "../../models/Usuario";
 import { TokenState } from "../../store/tokens/TokensReducer";
 import { buscaId } from "../../services/Service";
-
 
 function ContaUsuario() {
   const token = useSelector<TokenState, TokenState["token"]>(
@@ -25,7 +19,7 @@ function ContaUsuario() {
     nome: "",
     usuario: "",
     senha: "",
-    produto: null,
+    produto: null
   });
 
   async function getUsuario() {
@@ -54,28 +48,27 @@ function ContaUsuario() {
   return (
     <div className="perfilContainer">
       <div className="perfilBanner">
-        <Box marginTop={2} textAlign="center">
-          <Link to="/atualizarCadastro">
-            <Button variant="contained" color="secondary">
-              Atualizar Cadastro
-            </Button>
-          </Link>
-        </Box>
-
         <div>
-          <h2>Usuário: {usuario.nome}</h2>
-          <p>E-mail: {usuario.usuario}</p>
+          <h3>Nome: {usuario.nome}</h3>
+          <p>Usuário: {usuario.usuario}</p>
           <p>Total de produtos cadastrados: {usuario.produto?.length}</p>
+
+          <Box marginTop={2} textAlign="center">
+            <Link to="/atualizarCadastro">
+              <Button variant="contained" color="primary">
+                Atualizar Cadastro
+              </Button>
+            </Link>
+          </Box>
         </div>
         <img src={usuario.foto} alt={`Foto de perfil de ${usuario.nome}`} />
       </div>
 
       <hr />
       <br></br>
-      <h1 style={{ textAlign: "center" }}>Seus Produtos</h1>
+      <h1 style={{ textAlign: "center" }}> Meus Produtos</h1>
       <br></br>
-      <hr />
-      <br></br>
+
       <br></br>
       <div className="perfilPosts">
         {usuario.produto?.map((prod) => (
@@ -86,28 +79,28 @@ function ContaUsuario() {
             borderColor={"lightgray"}
             p={2}
           >
-            <Typography>Produtos:</Typography>
+            <Typography>Nome: {prod.nome}</Typography>
 
-            <Typography>{prod.nome}</Typography>
-            
-            <Typography>{prod.descricao}</Typography>
+            <Typography>Descrição: {prod.descricao}</Typography>
 
-            <Typography>{prod.quantidade}</Typography>
+            <Typography>Quantidade: {prod.quantidade}</Typography>
 
-            <Typography>{prod.valor}</Typography>
-            
+            <Typography>Valor: R${prod.valor}</Typography>
+
             <Typography>
+              Validade:
               {new Intl.DateTimeFormat("pt-br", {
                 dateStyle: "full",
               }).format(new Date(prod.validade))}
             </Typography>
-            <Typography>Categoria: {prod.categoria?.descricao}</Typography>
+
             <Box display={"flex"} gap={4}>
               <Link to={`/cadastrarprodutos/${prod.id}`}>
                 <Button fullWidth variant="contained" color="primary">
                   Editar
                 </Button>
               </Link>
+
               <Link to={`/deletarProduto/${prod.id}`}>
                 <Button fullWidth variant="contained" color="secondary">
                   Apagar
@@ -117,6 +110,7 @@ function ContaUsuario() {
           </Grid>
         ))}
       </div>
+
     </div>
   );
 }
