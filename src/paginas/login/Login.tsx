@@ -92,7 +92,7 @@ function Login() {
         direction="row"
         justifyContent="center"
         alignItems="center"
-        className="fundo"
+        className="fundolog"
       >
         <Grid alignItems="center" xs={12}>
           <Box paddingX={0}>
@@ -146,7 +146,7 @@ function Login() {
                 </Box>
                 <Link to="/cadastrousuario">
                   <button className="glow-on-hover" type="button">
-                    CADASTRA-SE AQUI!
+                    Cadastre-se Aqui
                   </button>
                 </Link>
               </Box>

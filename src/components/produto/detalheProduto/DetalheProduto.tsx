@@ -93,7 +93,7 @@ function DetalheProduto() {
           <Grid item xs={8} border={5} borderRadius={2} borderColor={"black"} p={3} >
           
           <Typography variant="h5" align="center"> {produto.nome}</Typography>
-          <br></br>
+          <br></br>         
             <img src={produto.foto} alt={produto.nome} className="img_desc" />
             <br></br>
             <br></br>

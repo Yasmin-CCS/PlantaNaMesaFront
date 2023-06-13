@@ -12,7 +12,7 @@
 }
 
 .fundo {
-    background-image: url('/src/assets/LogoFundo.png');
+    background-image: url('/src/assets/verde.png') !important;
     background-repeat: no-repeat;
     width: 100vh;
     min-height: 100vh;
