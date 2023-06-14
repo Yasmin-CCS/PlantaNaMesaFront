@@ -19,6 +19,7 @@ import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css'
 import ContaUsuario from './paginas/contaUsuario/ContaUsuario';
 import AtualizarCadastro from './paginas/atualizarCadastro/AtualizarCadastro';
+import ModalProduto from './components/produto/modalProduto/ModalProduto';
 
 
 function App() {
@@ -41,6 +42,7 @@ function App() {
             <Route path="/carrinho" element={<Carrinho />} />
             <Route path="/cadastrarprodutos" element={<FormularioProduto />} />
             <Route path="/cadastrarprodutos/:id" element={<FormularioProduto />} />
+            <Route path="/modalProduto/:id"element={<ModalProduto/>}/>
             <Route path="/deletarProduto/:id" element={<DeletarProduto />} />
             <Route path="/categorias" element={<ListaCategoria />} />
             <Route path="/categoriascadastro" element={<CadastroCategoria />} />

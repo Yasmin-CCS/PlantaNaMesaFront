@@ -21,6 +21,7 @@ import { toast } from "react-toastify";
 import Usuario from "../../../models/Usuario";
 import InputAdornment from "@mui/material/InputAdornment";
 import { Grid } from "@mui/material";
+import"./CadastroProduto.css"
 
 function FormularioProduto() {
   const navigate = useNavigate();
@@ -33,6 +34,7 @@ function FormularioProduto() {
   const { id } = useParams<{ id: string }>();
 
   const [categorias, setCategorias] = useState<Categoria[]>([]);
+  
 
   const [categoria, setCategoria] = useState<Categoria>({
     id: 0,
@@ -125,6 +127,9 @@ function FormularioProduto() {
       categoria: categoria,
     });
   }
+  // function getfoto(item:Produto){
+
+  // }
 
   useEffect(() => {
     setProduto({
@@ -207,20 +212,19 @@ function FormularioProduto() {
   return (
     <Grid
       container
-      direction="row"
-      justifyContent="center"
-      alignItems="center"
-      className="fundo"
+      className="fundocd"
     >
-      <Grid container xs={8} justifyContent="space-around">
-        <Grid item xs={6}>
-          {/* <Container xs={4} className='background-form'maxWidth="sm"> */}
-          <Box my={2}>
-            <form onSubmit={onSubmit}>
-              <Typography className="text bold" variant="h4" align="center">
+        <Grid className="formcd">
+          
+            <form onSubmit={onSubmit} >
+              <Typography className="Titulo-Prod" variant="h4" align="center">
                 {id !== undefined ? " Atualizar" : " Cadastrar "} Produto:
               </Typography>
+
+              <Box className="input1">
               <TextField
+                variant='outlined'
+                className="digita"
                 name="nome"
                 fullWidth
                 margin="normal"
@@ -232,8 +236,9 @@ function FormularioProduto() {
                   updateModel(event)
                 }
               />
-
-              <TextField
+                <TextField
+                variant='outlined'
+                className="digita"
                 name="foto"
                 fullWidth
                 margin="normal"
@@ -245,64 +250,22 @@ function FormularioProduto() {
                 }
               />
 
-              <TextField
-                name="descricao"
-                fullWidth
-                margin="normal"
-                multiline
-                rows={4}
-                label="Descrição do produto"
-                value={produto.descricao}
-                onChange={(event: ChangeEvent<HTMLInputElement>) =>
-                  updateModel(event)
-                }
-              />
-
-              <InputLabel>Validade do Produto</InputLabel>
-              <TextField
-                name="validade"
-                type="date"
-                fullWidth
-                margin="normal"
-                helperText="Validade do Produto"
-                value={produto.validade}
-                onChange={(event: ChangeEvent<HTMLInputElement>) =>
-                  updateModel(event)
-                }
-              />
-
-              <TextField
-                name="quantidade"
-                type="number"
-                fullWidth
-                margin="normal"
-                multiline
-                label="Quantidade do Produto"
-                value={produto.quantidade}
-                onChange={(event: ChangeEvent<HTMLInputElement>) =>
-                  updateModel(event)
-                }
-              />
-
-              <TextField
-                name="valor"
-                fullWidth
-                margin="normal"
-                multiline
-                label="Preço"
-                InputProps={{
-                  startAdornment: (
-                    <InputAdornment position="start">R$</InputAdornment>
-                  ),
-                }}
-                value={produto.valor}
-                onChange={(event: ChangeEvent<HTMLInputElement>) =>
-                  updateModel(event)
-                }
-              />
-
-              <FormControl fullWidth margin="normal">
-                <InputLabel id="selectCategoria">Categoria</InputLabel>
+            {/* Codigo baixo mostra a imagem quando compo de img no input é prenchido   */}
+            
+            <Grid className='input-imag'>
+              {produto.foto == '' &&         
+              <Box className='bolsa'>
+                <span className='pacote'>{produto.foto == "" && ' Foto '}</span>
+              </Box>}
+              <Box>
+                <img className='propriedade-imag' src={produto.foto} alt='' />
+                </Box>
+            </Grid>
+              <FormControl fullWidth margin="normal"
+              variant="outlined"
+              className="digita">
+                <InputLabel
+                id="selectCategoria">Categoria</InputLabel>
                 <Select
                   labelId="selectCategoria"
                   onChange={(event) =>
@@ -323,22 +286,91 @@ function FormularioProduto() {
                   Escolha um categoria para a sua produto
                 </FormHelperText>
               </FormControl>
-              <Box>
+              </Box>
+
+              <Box className="input2">
+              <TextField
+                variant="outlined"
+                className="digita"
+                name="validade"
+                type="date"
+                fullWidth
+                margin="normal"
+                helperText="Validade do Produto"
+                value={produto.validade}
+                onChange={(event: ChangeEvent<HTMLInputElement>) =>
+                  updateModel(event)
+                }
+              />
+              <TextField
+                variant="outlined"
+                className="digita"
+                name="quantidade"
+                type="number"
+                fullWidth
+                margin="normal"
+                multiline
+                label="Quantidade do Produto"
+                value={produto.quantidade}
+                onChange={(event: ChangeEvent<HTMLInputElement>) =>
+                  updateModel(event)
+                }
+              />
+
+              <TextField
+                variant="outlined"
+                className="digita"
+                name="valor"
+                fullWidth
+                margin="normal"
+                multiline
+                label="Preço"
+                InputProps={{
+                  startAdornment: (
+                    <InputAdornment position="start">R$</InputAdornment>
+                  ),
+                }}
+                value={produto.valor}
+                onChange={(event: ChangeEvent<HTMLInputElement>) =>
+                  updateModel(event)
+                }
+              />
+              </Box>
+              
+              <Box className="input-desc">
+              <TextField
+                name="descricao"
+                fullWidth
+                margin="normal"
+                multiline
+                rows={2}
+                label="Descrição do produto"
+                value={produto.descricao}
+                onChange={(event: ChangeEvent<HTMLInputElement>) =>
+                  updateModel(event)
+                }
+              />
+              </Box>
+      
+              <Box className="botao">
+                <Link to="/produtos">
+                <Button  
+                  variant="contained">
+                  Voltar
+                </Button>
+                </Link>
+            
                 <Button
-                  className="btn mg-top"
                   type="submit"
                   variant="contained"
-                  color="primary"
                   disabled={categoria.id === 0}
                 >
                   {id !== undefined ? "Atualizar Produto" : "Cadastrar Produto"}
                 </Button>
               </Box>
             </form>
-          </Box>
         </Grid>
       </Grid>
-    </Grid>
   );
 }
 

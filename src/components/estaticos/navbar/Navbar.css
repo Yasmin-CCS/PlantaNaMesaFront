@@ -1,3 +1,8 @@
-.text-decorator-none{
-    text-decoration: none;
+.Nav-style{
+    text-decoration: none !important;
+    
   }
+
+.texto{
+  text-decoration: none;
+}
