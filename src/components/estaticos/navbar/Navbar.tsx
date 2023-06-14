@@ -195,13 +195,15 @@ function Navbar() {
 
             {/* aqui trocamos o icone da bolinha navbar  */}
             <Box sx={{ flexGrow: 0 }}>
-              <Tooltip title="outras opições">
+              <Tooltip title="outras opições"
+              >
                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <Avatar src={usuario.foto} alt={`Foto de perfil de ${usuario.nome}`} />
                 </IconButton>
               </Tooltip>
               <Menu
-                sx={{ mt: '45px' }}
+              className='menu-icon'
+                sx={{ mt: '50px' }}
                 id="menu-appbar"
                 anchorEl={anchorElUser}
                 anchorOrigin={{
@@ -217,15 +219,15 @@ function Navbar() {
                 onClose={handleCloseUserMenu}
               >
                 <MenuItem onClick={handleCloseUserMenu} >
-                  <Box className='Box' mx={1}>
+                  <Box className='menu-icon' mx={1}>
                     <Link to='/contaUsuario'>
-                      <Typography className='' variant="h6" color="inherit">
+                      <Typography className='' variant="h6">
                         Conta
                       </Typography>
                     </Link>
                   </Box>
                   <Box className='Box' mx={1} onClick={goLogout} >
-                    <Typography className='Typography Typography:hover' variant="h6" color="inherit">
+                    <Typography className='Texto' variant="h6">
                       Logout
                     </Typography>
                   </Box>

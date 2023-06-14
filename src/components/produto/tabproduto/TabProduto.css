@@ -1,9 +1,10 @@
 .titulo {
   font-weight: bold;
 }
-
-.sobrenos{
-  gap: 5px !important;
-  display: flex;
-  flex-direction: column;
+.style{
+  background-color: rgba(157, 255, 60, 0.674) !important;
+}
+.Lista{
+  display:flex;
+  flex-wrap:wrap; justify-content:center;
 }
