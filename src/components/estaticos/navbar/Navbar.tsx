@@ -241,7 +241,7 @@ function Navbar() {
       </AppBar>
   }else {
     navbarComponent =
-    <AppBar position="static" style={{ backgroundColor: "gray" }} >
+    <AppBar position="static" className='Nav-style'>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Typography
@@ -259,7 +259,7 @@ function Navbar() {
               textDecoration: 'none',
             }}
           >
-            Plant
+            <Avatar src='/src/assets/icones/mudinha.png'></Avatar>
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }} >
@@ -315,7 +315,8 @@ function Navbar() {
               textDecoration: 'none',
             }}
           >
-            LOGO
+            <Avatar src='/src/assets/icones/mudinha.png'></Avatar> 
+            
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
             {pages.slice(0, 2).map((page) => (

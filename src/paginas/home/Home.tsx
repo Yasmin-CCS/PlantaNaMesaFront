@@ -9,8 +9,8 @@ function Home() {
     return (
         <>
         <Grid>
-                <Grid container  className='geral' 
-                item xs={12}>
+        <Grid container  className='geral' 
+        item xs={12}>
                     <Carrosel/>
                 </Grid>
                 <Grid xs={12} className='produtos'>
