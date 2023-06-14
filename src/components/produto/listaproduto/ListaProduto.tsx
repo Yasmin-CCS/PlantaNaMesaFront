@@ -107,7 +107,7 @@ function ListaProduto() {
                   <Box className="flip-card-front">
                     <img src={produto.foto} alt="" className="img" />
                   </Box>
-                  <Grid className="flip-card-back">
+                  <Box className="flip-card-back">
 
                     <Typography variant="body2" component="p">
                       Fornecedor: {produto.usuario?.nome}
@@ -137,7 +137,7 @@ function ListaProduto() {
                         </Box>
                       </Link>
                     </Box>
-                  </Grid>
+                  </Box>
                 </Box>
               </Grid>
 

@@ -13,16 +13,27 @@ function TabProduto() {
     }
     return (
         <>
-            <TabContext value={value} >
+            <TabContext value={value}>
                 <AppBar position="static">
-                    <Tabs centered className="style" onChange={handleChange}>
+                    <Tabs centered indicatorColor="secondary" onChange={handleChange}>
                         <Tab label="Todos os Produtos" value="1" />
+                        <Tab label="Sobre-nós" value="2" />
                     </Tabs>
                 </AppBar>
                 <TabPanel value="1" >
-                    <Box className='Lista'>
+                    <Box display="flex" flexWrap="wrap" justifyContent="center">
                         <ListaProduto />
                     </Box>
+                </TabPanel>
+                <TabPanel value="2">
+                    <Typography variant="h5" gutterBottom color="textPrimary" component="h5" align="center" className="titulo">Sobre-nós</Typography>
+                    <Typography variant="body1" gutterBottom color="textPrimary" className="sobrenos" align="justify"><div>No Brasil 90% da alimentação 
+                        é baseada em apenas 20 espécies, e existe um grupo de alimentos não convencionais conhecidos como PANCs. 
+                        Assim, criamos um e-commerce que conectaria pequenas comunidades produtoras de PANCs ao resto da população,
+                        gerando renda, diversificando alimentos e estimulando a agricultura sustentável.</div>
+                        <div>O Planta na Mesa é um e-commerce de PANCs ofertadas majoritariamente por comunidades quilombolas e 
+                        indígenas, foi idealizado para contribuir para a ODS 2.3 - Fome Zero e Agricultura Sustentável.</div>
+                        </Typography>
                 </TabPanel>
             </TabContext>
         </>

@@ -12,6 +12,7 @@
 }
 
 .fundo {
+    background-image: url('/src/assets/verde.png') !important;
     background-repeat: no-repeat;
     width: 100vh;
     min-height: 100vh;
@@ -28,8 +29,7 @@
   order:4 !important;
   box-sizing: border-box; 
   gap:25px;
-  justify-content: center; 
-  margin-bottom: 50px; 
+  justify-content: center;  
 }
 
 .text-decorator-none{
@@ -37,7 +37,8 @@
   }
   
   .flip-card {
-    width: 360px;
+    background-color: transparent;
+    width: 300px;
     height: 300px;
     perspective: 1000px;
     margin-bottom: 0px !important;
@@ -51,14 +52,14 @@
     text-align: center;
     transition: transform 0.8s;
     transform-style: preserve-3d;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.218);
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     margin-bottom: 10px !important;
-    border-radius: 15px !important;
+    border-radius: 25px !important;
   }
   
   .flip-card:hover .flip-card-inner {
     transform: rotateY(180deg);
-    border-radius: 15px;
+    border-radius: 25px;
   }
   
   .flip-card-front, .flip-card-back {
@@ -67,7 +68,7 @@
     height: 100%;
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
-    border-radius: 15px;
+    border-radius: 25px;
   }
   
   .flip-card-front {
@@ -85,7 +86,7 @@
   }
 
   .img{
-    width: 360px;
+    width: 300px;
     height: 300px;
-    border-radius: 15px;
+    border-radius: 25px;
   }
