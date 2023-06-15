@@ -11,6 +11,8 @@
 
 .navBargeral {
   background-color: rgba(147, 182, 103, 0.54) !important;
+  max-height:min-content;
+  
 }
 
 .textnavBar {
@@ -30,15 +32,23 @@
   align-items: center;
 }
 
+.logoNavBar{
+max-height:5em !important ;
+margin:0;
+}
+
+
 .navBartoken{
   justify-content: space-between;
   display: flex;
+  font-size: 18px !important;
 }
 
 .navBarsemtoken {
   display: flex !important;
   justify-content: space-between !important;
   align-items: center;
+  font-size: 18px !important;
 }
 
 .navBaresquerda{
