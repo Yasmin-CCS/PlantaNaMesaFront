@@ -4,6 +4,7 @@ import { Box } from '@mui/material';
 import { TabContext, TabPanel } from '@material-ui/lab';
 import ListaProduto from '../listaproduto/ListaProduto';
 import './TabProduto.css';
+import ListaCategoria from '../../categoria/listacategoria/ListaCategoria';
 
 
 function TabProduto() {

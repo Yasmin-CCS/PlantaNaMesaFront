@@ -3,10 +3,13 @@
   }
 
   .img_desc{ 
+    display: flex;
     text-align: center;
-    width: 400px;
-    height: 250px;
+    margin-left: 30% !important;
+    width: 300px;
+    height: 200px;
     border-radius: 25px;
+    justify-content: center;
   }
 
   .text_desc{
@@ -20,9 +23,13 @@
     justify-content:center;
   } 
   .card-detalhe{
-    border-style:dotted; 
+    width: 400px; 
+    height: 550px;
     border-radius:5px;
     border-color :black;
-    padding: 5px;
+  }
+  
+  .fundos{
+    border-radius: 25px;
   }
   

@@ -88,11 +88,11 @@ function DetalheProduto(idDetalhe: any) {
   return (
 
     <>
-      <Grid container my={2} px={4}>
+      <Grid container className="fundos" >
         
         <Box className="centralizar-detalhar">
 
-          <Grid item xs={8} className="card-detalhe" >
+          <Grid item xs className="card-detalhe" >
           
           <Typography variant="h5" align="center"> {produto.nome}</Typography>
           <br></br>         

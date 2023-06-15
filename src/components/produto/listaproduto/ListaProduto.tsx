@@ -42,8 +42,11 @@ function ListaProduto() {
 
       <Grid container className="fundo" justifyItems="center">
 
-      <Box className="pesquisa-position">
+      <Grid xs={12}
+      className="botao-posicao">
+        <Box className="pesquisa-position">
         <Input
+        color="success" 
         placeholder="Pesquisar"
         type="text"
         className="pesquisa"
@@ -51,6 +54,8 @@ function ListaProduto() {
         onChange={(e) => setTermoBusca(e.target.value)}
         />
         </Box>
+        
+        </Grid>
 
         <Grid container className="listaproduto">
           {termoBusca === '' ? produto.map((produto) => (
@@ -74,7 +79,7 @@ function ListaProduto() {
                       Valor: R${produto.valor}
                     </Typography>
 
-                    <Box display="flex" justifyContent="center" mb={1.5}>
+                    <Box className="botao" mb={1.5}>
                     <ModalProduto idModal={produto.id}/> 
                     </Box>
                   </Box>
@@ -104,16 +109,12 @@ function ListaProduto() {
                       Valor: R${produto.valor}
                     </Typography>
 
-                    <Box display="flex" justifyContent="center" mb={1.5}>
-                    <Box className='botoes'>
+                    <Box className='botao-posicao'>
                        <ModalProduto idModal={produto.id}/> 
                         </Box>
                     </Box>
-                  </Box>
                 </Box>
               </Grid>
-
-              <Box m={2}></Box>
             </>
           ))}
         </Grid>

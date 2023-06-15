@@ -58,7 +58,7 @@ function ModalProduto(idModal: any) {
         <div>
             <Button
                 variant="outlined"
-                className="btnModal"
+                className="botaoColor"
                 onClick={handleOpen}>
                 Detalhar
             </Button>

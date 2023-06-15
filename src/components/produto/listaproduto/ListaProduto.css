@@ -12,13 +12,10 @@
 }
 
 .fundo {
-    display: flex;
-    background-image: url('/src/assets/verde.png') !important;
     background-repeat: no-repeat;
-    width: 100vh;
+    width: 100% !important;
     min-height: 100vh;
     background-size: cover;
-    background-position: center;
 }
 
 .text{
@@ -39,7 +36,6 @@
   }
   
   .flip-card {
-    background-color: transparent;
     width: 360px;
     height: 300px;
     perspective: 1000px;
@@ -79,7 +75,6 @@
   }
   
   .flip-card-back {
-    background-color: transparent;
     color: rgb(9, 8, 8);
     transform: rotateY(180deg);
     display: flex;
@@ -95,20 +90,25 @@
   
   .pesquisa{
   align-items: center;
-  padding: 10px;
-  height: 40px;
-  width: 350px;
-  background-color: aliceblue;
+  width: 400px;
   border-radius: 20PX;
-  
+
   }
+
   .pesquisa-position{
+    display: flex; 
+    align-items: center !important;justify-content: center;
     flex-direction: row;
-    align-items: center;
-    justify-content: center;
     border-radius: 20px;
-    padding: 15px;
-    margin-top: 30px;
+    margin-top: 0 !important;
     margin-bottom: 30px;
-    margin-left: 450px !important;
+    height: 60px;
+    width: 480px;
+    background-color: rgb(240, 248, 255);
+  }
+  .botao-posicao{ 
+    display:grid;
+    justify-content:center;
+    align-items: center;
+    margin-top: 3%;
   }
