@@ -18,7 +18,7 @@ function ListaProduto() {
     (state) => state.token
   );
 
-  const [removeLoad, setRemoveLoad] = useState(false);
+  const [removeLoading, setRemoveLoading] = useState(false);
 
   const [termoBusca, setTermoBusca] = useState("");
 
@@ -36,7 +36,7 @@ function ListaProduto() {
   useEffect(() => {
     setTimeout(() => {
       getProduto();
-      setRemoveLoad(true);
+      setRemoveLoading(true);
     }, 5000);
   }, [termoBusca]);
 
@@ -124,8 +124,8 @@ function ListaProduto() {
                   </>
                 ))}
 
-          {!removeLoad && <Loading />}
-          {removeLoad && produto.length === 0 && (
+          {!removeLoading && <Loading />}
+          {removeLoading && produto.length === 0 && (
             <p>Não há produtos cadastrados!</p>
           )}
         </Grid>
