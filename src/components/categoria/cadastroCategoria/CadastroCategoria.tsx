@@ -6,7 +6,7 @@ import Categoria from "../../../models/Categoria";
 import { buscaId, post, put } from "../../../services/Service";
 import { TokenState } from "../../../store/tokens/TokensReducer";
 import { toast } from "react-toastify";
-import './CadastroCateoria.css'
+import './CadastroCategoria.css'
 import { Grid } from "@mui/material";
 
 function CadastroCategoria() {

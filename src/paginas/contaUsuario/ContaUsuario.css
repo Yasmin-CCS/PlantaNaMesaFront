@@ -12,7 +12,11 @@
 }
 
 .perfilContainer {
-    background-image: url(/src/assets/fundo.jpeg);
+  background-image: url('/src/assets/verde.png') !important;
+  background-repeat: no-repeat;
+  width: 100% !important;
+  min-height: 100vh;
+  background-size: cover;
   }
   
   .perfilBanner {

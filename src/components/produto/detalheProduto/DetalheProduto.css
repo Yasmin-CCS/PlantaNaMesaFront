@@ -2,13 +2,34 @@
     box-sizing: border-box;
   }
 
-  .img_desc{  
+  .img_desc{ 
+    display: flex;
     text-align: center;
-    width: 500px;
-    height: 300px;
+    margin-left: 30% !important;
+    width: 300px;
+    height: 200px;
     border-radius: 25px;
+    justify-content: center;
   }
 
   .text_desc{
     text-align: center;
   }
+
+ .centralizar-detalhar{
+    display:flex;
+    flex-wrap: wrap;
+    width:100%; 
+    justify-content:center;
+  } 
+  .card-detalhe{
+    width: 400px; 
+    height: 550px;
+    border-radius:5px;
+    border-color :black;
+  }
+  
+  .fundos{
+    border-radius: 25px;
+  }
+  

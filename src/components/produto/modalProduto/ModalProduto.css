@@ -1,0 +1,8 @@
+.cursor{
+    cursor: pointer;
+}
+.botaoColor{
+    color: rgba(147, 182, 103, 0.59) !important;
+    border-color: aliceblue!important;
+    background-color: aliceblue!important;
+}
