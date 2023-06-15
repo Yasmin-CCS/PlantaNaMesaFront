@@ -47,81 +47,76 @@ function ContaUsuario() {
   }, [usuario.usuario]);
 
   return (
-    <div className="perfilContainer">
-      <div className="perfilBanner">
-        <div>
-          <h3>Nome: {usuario.nome}</h3>
-          <p>Usuário: {usuario.usuario}</p>
-          <p>Total de produtos cadastrados: {usuario.produto?.length}</p>
+    <Grid className="perfilContainer">
+      <Grid className="usuarioconta">
+        <Grid className="perfilBanner">
+          <Grid>
+            <Typography>Nome: {usuario.nome}</Typography>
+            <Typography>Usuário: {usuario.usuario}</Typography>
+            <Typography>Total de produtos cadastrados: {usuario.produto?.length}</Typography>
 
-          <Box marginTop={2} textAlign="center">
-            <Link to="/atualizarCadastro">
-              <Button variant="contained" className="btnAtualiza">
-                Atualizar Cadastro
-              </Button>
-            </Link>
-          </Box>
-        </div>
-        <img src={usuario.foto} alt={`Foto de perfil de ${usuario.nome}`} />
-      </div>
-
-      <hr />
-      <br></br>
-      <h1 style={{ textAlign: "center" }}> Meus Produtos</h1>
-      <br></br>
-
-      <br></br>
-      <div className="perfilPosts">
-        {usuario.produto?.map((prod) => (
-          <Grid
-            item
-            border={1}
-            borderRadius={2}
-            borderColor={"lightgray"}
-            p={2}
-          >
-            <Typography>Nome: {prod.nome}</Typography>
-
-            <Typography>Descrição: {prod.descricao}</Typography>
-
-            <Typography>Quantidade: {prod.quantidade}</Typography>
-
-            <Typography>Valor: R${prod.valor}</Typography>
-
-            <Typography>
-              Validade:
-              {new Intl.DateTimeFormat("pt-br", {
-                dateStyle: "full",
-              }).format(new Date(prod.validade))}
-            </Typography>
-
-            <Box display={"flex"} gap={4}>
-              <Link to={`/cadastrarprodutos/${prod.id}`}>
-                <Button fullWidth variant="contained" className="btnEditar">
-                  Editar
-                </Button>
-              </Link>
-
-              <Link to={`/deletarProduto/${prod.id}`}>
-                <Button fullWidth variant="contained" className="btnApagar">
-                  Apagar
+            <Box marginTop={2} textAlign="center">
+              <Link to="/atualizarCadastro">
+                <Button variant="contained" className="btnAtualiza">
+                  Atualizar Cadastro
                 </Button>
               </Link>
             </Box>
           </Grid>
-        ))}
-      </div>
-
-      <hr />
-      <br></br>
-      <h1 style={{ textAlign: "center" }}> Categorias</h1>
-      <br></br>
-
-      <br></br>
-      <ListaCategoria/>
+          <img src={usuario.foto} alt={`Foto de perfil de ${usuario.nome}`} />
+        </Grid>
 
 
-    </div>
+        <Typography style={{ textAlign: "center" }}> Meus Produtos</Typography>
+
+        <Grid className="perfilPosts">
+          {usuario.produto?.map((prod) => (
+            <Grid
+              item
+              border={1}
+              borderRadius={2}
+              borderColor={"lightgray"}
+              p={2}
+              className='cardprodutoconta'
+            >
+              <Typography>Nome: {prod.nome}</Typography>
+
+              <Typography>Descrição: {prod.descricao}</Typography>
+
+              <Typography>Quantidade: {prod.quantidade}</Typography>
+
+              <Typography>Valor: R${prod.valor}</Typography>
+
+              <Typography>
+                Validade:
+                {new Intl.DateTimeFormat("pt-br", {
+                  dateStyle: "full",
+                }).format(new Date(prod.validade))}
+              </Typography>
+
+              <Box display={"flex"} gap={4}>
+                <Link to={`/cadastrarprodutos/${prod.id}`}>
+                  <Button fullWidth variant="contained" className="btnEditar">
+                    Editar
+                  </Button>
+                </Link>
+
+                <Link to={`/deletarProduto/${prod.id}`}>
+                  <Button fullWidth variant="contained" className="btnApagar">
+                    Apagar
+                  </Button>
+                </Link>
+              </Box>
+            </Grid>
+          ))}
+        </Grid>
+
+        <Typography style={{ textAlign: "center" }}> Categorias</Typography>
+
+        <ListaCategoria />
+
+      </Grid>
+    </Grid>
   );
 }
 
