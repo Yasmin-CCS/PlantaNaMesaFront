@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme: Theme) =>
     createStyles({
         paper: {
             position: 'absolute',
-            width: 400,
+            width: 800,
             backgroundColor: theme.palette.background.paper,
             border: '2px solid #000',
             boxShadow: theme.shadows[5],
@@ -31,7 +31,8 @@ const useStyles = makeStyles((theme: Theme) =>
     }),
 );
 
-function ModalProduto() {
+function ModalProduto(idModal: any) {
+    console.log(idModal)
     const classes = useStyles();
     const [modalStyle] = React.useState(getModalStyle);
     const [open, setOpen] = React.useState(false);
@@ -49,7 +50,7 @@ function ModalProduto() {
             <Box display="flex" justifyContent="flex-end" className="cursor">
                 <CloseIcon onClick={handleClose} />
             </Box>
-            <DetalheProduto/>
+            <DetalheProduto idDetalhe={idModal}/>
         </div>
     );
 
@@ -59,7 +60,7 @@ function ModalProduto() {
                 variant="outlined"
                 className="btnModal"
                 onClick={handleOpen}>
-                Voltar
+                Detalhar
             </Button>
             <Modal
                 open={open}

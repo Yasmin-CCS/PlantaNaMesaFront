@@ -20,7 +20,7 @@ function TabProduto() {
                     </Tabs>
                 </AppBar>
                 <TabPanel value="1" >
-                    <Box display="flex" flexWrap="wrap" justifyContent="center">
+                    <Box>
                         <ListaProduto />
                     </Box>
                 </TabPanel>

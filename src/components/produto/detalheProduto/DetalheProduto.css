@@ -2,13 +2,27 @@
     box-sizing: border-box;
   }
 
-  .img_desc{  
+  .img_desc{ 
     text-align: center;
-    width: 500px;
-    height: 300px;
+    width: 400px;
+    height: 250px;
     border-radius: 25px;
   }
 
   .text_desc{
     text-align: center;
   }
+
+ .centralizar-detalhar{
+    display:flex;
+    flex-wrap: wrap;
+    width:100%; 
+    justify-content:center;
+  } 
+  .card-detalhe{
+    border-style:dotted; 
+    border-radius:5px;
+    border-color :black;
+    padding: 5px;
+  }
+  

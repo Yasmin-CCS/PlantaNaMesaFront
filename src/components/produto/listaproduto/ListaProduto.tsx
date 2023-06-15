@@ -8,6 +8,7 @@ import "./ListaProduto.css";
 import { toast } from "react-toastify";
 import { TokenState } from "../../../store/tokens/TokensReducer";
 import { Box, Grid, Input } from "@mui/material";
+import ModalProduto from "../modalProduto/ModalProduto";
 
 function ListaProduto() {
   const navigate = useNavigate();
@@ -40,15 +41,16 @@ function ListaProduto() {
     <>
 
       <Grid container className="fundo" justifyItems="center">
-        <Grid xs={4}></Grid>
 
-        <Input placeholder="Pesquise seu produto aqui"  color="info"
+      <Box className="pesquisa-position">
+        <Input
+        placeholder="Pesquisar"
         type="text"
+        className="pesquisa"
         value={termoBusca}
         onChange={(e) => setTermoBusca(e.target.value)}
-        size="medium"
-      />
-        <Grid xs={4}></Grid>
+        />
+        </Box>
 
         <Grid container className="listaproduto">
           {termoBusca === '' ? produto.map((produto) => (
@@ -73,20 +75,7 @@ function ListaProduto() {
                     </Typography>
 
                     <Box display="flex" justifyContent="center" mb={1.5}>
-                      <Link
-                        to={`/produtos/${produto.id}`}
-                        className="text-decorator-none"
-                      >
-                        <Box mx={1}>
-                          <Button
-                            variant="contained"
-                            size="small"
-                            color="default"
-                          >
-                            Detalhar
-                          </Button>
-                        </Box>
-                      </Link>
+                    <ModalProduto idModal={produto.id}/> 
                     </Box>
                   </Box>
                 </Box>
@@ -116,20 +105,9 @@ function ListaProduto() {
                     </Typography>
 
                     <Box display="flex" justifyContent="center" mb={1.5}>
-                      <Link
-                        to={`/modalProduto/${produto.id}`}
-                        className="text-decorator-none"
-                      >
-                        <Box mx={1}>
-                          <Button
-                            variant="contained"
-                            size="small"
-                            color="default"
-                          >
-                            Detalhar
-                          </Button>
+                    <Box className='botoes'>
+                       <ModalProduto idModal={produto.id}/> 
                         </Box>
-                      </Link>
                     </Box>
                   </Box>
                 </Box>

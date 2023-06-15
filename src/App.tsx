@@ -25,7 +25,7 @@ import ModalProduto from './components/produto/modalProduto/ModalProduto';
 function App() {
 
   return (
-    <Provider store={store}>
+    <Provider store={store} >
       <ToastContainer />
       <BrowserRouter>
         <Navbar />
