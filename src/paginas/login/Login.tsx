@@ -15,6 +15,8 @@ function Login() {
 
   const dispatch = useDispatch();
 
+  const [load, setLoad] = useState(false)
+
   const [token, setToken] = useState("");
 
   const [userLogin, setUserLogin] = useState<UsuarioLogin>({
@@ -49,8 +51,11 @@ function Login() {
 
   async function onSubmit(event: ChangeEvent<HTMLFormElement>) {
     event.preventDefault();
+    setLoad(true)
+    const toastId = toast.loading('Carregando informações...')
     try {
       await login(`/usuarios/logar`, userLogin, setRespUserLogin);
+      toast.dismiss(toastId)
 
       toast.success("Usuário logado com sucesso!", {
         position: "top-right",
@@ -62,8 +67,12 @@ function Login() {
         theme: "colored",
         progress: undefined,
       });
+
+      setLoad(false)
+
     } catch (error) {
 
+      toast.dismiss(toastId)
       toast.error("Usuário ou senha inválidos!", {
         position: "top-right",
         autoClose: 2000,
@@ -74,6 +83,9 @@ function Login() {
         theme: "colored",
         progress: undefined,
       });
+
+      setLoad(false)
+
     }
   }
 
