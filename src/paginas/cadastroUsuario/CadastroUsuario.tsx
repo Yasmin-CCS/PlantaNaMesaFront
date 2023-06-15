@@ -2,11 +2,12 @@ import React, { useState, useEffect, ChangeEvent } from "react";
 import { useNavigate } from "react-router-dom";
 import Usuario from "../../models/Usuario";
 import { Grid, Typography, Button, TextField } from "@material-ui/core";
-import { Box } from "@mui/material";
-import { Link } from "react-router-dom";
+import { Box, Link } from "@mui/material";
 import "./CadastroUsuario.css";
 import { cadastroUsuario } from "../../services/Service";
 import { toast } from "react-toastify";
+import "../../assets/icones/icone usuario.png";
+
 
 function CadastroUsuario() {
 
@@ -36,7 +37,7 @@ function CadastroUsuario() {
   const [confirmarSenha, setConfirmarSenha] = useState<String>("");
 
   // função para atualizar o estado do confirmar senha
-  function confirmarSenhaHandle(event: ChangeEvent<HTMLInputElement>) {
+  function confirmSenha(event: ChangeEvent<HTMLInputElement>) {
     setConfirmarSenha(event.target.value);
   }
 
@@ -110,23 +111,29 @@ function CadastroUsuario() {
   }
 
   return (
-    <Grid
-      container
-      direction="row"
-      justifyContent="center"
-      alignItems="center"
-      className="fundo"
-    >
-      <Grid alignItems="center" xs={12}>
-        <Box paddingX={0}>
-          <form onSubmit={cadastrar} className="form">
+    <Grid className="fundo-att-user" >
+
+
+    <Grid className="container-form">
+        <form onSubmit={cadastrar} className="form-atualizarCadastro">
+        <Box className='input-imag-cadastro'>
+              {usuario.foto == '' &&
+              <Box className=''>
+                <span>{usuario.foto == "" && ' Foto '}</span>
+              </Box>}
+
+                <img src={usuario.foto} alt="" />
+
+            </Box>
+
+            <Box>
             <Typography
               variant="h3"
               gutterBottom
               color="textPrimary"
               component="h3"
               align="center"
-              className="textos2"
+              className="textos2 form-att-h3"
             >
               Cadastrar Usuário
             </Typography>
@@ -160,9 +167,26 @@ function CadastroUsuario() {
             />
 
             <TextField
+              value={usuario.foto}
+              onChange={(event: ChangeEvent<HTMLInputElement>) =>
+                updateModel(event)
+              }
+              id="foto"
+              label="Foto"
+              variant="outlined"
+              name="foto"
+              margin="normal"
+              fullWidth
+            />
+
+            <TextField
               error={usuario.senha.length < 8 && usuario.senha.length > 0}
               value={usuario.senha}
-              helperText={usuario.senha.length < 8 && usuario.senha.length > 0 ? 'Senha tem que ser maior ou = a 8 caracteres' : ''}
+              helperText={
+                usuario.senha.length < 8 && usuario.senha.length > 0
+                  ? "a senha tem que ser maior que 8 caracteres"
+                  : ""
+              }
               onChange={(event: ChangeEvent<HTMLInputElement>) =>
                 updateModel(event)
               }
@@ -178,9 +202,13 @@ function CadastroUsuario() {
             <TextField
               error={confirmarSenha.length < 8 && confirmarSenha.length > 0}
               value={confirmarSenha}
-              helperText={confirmarSenha.length < 8 && confirmarSenha.length > 0 ? 'Senha diferente do campo de confirmação' : ''}
+              helperText={
+                confirmarSenha.length < 8 && confirmarSenha.length > 0
+                  ? "a senha tem que ser maior que 8 caracteres"
+                  : ""
+              }
               onChange={(event: ChangeEvent<HTMLInputElement>) =>
-                confirmarSenhaHandle(event)
+                confirmSenha(event)
               }
               id="confirmarSenha"
               label="Confirmar Senha"
@@ -192,10 +220,9 @@ function CadastroUsuario() {
             />
 
             <Box marginTop={2} textAlign="center">
-              <Link to="/login" className="text-decorator-none">
+              <Link>
                 <Button
                   variant="contained"
-                  color="secondary"
                   className="btnCancelar"
                   onClick={voltar}
                 >
@@ -203,14 +230,14 @@ function CadastroUsuario() {
                 </Button>
               </Link>
 
-              <Button type="submit" variant="contained" color="primary">
+              <Button className="btnAtualizar" type="submit" variant="contained" color="primary">
                 Cadastrar
               </Button>
             </Box>
+            </Box>
           </form>
-        </Box>
-      </Grid>
-    </Grid>
+          </Grid>
+        </Grid>
   );
 }
 

@@ -1,50 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@700&display=swap%22%27');
+
 /* Tela de Login */
 *,
 *:before,
-*:after{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+*:after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
-.fundo {
-    background-image: url('/src/assets/LogoFundo.png');
-    background-repeat: no-repeat;
-    width: 100vh;
-    min-height: 100vh;
-    background-size: cover;
-    background-position: center;
+.fundo-att-user {
+  background-image: url('/src/assets/verde.png');
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  background-size: cover;
+  background-position: center;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-
-.form{
-    height: 520px;
-    width: 400px;
-    background-color: rgba(255,255,255,0.13);
-    position: absolute;
-    transform: translate(-50%,-50%);
-    top: 50%;
-    left: 50%;
-    border-radius: 10px;
-    backdrop-filter: blur(10px);
-    border: 2px solid rgba(255,255,255,0.1);
-    box-shadow: 0 0 40px rgba(8,7,16,0.6);
-    padding: 50px 35px;
-}
-.form *{
-    font-family: Georgia, serif !important;
-    color: #ffffff !important;
-    letter-spacing: 0.5px;
-    outline: none;
-    border: none;
-}
-.form h3{
-    font-size: 32px;
-    font-weight: 500;
-    line-height: 42px;
-    text-align: center;
+.container-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #7e9a6260;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
+  padding: 5rem;
+  border-radius: 2rem;
 }
 
-.btnCancelar{
-    margin-right: 50px !important;
+.form-atualizarCadastro {
+  display: flex !important;
+  width: 80vw;
+  margin: 0 auto;
+  gap: 5rem;
+}
+
+.input-imag-cadastro {
+  border-radius: 50%;
+  border: 5px solid black;
+  overflow: hidden;
+}
+
+.btnAtualizar {
+  background: rgba(147, 182, 103, 0.59) !important;
+  border-radius: 20px !important;
+}
+
+.input-imag-cadastro {
+  height: 30vh;
+  margin: auto;
+}
+
+.input-imag-cadastro img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
