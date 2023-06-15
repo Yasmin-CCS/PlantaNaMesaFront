@@ -3,6 +3,7 @@ import { Typography, Grid, Button } from '@material-ui/core';
 import { Box } from '@mui/material';
 import './Home.css';
 import TabProduto from '../../components/produto/tabproduto/TabProduto';
+import Carrosel from '../../components/estaticos/carrosel/Carrosel';
 
 function Home() {
     return (
