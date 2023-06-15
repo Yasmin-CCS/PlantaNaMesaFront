@@ -189,7 +189,7 @@ function Navbar() {
           <Toolbar disableGutters className='navBarsemtoken'>
 
             <Box className='navBaresquerda'>
-              <Link to='/home' className='text-decorator-none'>
+              <Link to='/home' className='linklogonavbar'>
                 <img src='src/assets/Logo.svg' className='logoNavBar' />
               </Link>
 
