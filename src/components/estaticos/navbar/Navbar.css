@@ -1,18 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@400;700&display=swap');
 
-.text-decorator-none {
-  text-decoration: none;
-}
 
 .logo{
   background-image: url('../../../assets/Logo.png');
-  
+}
+
+.linklogonavbar{
+  text-decoration: none;
+  height:inherit !important;
+  line-height: 0;
 }
 
 .navBargeral {
   background-color: rgba(147, 182, 103, 0.54) !important;
-  max-height:min-content;
-  
+  max-height:fit-content;
+  margin: 0;
+  padding: 0;
 }
 
 .textnavBar {
@@ -33,7 +36,7 @@
 }
 
 .logoNavBar{
-max-height:5em !important ;
+max-height: 4em !important ;
 margin:0;
 }
 
@@ -42,6 +45,7 @@ margin:0;
   justify-content: space-between;
   display: flex;
   font-size: 18px !important;
+  padding:0;
 }
 
 .navBarsemtoken {
