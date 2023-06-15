@@ -6,7 +6,6 @@ import { Box, Link } from "@mui/material";
 import "./CadastroUsuario.css";
 import { cadastroUsuario } from "../../services/Service";
 import { toast } from "react-toastify";
-import "../../assets/icones/icone usuario.png";
 
 
 function CadastroUsuario() {
