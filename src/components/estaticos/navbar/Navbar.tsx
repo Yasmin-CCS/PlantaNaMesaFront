@@ -91,7 +91,7 @@ function Navbar() {
           <Toolbar disableGutters className="navBartoken">
 
             <Link to='/home' className='text-decorator-none'>
-              <img src='src/assets/Logo.svg' className='logoNavBar' />
+              <img src='https://i.imgur.com/yUaBdzy.png' className='logoNavBar' />
             </Link>
 
             <Box className='navBartokendireita'>
@@ -190,7 +190,7 @@ function Navbar() {
 
             <Box className='navBaresquerda'>
               <Link to='/home' className='linklogonavbar'>
-                <img src='src/assets/Logo.svg' className='logoNavBar' />
+                <img src='https://i.imgur.com/yUaBdzy.png' className='logoNavBar' />
               </Link>
 
               <Box >
