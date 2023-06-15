@@ -89,9 +89,11 @@ function Navbar() {
       <AppBar position="static" className='text-decorator-none navBargeral'>
         <Container maxWidth="xl">
           <Toolbar disableGutters className="navBartoken">
+
             <Link to='/home' className='text-decorator-none'>
-              
+              <img src='src/assets/Logo.svg' className='logoNavBar' />
             </Link>
+
             <Box className='navBartokendireita'>
               <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }} className='navBartokendireita'>
                 {pages.slice(0, 2).map((page) => (
@@ -154,7 +156,7 @@ function Navbar() {
                         </Typography>
                       </Link>
                     </MenuItem>
-                    
+
                     <MenuItem onClick={handleCloseUserMenu}>
 
                       <Link to='/categoriascadastro'>
@@ -187,21 +189,9 @@ function Navbar() {
           <Toolbar disableGutters className='navBarsemtoken'>
 
             <Box className='navBaresquerda'>
-              <Typography
-                variant="h6"
-                noWrap
-                component="a"
-                href="/"
-                sx={{
-                  mr: 2,
-                  display: { xs: 'none', md: 'flex' },
-                  letterSpacing: '.3rem',
-                  textDecoration: 'none',
-                }}
-                className='textnavBar'
-              >
-                P
-              </Typography>
+              <Link to='/home' className='text-decorator-none'>
+                <img src='src/assets/Logo.svg' className='logoNavBar' />
+              </Link>
 
               <Box >
                 {pages.slice(0, 2).map((page) => (

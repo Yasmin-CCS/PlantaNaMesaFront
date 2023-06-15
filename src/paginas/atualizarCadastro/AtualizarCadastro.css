@@ -7,6 +7,10 @@
     box-sizing: border-box;
 }
 
+.infoCadUsuario{
+    display: flex !important;
+}
+
 .fundo {
     background-image: url('/src/assets/LogoFundo.png');
     background-repeat: no-repeat;
@@ -19,7 +23,7 @@
 
 .form{
     height: 520px;
-    width: 400px;
+    width:fit-content;
     background-color: rgba(255,255,255,0.13);
     position: absolute;
     transform: translate(-50%,-50%);
