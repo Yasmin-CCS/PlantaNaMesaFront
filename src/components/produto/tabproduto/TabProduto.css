@@ -2,8 +2,7 @@
   font-weight: bold;
 }
 
-.sobrenos{
-  gap: 5px !important;
-  display: flex;
-  flex-direction: column;
+.style{
+  background-color: rgba(182, 237, 116, 0.704) !important;
 }
+

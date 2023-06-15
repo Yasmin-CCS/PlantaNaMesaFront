@@ -4,6 +4,7 @@ import { Box } from '@mui/material';
 import { TabContext, TabPanel } from '@material-ui/lab';
 import ListaProduto from '../listaproduto/ListaProduto';
 import './TabProduto.css';
+import ListaCategoria from '../../categoria/listacategoria/ListaCategoria';
 
 
 function TabProduto() {
@@ -20,7 +21,7 @@ function TabProduto() {
                     </Tabs>
                 </AppBar>
                 <TabPanel value="1" >
-                    <Box display="flex" flexWrap="wrap" justifyContent="center">
+                    <Box>
                         <ListaProduto />
                     </Box>
                 </TabPanel>

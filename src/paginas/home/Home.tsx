@@ -8,7 +8,7 @@ import Carrosel from '../../components/estaticos/carrosel/Carrosel';
 function Home() {
     return (
         <>
-        <Grid>
+        <Grid className='imag-home'>
                 <Grid container  className='geral' 
                 item xs={12}>
                     <Carrosel/>

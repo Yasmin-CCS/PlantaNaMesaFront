@@ -10,7 +10,7 @@ import "./DetalheProduto.css";
 import { Box, Button, Grid } from "@mui/material";
 import { Typography } from "@material-ui/core";
 
-function DetalheProduto() {
+function DetalheProduto(idDetalhe: any) {
   const token = useSelector<TokenState, TokenState["token"]>(
     (state) => state.token
   );
@@ -18,7 +18,9 @@ function DetalheProduto() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const { id } = useParams<{ id: string }>();
+ const idProduto = idDetalhe.idDetalhe.idModal
+
+ console.log(idProduto)
 
   const [produto, setProduto] = useState<Produto>({
     id: 0,
@@ -63,9 +65,9 @@ function DetalheProduto() {
     navigate("/produtos");
   }
 
-  async function getProdutoUnico(id: string) {
+  async function getProdutoUnico() {
     try {
-      await buscaId(`/produtos/${id}`, setProduto, {
+      await buscaId(`/produtos/${idProduto}`, setProduto, {
         headers: {
           Authorization: token,
         },
@@ -78,19 +80,19 @@ function DetalheProduto() {
   }
 
   useEffect(() => {
-    if (id !== undefined) {
-      getProdutoUnico(id);
+    if (idProduto !== undefined) {
+      getProdutoUnico();
     }
-  }, [id]);
+  }, []);
 
   return (
 
     <>
-      <Grid container my={2} px={4}>
+      <Grid container className="fundos" >
         
-        <Box display="flex" flexWrap={"wrap"} width={"100%"} justifyContent="center">
+        <Box className="centralizar-detalhar">
 
-          <Grid item xs={8} border={5} borderRadius={2} borderColor={"black"} p={3} >
+          <Grid item xs className="card-detalhe" >
           
           <Typography variant="h5" align="center"> {produto.nome}</Typography>
           <br></br>         

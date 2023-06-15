@@ -8,6 +8,7 @@ import "./ListaProduto.css";
 import { toast } from "react-toastify";
 import { TokenState } from "../../../store/tokens/TokensReducer";
 import { Box, Grid, Input } from "@mui/material";
+import ModalProduto from "../modalProduto/ModalProduto";
 
 function ListaProduto() {
   const navigate = useNavigate();
@@ -40,15 +41,21 @@ function ListaProduto() {
     <>
 
       <Grid container className="fundo" justifyItems="center">
-        <Grid xs={4}></Grid>
 
-        <Input placeholder="Pesquise seu produto aqui"  color="info"
+      <Grid xs={12}
+      className="botao-posicao">
+        <Box className="pesquisa-position">
+        <Input
+        color="success" 
+        placeholder="Pesquisar"
         type="text"
+        className="pesquisa"
         value={termoBusca}
         onChange={(e) => setTermoBusca(e.target.value)}
-        size="medium"
-      />
-        <Grid xs={4}></Grid>
+        />
+        </Box>
+        
+        </Grid>
 
         <Grid container className="listaproduto">
           {termoBusca === '' ? produto.map((produto) => (
@@ -72,21 +79,8 @@ function ListaProduto() {
                       Valor: R${produto.valor}
                     </Typography>
 
-                    <Box display="flex" justifyContent="center" mb={1.5}>
-                      <Link
-                        to={`/produtos/${produto.id}`}
-                        className="text-decorator-none"
-                      >
-                        <Box mx={1}>
-                          <Button
-                            variant="contained"
-                            size="small"
-                            color="default"
-                          >
-                            Detalhar
-                          </Button>
-                        </Box>
-                      </Link>
+                    <Box className="botao" mb={1.5}>
+                    <ModalProduto idModal={produto.id}/> 
                     </Box>
                   </Box>
                 </Box>
@@ -115,27 +109,12 @@ function ListaProduto() {
                       Valor: R${produto.valor}
                     </Typography>
 
-                    <Box display="flex" justifyContent="center" mb={1.5}>
-                      <Link
-                        to={`/modalProduto/${produto.id}`}
-                        className="text-decorator-none"
-                      >
-                        <Box mx={1}>
-                          <Button
-                            variant="contained"
-                            size="small"
-                            color="default"
-                          >
-                            Detalhar
-                          </Button>
+                    <Box className='botao-posicao'>
+                       <ModalProduto idModal={produto.id}/> 
                         </Box>
-                      </Link>
                     </Box>
-                  </Box>
                 </Box>
               </Grid>
-
-              <Box m={2}></Box>
             </>
           ))}
         </Grid>

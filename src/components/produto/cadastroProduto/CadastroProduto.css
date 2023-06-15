@@ -4,7 +4,7 @@
     margin: 0px;
 }
 .fundocd {
-    background-image: url('/src/assets/verde.png') ;
+    background-image: url('https://i.imgur.com/uyaqBTd.png');
     background-repeat: no-repeat;
     width: auto;
     height: 100vh;
@@ -15,18 +15,17 @@
     display: flex;
 }
 .Titulo-Prod{
-    color: #467002e2;
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 600;
-    font-size: 36px;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
     margin-top: 30px;
     margin-bottom: 10px !important;
-    margin-right: 250px !important;
+    margin-right: 250px !important;text-transform: none;
+    font-size: 36px !important;
+    font-weight: 300 !important;
+    font-family: 'Inter', sans-serif !important;
+    color: rgba(61, 97, 4, 0.9) !important;
 
 }
 .digita{
@@ -73,9 +72,9 @@
 
 .input-imag{
     position: absolute;
-    padding: 35px 10px !important;
-    left: 550px;
-    top: 80px;
+    padding: 40px 10px !important;
+    left: 570px;
+    top: 90px;
     border-radius: 25px;
 }
 .pacote{
@@ -104,14 +103,14 @@
   }
 
 .formcd{
-    background-color: rgba(241, 238, 238, 0.383);
+    background: rgba(160, 167, 151, 0.15);
     display: block;
     border-radius: 20px;
     backdrop-filter: blur(10px);
     border: 2px solid rgba(255, 255, 255, 0.178);
     box-shadow: 0 0 40px rgba(184, 183, 187, 0.708);
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.318));
-    padding: 15px;
+    padding: 22px;
 }
 
 .card-geral{
