@@ -1,5 +1,7 @@
 
 /* Tela de Login */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap');
+
 *,
 *:before,
 *:after{
@@ -8,8 +10,8 @@
     box-sizing: border-box;
 }
 
-.fundolog{
-    background-image: url('/src/assets/imagem\ inicio.jpeg');
+.fundologin {
+    background-image: url('https://i.imgur.com/RCoiN60.png');
     background-repeat: no-repeat;
     width: 100vh;
     min-height: 100vh;
@@ -17,47 +19,73 @@
     background-position: center;
 }
 
-.form{
-    height: 520px;
-    width: 400px;
-    background-color: rgba(255,255,255,0.13);
-    position: absolute;
-    transform: translate(-50%,-50%);
-    top: 55%;
-    left: 50%;
+.divisaoLogin{
+    display: flex;
+    flex-direction: row;
+    padding-left: 10%;
+
+}
+
+
+.direitalogin{
+    display: flex;
+    align-content: center;
+    justify-content: center !important;
+}
+
+.formlogin{
+    height: 50%;
+    width: 100%;
+    background: #ffffff21;
     border-radius: 10px;
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(2px);
     border: 2px solid rgba(255,255,255,0.1);
-    box-shadow: 0 0 40px rgba(8,7,16,0.6);
+    box-shadow: 2px 2px 10px rgba(8,7,16,0.6);
     padding: 50px 35px;
 }
-.form *{
-    font-family: Georgia, serif !important;
-    color:#2c4700e6 !important;
+.linkcadastrese{
+    display: flex;
+    align-items: baseline;
+    justify-content: space-around !important;
+    padding: 0% 10% 0 10%;
+}
+
+/* .formlogin *{
     letter-spacing: 0.5px;
     outline: none;
     border: none;
 }
-.form h3{
+.formlogin h3{
     font-size: 32px;
     font-weight: 500;
     line-height: 42px;
     text-align: center;
+} */
+
+.logintitulo{
+    color: rgba(29, 47, 0, 0.9) !important;
+    font-family: 'Inter', sans-serif !important;
+    font-size: 36px !important;
+    font-weight: 300 !important;
 }
 
 .btnLogin{
-    margin-top: 50px;
-    width: 100%;
-    background-color: #ffffff;
-    color: #080710; 
-    padding: 15px 0;
-    font-size: 18px;
-    font-weight: 600;
-    border-radius: 5px;
-    cursor: pointer;
+    font-family: 'Inter', sans-serif !important;
+    color: rgba(19, 31, 0, 0.9) !important;
+    background-color: rgba(147, 182, 103, 0.71) !important;
+    min-width:calc(min-content + 20px) !important;
+    min-height:fit-content;
+    padding:2% 4%;
+    font-weight: 700 !important;
+    text-transform: none;
+    font-size: 20px;
 }
 
-/* Botão de Cadastrar */
+/* .inputusuario:hover {
+    
+} */
+
+/* Botão de Cadastrar
 .glow-on-hover {
     width: 220px;
     height: 50px;
@@ -116,5 +144,5 @@
     0% { background-position: 0 0; }
     50% { background-position: 400% 0; }
     100% { background-position: 0 0; }
-}
+} */
 

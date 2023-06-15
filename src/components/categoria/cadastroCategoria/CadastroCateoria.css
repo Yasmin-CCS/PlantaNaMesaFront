@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap');
+
+.Cadastrocategoria{
+  background-image: url('https://i.imgur.com/uyaqBTd.png') !important;
+  justify-content: center;
+  align-content: center;
+}
+
+.topo{
+  background: rgba(160, 167, 151, 0.51);
+  
+  border-radius: 20px;
+  padding: 5% 5% 5% 5%;
+  height: 70vh !important;
+  box-shadow: 5px 6px 10px rgba(0, 0, 0, 0.251) !important;
+  width: 50%;
+}
+
+.formheight{
+  display: flex;
+  flex-wrap: wrap;
+  /* align-content:space-around; */
+  min-height: 100%;
+}
+
+.tituloCadastrarcat{
+  text-transform: none;
+  font-size: 36px !important;
+  font-weight: 300 !important;
+  font-family: 'Inter', sans-serif !important;
+  color: rgba(29, 47, 0, 0.9) !important;
+}
+
+.formcadastrocat{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  
+}
+
+.inputcadastrarcat{
+  margin: 0px;
+  border-radius: 4px;
+  background-color: white;
+}
+
+.buttoncadastrarcat{
+  background-color: rgba(147, 182, 103, 0.71) !important;
+  min-width:calc(min-content + 20px) !important;
+  min-height:fit-content;
+  padding:2% 4%;
+  font-weight: 700 !important;
+  color: rgba(19, 31, 0, 0.9) !important;
+  font-family: 'Inter', sans-serif !important;
+  text-transform: none;
+  font-size: 20px;
+
+}
