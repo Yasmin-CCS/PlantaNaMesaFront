@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { TokenState } from "../../store/tokens/TokensReducer";
 import { buscaId, put } from "../../services/Service";
+import './AtualizarCadastro.css';
 
 function AtualizarCadastro() {
 
@@ -118,39 +119,45 @@ function AtualizarCadastro() {
   }
 
   return (
-    <Grid
-      container
-      direction="row"
-      justifyContent="center"
-      alignItems="center"
-      className="fundo"
-    >
-      <Grid alignItems="center" xs={12}>
-        <Box >
-          <form onSubmit={atualizar} className="form">
+    <Grid className="fundo-att-user" >
+
+
+    <Grid className="container-form">
+        <form onSubmit={atualizar} className="form-atualizarCadastro">
+        <Box className='input-imag-cadastro'>
+              {usuario.foto == '' &&
+              <Box className=''>
+                <span>{usuario.foto == "" && ' Foto '}</span>
+              </Box>}
+
+                <img src={usuario.foto} alt='' />
+
+            </Box>
+
+            <Box>
             <Typography
               variant="h3"
               gutterBottom
               color="textPrimary"
               component="h3"
               align="center"
-              className="textos2"
+              className="textos2 form-att-h3"
             >
               Atualizar Usuário
             </Typography>
 
-                <TextField
-                  value={usuario.nome}
-                  onChange={(event: ChangeEvent<HTMLInputElement>) =>
-                    updateModel(event)
-                  }
-                  id="nome"
-                  label="Nome"
-                  variant="outlined"
-                  name="nome"
-                  margin="normal"
-                  fullWidth
-                />
+            <TextField
+              value={usuario.nome}
+              onChange={(event: ChangeEvent<HTMLInputElement>) =>
+                updateModel(event)
+              }
+              id="nome"
+              label="Nome"
+              variant="outlined"
+              name="nome"
+              margin="normal"
+              fullWidth
+            />
 
                 <TextField
                   value={usuario.usuario}
@@ -224,7 +231,6 @@ function AtualizarCadastro() {
               <Link>
                 <Button
                   variant="contained"
-                  color="secondary"
                   className="btnCancelar"
                   onClick={voltar}
                 >
@@ -232,14 +238,14 @@ function AtualizarCadastro() {
                 </Button>
               </Link>
 
-              <Button type="submit" variant="contained" color="primary">
+              <Button className="btnAtualizar" type="submit" variant="contained" color="primary">
                 Atualizar
               </Button>
             </Box>
+            </Box>
           </form>
-        </Box>
-      </Grid>
-    </Grid>
+          </Grid>
+        </Grid>
   );
 }
 
