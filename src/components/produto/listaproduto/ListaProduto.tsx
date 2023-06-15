@@ -48,13 +48,6 @@ function ListaProduto() {
         onChange={(e) => setTermoBusca(e.target.value)}
         size="medium"
       />
-
-
-        <Grid xs={4} className="text">
-          <br></br>
-          <h1> Lista de Produtos </h1>
-          <br></br>
-        </Grid>
         <Grid xs={4}></Grid>
 
         <Grid container className="listaproduto">
@@ -104,6 +97,7 @@ function ListaProduto() {
             <>
               <Grid item className="flip-card">
                 <Box className="flip-card-inner">
+
                   <Box className="flip-card-front">
                     <img src={produto.foto} alt="" className="img" />
                   </Box>
