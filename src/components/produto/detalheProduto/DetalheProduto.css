@@ -2,29 +2,41 @@
     box-sizing: border-box;
   }
 
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap');
+
+
   .img_desc{ 
     display: flex;
     text-align: center;
-    margin-left: 30% !important;
-    width: 300px;
+    margin-left: 33% !important;
+    width: 320px;
     height: 200px;
-    border-radius: 25px;
+    border-radius: 20px;
     justify-content: center;
+    margin-bottom: 25px;
+    margin-top: 10px;
   }
 
   .text_desc{
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    text-align: center; 
+    text-transform: none;
+    font-size: 35px !important;
+    font-weight: 300 !important;
+    font-family: 'Inter', sans-serif !important;
+    color: rgba(29, 47, 0, 0.9) !important;
   }
-
- .centralizar-detalhar{
+  
+  .centralizar-detalhar{
     display:flex;
-    flex-wrap: wrap;
     width:100%; 
     justify-content:center;
+    padding: 8px !important;
   } 
   .card-detalhe{
     width: 400px; 
-    height: 550px;
+    height: 520px;
     border-radius:5px;
     border-color :black;
   }
@@ -32,4 +44,27 @@
   .fundos{
     border-radius: 25px;
   }
-  
+  .botoes{
+    font-family: 'Inter', sans-serif !important;
+    margin-top: 20px !important;
+  }
+  .addCarrinho{
+      background: rgba(111, 139, 76, 0.656) !important;
+      width: 250px;
+      border-radius: 20px !important;
+      color: whitesmoke !important;
+  }
+  .textodetalhe{
+    padding: 1px !important;
+    text-transform: none;
+    font-size: 0px !important;
+    font-weight: 300 !important;
+    font-family: 'Inter', sans-serif !important;
+  }
+  .info{
+    margin-top: 2%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+

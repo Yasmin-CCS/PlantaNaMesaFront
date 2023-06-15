@@ -255,7 +255,7 @@ function FormularioProduto() {
             <Grid className='input-imag'>
               {produto.foto == '' &&         
               <Box className='bolsa'>
-                <span className='pacote'>{produto.foto == "" && ' Foto '}</span>
+                <span className='pacote'>{produto.foto == "" && '  Foto '}</span>
               </Box>}
               <Box>
                 <img className='propriedade-imag' src={produto.foto} alt='' />
