@@ -51,3 +51,18 @@
     grid-template-columns: repeat(3, 1fr);
     gap:0.5rem;
   }
+
+  .btnAtualiza {
+    background: rgba(126, 196, 154, 0.59) !important;
+    border-radius: 20px !important;
+  }
+
+  .btnEditar {
+    background: rgba(147, 182, 103, 0.59) !important;
+    border-radius: 20px !important;
+  }
+  
+  .btnApagar {
+    background: rgba(200, 75, 75, 0.95) !important;
+    border-radius: 20px !important;
+  }

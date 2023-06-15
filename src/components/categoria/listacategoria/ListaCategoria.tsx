@@ -57,25 +57,25 @@ function ListaCategoria() {
                             Categoria
                         </Typography>
                         <Typography variant="h5" component="h2">
-                            {categoria.nome}
+                            Nome: {categoria.nome}
                         </Typography>
                         <Typography variant="h5" component="h2">
-                            {categoria.descricao}
+                            Descrição: {categoria.descricao}
                         </Typography>
                     </CardContent>
                     <CardActions>
                         <Box display="flex" justifyContent="center" mb={1.5} >
                             <Link to={`/categoriasCadastro/${categoria.id}`} className="text-decorator-none">
                                 <Box mx={1}>
-                                    <Button variant="contained" className="marginLeft" size='small' color="primary" >
-                                        atualizar
+                                    <Button variant="contained" className="btnAtualizar" >
+                                        Editar
                                     </Button>
                                 </Box>
                             </Link>
                             <Link to={`/deletarCategoria/${categoria.id}`} className="text-decorator-none">
                                 <Box mx={1}>
-                                    <Button variant="contained" size='small' color="secondary">
-                                        deletar
+                                    <Button variant="contained" className='btnApagar'>
+                                        Deletar
                                     </Button>
                                 </Box>
                             </Link>
