@@ -61,7 +61,7 @@ function Login() {
         draggable: false,
         theme: "colored",
         progress: undefined,
-      }); 
+      });
     } catch (error) {
 
       toast.error("Usuário ou senha inválidos!", {
@@ -73,7 +73,7 @@ function Login() {
         draggable: false,
         theme: "colored",
         progress: undefined,
-      }); 
+      });
     }
   }
 
@@ -87,24 +87,22 @@ function Login() {
 
   return (
     <>
-    <Grid
+      <Grid
         container
-        direction="row"
-        justifyContent="center"
-        alignItems="center"
-        className="fundolog"
+        className="fundologin"
+        xs={12}
       >
-        <Grid alignItems="center" xs={12}>
-          <Box paddingX={0}>
-            <form onSubmit={onSubmit} className="form">
+        <Grid xs={6}></Grid>
+        <Grid xs={6} alignItems="center" className='divisaoLogin'>
+  
+          <Grid className='direitalogin' >
+            <form onSubmit={onSubmit} className="formlogin">
               <Typography
-                variant="h3"
                 gutterBottom
-                color="textPrimary"
-                component="h3"
+                className='logintitulo'
                 align="center"
               >
-                Entrar
+                Seja bem vinde!
               </Typography>
 
               <TextField
@@ -116,13 +114,15 @@ function Login() {
                 name="usuario"
                 margin="normal"
                 fullWidth
+                className='inputusuario'
+              
               />
 
               <TextField
                 error={userLogin.senha.length < 8 && userLogin.senha.length > 0}
                 value={userLogin.senha}
                 helperText={userLogin.senha.length < 8 && userLogin.senha.length > 0 ? 'a senha tem que ser maior que 8 caracteres' : ''}
-                onChange={(event: ChangeEvent<HTMLInputElement>) => updatedModel(event) }
+                onChange={(event: ChangeEvent<HTMLInputElement>) => updatedModel(event)}
                 id="senha"
                 label="senha"
                 variant="outlined"
@@ -133,25 +133,25 @@ function Login() {
               />
 
               <Box marginTop={2} textAlign="center">
-                <Button className="btnLogin" type="submit" variant="contained">
+                <Button className="btnLogin" type="submit" variant="contained" color='primary'>
                   Entrar
                 </Button>
               </Box>
 
-              <Box display="flex" justifyContent="center" marginTop={10}>
+              <Box display="flex" justifyContent="center" marginTop={10} className='linkcadastrese'>
                 <Box marginRight={1}>
                   <Typography variant="subtitle1" gutterBottom align="center">
                     Não tem uma conta?
                   </Typography>
                 </Box>
                 <Link to="/cadastrousuario">
-                  <button className="glow-on-hover" type="button">
-                    Cadastre-se Aqui
-                  </button>
+                  <Typography className="glow-on-hover">
+                    Cadastre-se aqui
+                  </Typography>
                 </Link>
               </Box>
             </form>
-          </Box>
+        </Grid>
         </Grid>
       </Grid>
     </>

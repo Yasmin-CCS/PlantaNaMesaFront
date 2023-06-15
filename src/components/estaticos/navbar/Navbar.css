@@ -1,6 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@400;700&display=swap');
 
-
-.Nav-style{
-    text-decoration: none !important;
-    background-color: rgba(77, 143, 11, 0.548) !important;  
+.text-decorator-none {
+  text-decoration: none;
 }
+
+.logo{
+  background-image: url('../../../assets/Logo.png');
+  
+}
+
+.navBargeral {
+  background-color: rgba(147, 182, 103, 0.54) !important;
+}
+
+.textnavBar {
+  font-family: 'Montserrat Alternates', sans-serif !important;
+  text-transform: none;
+  font-weight: 400 !important;
+  font-size: 25px !important;
+  line-height: 49px;
+  color: rgba(29, 47, 0, 0.9);
+
+}
+
+.navBartokendireita {
+  justify-content: flex-end space-between;
+  display: flex;
+  
+  align-items: center;
+}
+
+.navBartoken{
+  justify-content: space-between;
+  display: flex;
+}
+
+.navBarsemtoken {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center;
+}
+
+.navBaresquerda{
+display: flex;
+align-items: center;
+}
+.carrinhoicon{
+  color: rgba(29, 47, 0, 0.9);;
+}
+
+.navBarmenu{
+  display: flex !important;
+  flex-direction: column !important;
+  /* width: fit-content; */
+  padding-right: 7px !important; 
+  padding-left: 7px !important;
+  align-items: flex-start;
+  /* justify-content: flex-start !important; */ 
+}
+
+

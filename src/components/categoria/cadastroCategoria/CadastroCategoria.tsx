@@ -1,4 +1,4 @@
-import { Button, Container, TextField, Typography } from "@material-ui/core";
+import { Button, TextField, Typography } from "@material-ui/core";
 import { ChangeEvent, useEffect, useState } from "react";
 import * as reactRedux from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
@@ -6,6 +6,8 @@ import Categoria from "../../../models/Categoria";
 import { buscaId, post, put } from "../../../services/Service";
 import { TokenState } from "../../../store/tokens/TokensReducer";
 import { toast } from "react-toastify";
+import './CadastroCateoria.css'
+import { Grid } from "@mui/material";
 
 function CadastroCategoria() {
 
@@ -149,13 +151,16 @@ function CadastroCategoria() {
     }
 
     return (
-        <Container maxWidth="sm" className="topo">
-            <form onSubmit={onSubmit}>
-                <Typography variant="h3" color="textSecondary" component="h1" align="center" >
+        <Grid container sx={{minHeight: '100vh'}} className="Cadastrocategoria">
+        <Grid className="topo">
+
+            <form onSubmit={onSubmit} className='formheight' >
+                <Grid container className='formcadastrocat' >
+                
+                <Typography className='tituloCadastrarcat' align="center" >
                     {id !== undefined ? " Atualizar " : " Cadastrar "}
                     Categoria
                 </Typography>
-
                 <TextField
                     value={categoria.nome}
                     onChange={(e: ChangeEvent<HTMLInputElement>) => updatedCategoria(e)}
@@ -165,24 +170,29 @@ function CadastroCategoria() {
                     name="nome"
                     margin="normal"
                     fullWidth
+                    className="inputcadastrarcat"
                 />
-
                 <TextField
                     value={categoria.descricao}
                     onChange={(e: ChangeEvent<HTMLInputElement>) => updatedCategoria(e)}
                     id="descricao"
-                    label="descricao"
+                    label="descrição"
                     variant="outlined"
                     name="descricao"
                     margin="normal"
                     fullWidth
+                    className="inputcadastrarcat"
                 />
-
-                <Button type="submit" variant="contained" color="primary" disabled={categoria.descricao.length < 4}>
+                
+                
+                <Button className='buttoncadastrarcat' type="submit" variant="contained" color="primary" disabled={categoria.descricao.length < 4}>
                     {id !== undefined ? 'Atualizar' : 'Cadastrar'}
                 </Button>
+                
+                </Grid>
             </form>
-        </Container>
+        </Grid>
+        </Grid>
     );
 }
 
