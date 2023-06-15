@@ -69,6 +69,7 @@
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
     border-radius: 25px;
+    
   }
   
   .flip-card-front {
@@ -77,12 +78,13 @@
   }
   
   .flip-card-back {
-    background-color: transparent;
+    background-color: #bbbbbb45;
     color: rgb(9, 8, 8);
     transform: rotateY(180deg);
     display: flex;
     justify-content: center;
     flex-flow: column;
+    background-size: cover;
   }
 
   .img{
