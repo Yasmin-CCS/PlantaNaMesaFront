@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import Usuario from "../../models/Usuario";
 import { TokenState } from "../../store/tokens/TokensReducer";
 import { buscaId } from "../../services/Service";
+import ListaCategoria from "../../components/categoria/listacategoria/ListaCategoria";
 
 function ContaUsuario() {
   const token = useSelector<TokenState, TokenState["token"]>(
@@ -55,7 +56,7 @@ function ContaUsuario() {
 
           <Box marginTop={2} textAlign="center">
             <Link to="/atualizarCadastro">
-              <Button variant="contained" color="primary">
+              <Button variant="contained" className="btnAtualiza">
                 Atualizar Cadastro
               </Button>
             </Link>
@@ -96,13 +97,13 @@ function ContaUsuario() {
 
             <Box display={"flex"} gap={4}>
               <Link to={`/cadastrarprodutos/${prod.id}`}>
-                <Button fullWidth variant="contained" color="primary">
+                <Button fullWidth variant="contained" className="btnEditar">
                   Editar
                 </Button>
               </Link>
 
               <Link to={`/deletarProduto/${prod.id}`}>
-                <Button fullWidth variant="contained" color="secondary">
+                <Button fullWidth variant="contained" className="btnApagar">
                   Apagar
                 </Button>
               </Link>
@@ -110,6 +111,15 @@ function ContaUsuario() {
           </Grid>
         ))}
       </div>
+
+      <hr />
+      <br></br>
+      <h1 style={{ textAlign: "center" }}> Categorias</h1>
+      <br></br>
+
+      <br></br>
+      <ListaCategoria/>
+
 
     </div>
   );
