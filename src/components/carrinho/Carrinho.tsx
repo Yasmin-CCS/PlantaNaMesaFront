@@ -21,17 +21,6 @@ function Carrinho() {
     (state) => state.token
   );
 
-  const userId = useSelector<TokenState, TokenState["id"]>((state) => state.id);
-
-  const [usuario, setUsuario] = useState<Usuario>({
-    id: +userId,
-    foto: "",
-    nome: "",
-    usuario: "",
-    senha: "",
-    produto: null,
-  });
-
   useEffect(() => {
     if (token === "") {
       toast.error("Por favor efetue o login para acessar essa página", {
@@ -89,7 +78,7 @@ function Carrinho() {
     <>
       <Grid className="centralizar">
         <Grid className="container-carrinho min-height">
-          <Typography align="center" variant="h4">
+          <Typography className="fonte" align="center" variant="h4">
             Produtos Adicionados
           </Typography>
 
@@ -106,11 +95,11 @@ function Carrinho() {
 
                         <Typography className="fonte">{item.nome}</Typography>
                         
-                        <Typography>{usuario.nome}</Typography>
+                        <Typography className="fonte4">Vendedor: {item.usuario.nome}</Typography>
                       </Box>
                       <Box className="class1 alinhar space-between">
                         <Typography className="fonte2">R$ {item.valor}</Typography>
-                        <Box className="class1 class4">
+                        <Box className=" ">
                           <Button type="submit" color="primary" onClick={() => removeFromCart(item)}>
                             <DisabledByDefaultIcon />
                           </Button>
@@ -134,9 +123,9 @@ function Carrinho() {
                 }
               })}
 
-              <Grid xs={12} className="class4 ">
-                <Grid xs={6} className="fonte">Valor Total: </Grid>
-                <Grid xs={6} className="fonte3 ">R${valorTotal}</Grid>
+              <Grid xs={12} className="class4">
+                <Grid  className="fonte">Valor Total: </Grid>
+                <Grid  className="fonte3 gap">R${valorTotal}</Grid>
               </Grid>
             </Typography>
             <Box className="class4">

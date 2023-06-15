@@ -6,50 +6,51 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { TokenState } from "../../store/tokens/TokensReducer";
 import { buscaId, put } from "../../services/Service";
+import './AtualizarCadastro.css';
 
-function AtualizarCadastro(){
+function AtualizarCadastro() {
 
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
-    const token = useSelector<TokenState, TokenState['token']>(
-        (state) => state.token
-      );
+  const token = useSelector<TokenState, TokenState['token']>(
+    (state) => state.token
+  );
 
-      const userId = useSelector<TokenState, TokenState['id']>((state) => state.id);
+  const userId = useSelector<TokenState, TokenState['id']>((state) => state.id);
 
-      const [usuario, setUsuario] = useState<Usuario>({
-        id: +userId,
-        foto: '',
-        nome: '',
-        usuario: '',
-        senha: '',
-        produto: null,
+  const [usuario, setUsuario] = useState<Usuario>({
+    id: +userId,
+    foto: '',
+    nome: '',
+    usuario: '',
+    senha: '',
+    produto: null,
+  });
+
+  async function getUsuario() {
+    try {
+      await buscaId(`/usuarios/${usuario.id}`, setUsuario, {
+        headers: {
+          Authorization: token,
+        },
       });
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
-      async function getUsuario() {
-        try {
-          await buscaId(`/usuarios/${usuario.id}`, setUsuario, {
-            headers: {
-              Authorization: token,
-            },
-          });
-        } catch (error) {
-          console.log(error);
-        }
-      }
+  useEffect(() => {
+    getUsuario();
+  }, []);
 
-      useEffect(() => {
-        getUsuario();
-      }, []);
-    
-      useEffect(() => {
-        setUsuario({
-          ...usuario,
-          senha: ''
-        })
-      }, [usuario.usuario])
+  useEffect(() => {
+    setUsuario({
+      ...usuario,
+      senha: ''
+    })
+  }, [usuario.usuario])
 
-      const [confirmarSenha, setConfirmarSenha] = useState<string>('');
+  const [confirmarSenha, setConfirmarSenha] = useState<string>('');
 
   function confirmSenha(event: ChangeEvent<HTMLInputElement>) {
     setConfirmarSenha(event.target.value);
@@ -80,11 +81,11 @@ function AtualizarCadastro(){
           draggable: false,
           theme: "dark",
           progress: undefined
-        }); 
+        });
         setUsuario({ ...usuario, senha: '' });
         setConfirmarSenha('');
         navigate('/contaUsuario')
-        
+
       } catch (error) {
         toast.error('Falha ao cadastrar o usuário, verifique os campos!', {
           position: "top-center",
@@ -95,7 +96,7 @@ function AtualizarCadastro(){
           draggable: false,
           theme: "dark",
           progress: undefined,
-        }); 
+        });
       }
     } else {
       toast.error('Os campos de Senha e Confirmar Senha estão diferentes!', {
@@ -107,7 +108,7 @@ function AtualizarCadastro(){
         draggable: false,
         theme: "dark",
         progress: undefined,
-      }); 
+      });
       setUsuario({ ...usuario, senha: '' });
       setConfirmarSenha('');
     }
@@ -117,29 +118,35 @@ function AtualizarCadastro(){
     navigate("/contaUsuario");
   }
 
-    return(
-        <Grid
-      container
-      direction="row"
-      justifyContent="center"
-      alignItems="center"
-      className="fundo"
-    >
-      <Grid alignItems="center" xs={12}>
-        <Box paddingX={0}>
-          <form onSubmit={atualizar} className="form">
+  return (
+    <Grid className="fundo-att-user" >
+
+
+    <Grid className="container-form">
+        <form onSubmit={atualizar} className="form-atualizarCadastro">
+        <Box className='input-imag-cadastro'>
+              {usuario.foto == '' &&
+              <Box className=''>
+                <span>{usuario.foto == "" && ' Foto '}</span>
+              </Box>}
+
+                <img src={usuario.foto} alt='' />
+
+            </Box>
+
+            <Box>
             <Typography
               variant="h3"
               gutterBottom
               color="textPrimary"
               component="h3"
               align="center"
-              className="textos2"
+              className="textos2 form-att-h3"
             >
               Atualizar Usuário
             </Typography>
 
-            <TextField  
+            <TextField
               value={usuario.nome}
               onChange={(event: ChangeEvent<HTMLInputElement>) =>
                 updateModel(event)
@@ -224,7 +231,6 @@ function AtualizarCadastro(){
               <Link>
                 <Button
                   variant="contained"
-                  color="secondary"
                   className="btnCancelar"
                   onClick={voltar}
                 >
@@ -232,14 +238,14 @@ function AtualizarCadastro(){
                 </Button>
               </Link>
 
-              <Button type="submit" variant="contained" color="primary">
+              <Button className="btnAtualizar" type="submit" variant="contained" color="primary">
                 Atualizar
               </Button>
             </Box>
+            </Box>
           </form>
-        </Box>
-      </Grid>
-    </Grid>
+          </Grid>
+        </Grid>
   );
 }
 
