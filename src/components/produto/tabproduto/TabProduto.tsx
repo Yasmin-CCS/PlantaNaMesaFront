@@ -13,14 +13,14 @@ function TabProduto() {
     }
     return (
         <>
-            <TabContext value={value} >
+            <TabContext value={value}>
                 <AppBar position="static">
                     <Tabs centered className="style" onChange={handleChange}>
-                        <Tab label="Lista de Produtos " value="1" />
+                        <Tab label="Lista de Produtos" value="1" />
                     </Tabs>
                 </AppBar>
                 <TabPanel value="1" >
-                    <Box className='Lista'>
+                    <Box display="flex" flexWrap="wrap" justifyContent="center">
                         <ListaProduto />
                     </Box>
                 </TabPanel>
