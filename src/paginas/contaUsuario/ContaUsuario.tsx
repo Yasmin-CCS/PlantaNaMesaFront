@@ -7,12 +7,15 @@ import Usuario from "../../models/Usuario";
 import { TokenState } from "../../store/tokens/TokensReducer";
 import { buscaId } from "../../services/Service";
 import ListaCategoria from "../../components/categoria/listacategoria/ListaCategoria";
+import Loading from "../../components/estaticos/loading/Loading";
 
 function ContaUsuario() {
   const token = useSelector<TokenState, TokenState["token"]>(
     (state) => state.token
   );
   const userId = useSelector<TokenState, TokenState["id"]>((state) => state.id);
+
+    const [removeLoad, setRemoveLoad] = useState(false)
 
   const [usuario, setUsuario] = useState<Usuario>({
     id: +userId,
@@ -36,7 +39,10 @@ function ContaUsuario() {
   }
 
   useEffect(() => {
-    getUsuario();
+    setTimeout(() => {
+      getUsuario();
+      setRemoveLoad(true);
+    }, 5000);
   }, []);
 
   useEffect(() => {
@@ -109,12 +115,13 @@ function ContaUsuario() {
               </Box>
             </Grid>
           ))}
+          {!removeLoad && <Loading />}
         </Grid>
 
         <Typography style={{ textAlign: "center" }}> Categorias</Typography>
 
         <ListaCategoria />
-
+                {!removeLoad && <Loading />}
       </Grid>
     </Grid>
   );
