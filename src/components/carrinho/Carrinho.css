@@ -21,9 +21,14 @@
 }
 
 .container-carrinho {
-  background: rgba(195, 200, 188, 0.7);
+  box-shadow: 5px 6px 10px rgba(0, 0, 0, 0.251) !important;
+  width: 50%;  background: rgba(160, 167, 151, 0.15);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.178);
+  box-shadow: 0 0 40px rgba(184, 183, 187, 0.708);
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.318));
   border-radius: 10px;
-  border: 2px solid rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.361);
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
   width: 80%;
   display: flex !important;
@@ -37,7 +42,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  align-content: center !important;
   margin-top: 2% !important;
 }
 

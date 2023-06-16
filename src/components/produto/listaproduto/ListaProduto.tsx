@@ -9,6 +9,7 @@ import { toast } from "react-toastify";
 import { TokenState } from "../../../store/tokens/TokensReducer";
 import { Box, Grid, Input } from "@mui/material";
 import ModalProduto from "../modalProduto/ModalProduto";
+import Loading from "../../estaticos/loading/Loading";
 
 function ListaProduto() {
   const navigate = useNavigate();
@@ -16,7 +17,10 @@ function ListaProduto() {
   const token = useSelector<TokenState, TokenState["token"]>(
     (state) => state.token
   );
-  const [termoBusca, setTermoBusca] = useState('');
+
+  const [removeLoading, setRemoveLoading] = useState(false);
+
+  const [termoBusca, setTermoBusca] = useState("");
 
   async function getProduto() {
     await busca("/produtos", setProduto, {
@@ -24,13 +28,16 @@ function ListaProduto() {
         Authorization: token,
       },
       params: {
-        nome: termoBusca
-      }
-    })
+        nome: termoBusca,
+      },
+    });
   }
 
   useEffect(() => {
-    getProduto();
+    setTimeout(() => {
+      getProduto();
+      setRemoveLoading(true);
+    }, 3000);
   }, [termoBusca]);
 
   // const handleProdutoClick = (produtoId: number) => {
@@ -39,84 +46,88 @@ function ListaProduto() {
 
   return (
     <>
-
       <Grid container className="fundo" justifyItems="center">
-
-      <Grid xs={12}
-      className="botao-posicao">
-        <Box className="pesquisa-position">
-        <Input
-        color="success" 
-        placeholder="Pesquisar"
-        type="text"
-        className="pesquisa"
-        value={termoBusca}
-        onChange={(e) => setTermoBusca(e.target.value)}
-        />
-        </Box>
-        
+        <Grid xs={12} className="botao-posicao">
+          <Box className="pesquisa-position">
+            <Input
+              color="success"
+              placeholder="Pesquisar"
+              type="text"
+              className="pesquisa"
+              value={termoBusca}
+              onChange={(e) => setTermoBusca(e.target.value)}
+            />
+          </Box>
         </Grid>
 
         <Grid container className="listaproduto">
-          {termoBusca === '' ? produto.map((produto) => (
-            <>
-              <Grid item className="flip-card">
-                <Box className="flip-card-inner">
-                  <Box className="flip-card-front">
-                    <img src={produto.foto} alt="" className="img" />
-                  </Box>
-                  <Box className="flip-card-back">
+          {termoBusca === ""
+            ? produto.map((produto) => (
+                <>
+                  <Grid item className="flip-card">
+                    <Box className="flip-card-inner">
+                      <Box className="flip-card-front">
+                        <img src={produto.foto} alt="" className="img" />
+                      </Box>
+                      <Box className="flip-card-back">
+                        <Typography variant="body2" component="p">
+                          Fornecedor: {produto.usuario?.nome}
+                        </Typography>
 
-                    <Typography variant="body2" component="p">
-                      Fornecedor: {produto.usuario?.nome}
-                    </Typography>
+                        <Typography variant="body2" component="p">
+                          Planta: {produto.nome}
+                        </Typography>
 
-                    <Typography variant="body2" component="p">
-                      Planta: {produto.nome}
-                    </Typography>
+                        <Typography variant="body2" component="p">
+                          Valor: R${produto.valor}
+                        </Typography>
 
-                    <Typography variant="body2" component="p">
-                      Valor: R${produto.valor}
-                    </Typography>
-
-                    <Box className="botao" mb={1.5}>
-                    <ModalProduto idModal={produto.id}/> 
-                    </Box>
-                  </Box>
-                </Box>
-              </Grid>
-              <Box m={2}></Box>
-            </>
-          )) : produto.filter(produto => produto.nome.toLowerCase().includes(termoBusca.toLowerCase())).map((produto) => (
-            <>
-              <Grid item className="flip-card">
-                <Box className="flip-card-inner">
-
-                  <Box className="flip-card-front">
-                    <img src={produto.foto} alt="" className="img" />
-                  </Box>
-                  <Box className="flip-card-back">
-
-                    <Typography variant="body2" component="p">
-                      Fornecedor: {produto.usuario?.nome}
-                    </Typography>
-
-                    <Typography variant="body2" component="p">
-                      Planta: {produto.nome}
-                    </Typography>
-
-                    <Typography variant="body2" component="p">
-                      Valor: R${produto.valor}
-                    </Typography>
-
-                    <Box className='botao-posicao'>
-                       <ModalProduto idModal={produto.id}/> 
+                        <Box className="botao" mb={1.5}>
+                          <ModalProduto idModal={produto.id} />
                         </Box>
+                      </Box>
                     </Box>
-                </Box>
-              </Grid>
-            </>
-          ))}
+                  </Grid>
+                  <Box m={2}></Box>
+                </>
+              ))
+            : produto
+                .filter((produto) =>
+                  produto.nome.toLowerCase().includes(termoBusca.toLowerCase())
+                )
+                .map((produto) => (
+                  <>
+                    <Grid item className="flip-card">
+                      <Box className="flip-card-inner">
+                        <Box className="flip-card-front">
+                          <img src={produto.foto} alt="" className="img" />
+                        </Box>
+                        <Box className="flip-card-back">
+                          <Typography variant="body2" component="p">
+                            Fornecedor: {produto.usuario?.nome}
+                          </Typography>
+
+                          <Typography variant="body2" component="p">
+                            Planta: {produto.nome}
+                          </Typography>
+
+                          <Typography variant="body2" component="p">
+                            Valor: R${produto.valor}
+                          </Typography>
+
+                          <Box className="botao-posicao">
+                            <ModalProduto idModal={produto.id} />
+                          </Box>
+                        </Box>
+                      </Box>
+                    </Grid>
+                  </>
+                ))}
+
+          {!removeLoading && <Loading />}
+          {removeLoading && produto.length === 0 && (
+            <p>Não há produtos cadastrados!</p>
+          )}
         </Grid>
       </Grid>
     </>

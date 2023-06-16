@@ -9,11 +9,14 @@ import { toast } from "react-toastify";
 import "./DetalheProduto.css";
 import { Box, Button, Grid } from "@mui/material";
 import { Typography } from "@material-ui/core";
+import Loading from "../../estaticos/loading/Loading";
 
 function DetalheProduto(idDetalhe: any) {
   const token = useSelector<TokenState, TokenState["token"]>(
     (state) => state.token
   );
+
+  const [removeLoading, setRemoveLoading] = useState(false);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -80,9 +83,14 @@ function DetalheProduto(idDetalhe: any) {
   }
 
   useEffect(() => {
-    if (idProduto !== undefined) {
-      getProdutoUnico();
-    }
+    setTimeout(() => {
+      if (idProduto !== undefined) {
+        getProdutoUnico();
+        setRemoveLoading(true);
+      }
+      
+    }, 3000)
+    
   }, []);
 
   return (
@@ -93,29 +101,31 @@ function DetalheProduto(idDetalhe: any) {
         <Box className="centralizar-detalhar">
 
           <Grid item xs className="card-detalhe" >
-          
-          <Typography variant="h5" align="center"> {produto.nome}</Typography>
-          <br></br>         
-            <img src={produto.foto} alt={produto.nome} className="img_desc" />
-            <br></br>
-            <br></br>
-            <Typography>Descrição: {produto.descricao}</Typography>
-            <br></br>
-            <Typography>Valor: R$ {produto.valor}</Typography>
-            <br></br>
-            <Box marginTop={2} textAlign="center">
-              <Link to="/produtos">
-                <Button
-                  variant="contained"
-                  color="secondary"
-                  className="btnCancelar"
-                >
-                  Cancelar
-                </Button>
-              </Link>
 
-              <Button type="submit" variant="contained" color="primary" onClick={addCarrinho}>
-              Adicionar ao Carrinho
+            <Box>
+              <Box className="text_desc">
+              <Typography variant="h3" align="center" 
+              > 
+              {produto.nome}
+              </Typography>
+              </Box>
+          <Box>
+              <img src={produto.foto} alt={produto.nome} className="img_desc" />
+              </Box>
+            <Box className="textodetalhe">
+              <Typography>Descrição: {produto.descricao}</Typography>
+              </Box>
+
+              <Box className="info">
+              <Typography className="text">Fornecedor: {produto.usuario?.nome}</Typography>
+                
+              <Typography className="info">Valor: R$ {produto.valor}</Typography>
+            </Box>
+
+          </Box>
+              <Box marginTop={2} textAlign="center" className="botoes">
+              <Button type="submit" onClick={addCarrinho} className="addCarrinho">
+              Adicionar ao Carrinho 
               </Button>
             </Box>
 

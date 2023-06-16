@@ -1,6 +1,16 @@
 import { Box } from "@material-ui/core";
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
 import GitHubIcon from '@material-ui/icons/GitHub';
+import Loading from "../loading/Loading";
+import { useEffect, useState } from "react";
+
+const [removeLoading, setRemoveLoading] = useState(false);
+
+useEffect(() => {
+    setTimeout(() => {
+      setRemoveLoading(true);
+    }, 3000);
+  }, []);
 
 function Sobre(){
         return(
@@ -31,6 +41,7 @@ function Sobre(){
                             <img src="https://avatars.githubusercontent.com/u/108702650?v=4" alt="Link para o github da Juliana" className='criador' />
                         </a>
                     </Box>
+                    {!removeLoading && <Loading />}
                 </>
         )
 }
