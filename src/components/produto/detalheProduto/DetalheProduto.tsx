@@ -9,11 +9,14 @@ import { toast } from "react-toastify";
 import "./DetalheProduto.css";
 import { Box, Button, Grid } from "@mui/material";
 import { Typography } from "@material-ui/core";
+import Loading from "../../estaticos/loading/Loading";
 
 function DetalheProduto(idDetalhe: any) {
   const token = useSelector<TokenState, TokenState["token"]>(
     (state) => state.token
   );
+
+  const [removeLoading, setRemoveLoading] = useState(false);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -80,9 +83,14 @@ function DetalheProduto(idDetalhe: any) {
   }
 
   useEffect(() => {
-    if (idProduto !== undefined) {
-      getProdutoUnico();
-    }
+    setTimeout(() => {
+      if (idProduto !== undefined) {
+        getProdutoUnico();
+        setRemoveLoading(true);
+      }
+      
+    }, 3000)
+    
   }, []);
 
   return (
