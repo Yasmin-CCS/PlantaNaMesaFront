@@ -23,10 +23,10 @@ const useStyles = makeStyles((theme: Theme) =>
         paper: {
             position: 'absolute',
             width: 980,
-            backgroundColor: theme.palette.background.paper,
+            backgroundColor: '#d3dbcbae',
             boxShadow: theme.shadows[6],
             borderRadius: 30,
-            padding: theme.spacing(2, 8, 3),
+            // padding: theme.spacing(2, 8, 3),
         },
     }),
 );
@@ -50,7 +50,8 @@ function ModalProduto(idModal: any) {
             <Box display="flex" justifyContent="flex-end" className="cursor">
                 <CloseIcon onClick={handleClose} />
             </Box>
-            <DetalheProduto idDetalhe={idModal}/>
+            <DetalheProduto className='' idDetalhe={idModal}/>
+            
         </div>
     );
 

@@ -1,3 +1,4 @@
+
 .cursor{
     cursor: pointer;
 }
@@ -6,4 +7,10 @@
     color: rgb(147, 182, 103) !important;
     border-color: aliceblue!important;
     background-color: aliceblue!important;
+}
+.classes.paper{
+/* background-color:#bbbbbb61 !important;
+justify-items: center !important;
+align-items: center !important;
+display: flex; */
 }
