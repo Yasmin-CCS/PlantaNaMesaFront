@@ -152,7 +152,7 @@ function Login() {
 
               <Box display="flex" justifyContent="center" marginTop={10} className='linkcadastrese'>
                 <Box marginRight={1}>
-                  <Typography variant="subtitle1" gutterBottom align="center">
+                  <Typography className='txtlogin' gutterBottom align="center">
                     Não tem uma conta?
                   </Typography>
                 </Box>

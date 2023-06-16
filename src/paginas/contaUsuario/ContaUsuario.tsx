@@ -73,7 +73,7 @@ function ContaUsuario() {
         </Grid>
 
 
-        <Typography style={{ textAlign: "center" }}> Meus Produtos</Typography>
+        <Typography className='titulosusuarioconta' style={{ textAlign: "center" }}> Meus Produtos</Typography>
 
         <Grid className="perfilPosts">
           {usuario.produto?.map((prod) => (
@@ -118,7 +118,7 @@ function ContaUsuario() {
           {!removeLoad && <Loading />}
         </Grid>
 
-        <Typography style={{ textAlign: "center" }}> Categorias</Typography>
+        <Typography className='titulosusuarioconta' style={{ textAlign: "center" }}> Categorias</Typography>
 
         <ListaCategoria />
                 {!removeLoad && <Loading />}

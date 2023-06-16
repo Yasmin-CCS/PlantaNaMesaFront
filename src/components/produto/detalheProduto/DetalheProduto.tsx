@@ -65,7 +65,7 @@ function DetalheProduto(idDetalhe: any) {
       theme: "colored",
       progress: undefined,
     });
-    navigate("/produtos");
+    navigate("/home");
   }
 
   async function getProdutoUnico() {
@@ -96,7 +96,7 @@ function DetalheProduto(idDetalhe: any) {
   return (
 
     <>
-      <Grid container className="fundos" >
+      <Grid container className="fundomodal" >
         
         <Box className="centralizar-detalhar">
 
@@ -104,8 +104,7 @@ function DetalheProduto(idDetalhe: any) {
 
             <Box>
               <Box className="text_desc">
-              <Typography variant="h3" align="center" 
-              > 
+              <Typography variant="h3" align="center" className="titulobackgroundmodal"> 
               {produto.nome}
               </Typography>
               </Box>
