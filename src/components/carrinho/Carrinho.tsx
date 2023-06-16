@@ -10,6 +10,7 @@ import './Carrinho.css';
 import DisabledByDefaultIcon from '@mui/icons-material/DisabledByDefault';
 import Produto from "../../models/Produto";
 import Usuario from "../../models/Usuario";
+import Loading from "../estaticos/loading/Loading";
 
 
 function Carrinho() {
@@ -17,6 +18,9 @@ function Carrinho() {
   const carrinho = useSelector<TokenState, TokenState["produtos"]>(
     (state) => state.produtos
   );
+
+  const [removeLoading, setRemoveLoading] = useState(false);
+
   const token = useSelector<TokenState, TokenState["token"]>(
     (state) => state.token
   );
@@ -56,7 +60,6 @@ function Carrinho() {
     navigate("/home");
   }
 
-
   function removeFromCart(item: Produto) {
     dispatch(removeToCart(item));
     toast.success("Produto removido com sucesso!", {
@@ -72,7 +75,11 @@ function Carrinho() {
     navigate("/carrinho")
   }
 
-
+  useEffect(() => {
+    setTimeout(() => {
+      setRemoveLoading(true);
+    }, 3000);
+  }, []);
 
   return (
     <>
@@ -111,6 +118,7 @@ function Carrinho() {
               </Grid>
             </>
           ))}
+          {!removeLoading && <Loading />}
 
 
           <>

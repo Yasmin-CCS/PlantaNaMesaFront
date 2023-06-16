@@ -37,7 +37,7 @@ function ListaProduto() {
     setTimeout(() => {
       getProduto();
       setRemoveLoading(true);
-    }, 5000);
+    }, 3000);
   }, [termoBusca]);
 
   // const handleProdutoClick = (produtoId: number) => {

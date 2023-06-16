@@ -7,6 +7,7 @@ import { toast } from "react-toastify";
 import { TokenState } from "../../store/tokens/TokensReducer";
 import { buscaId, put } from "../../services/Service";
 import './AtualizarCadastro.css';
+import Loading from "../../components/estaticos/loading/Loading";
 
 function AtualizarCadastro() {
 
@@ -15,6 +16,8 @@ function AtualizarCadastro() {
   const token = useSelector<TokenState, TokenState['token']>(
     (state) => state.token
   );
+
+  const [removeLoading, setRemoveLoading] = useState(false);
 
   const userId = useSelector<TokenState, TokenState['id']>((state) => state.id);
 
@@ -40,7 +43,10 @@ function AtualizarCadastro() {
   }
 
   useEffect(() => {
-    getUsuario();
+    setTimeout(() => {
+      getUsuario();
+      setRemoveLoading(true);
+    }, 5000);
   }, []);
 
   useEffect(() => {
@@ -129,6 +135,8 @@ function AtualizarCadastro() {
               <Box className=''>
                 <span>{usuario.foto == "" && ' Foto '}</span>
               </Box>}
+
+              {!removeLoading && <Loading />}
 
                 <img src={usuario.foto} alt='' />
 

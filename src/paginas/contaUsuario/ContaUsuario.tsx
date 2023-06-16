@@ -68,7 +68,7 @@ function ContaUsuario() {
                 </Button>
               </Link>
             </Box>
-          </Grid>     
+          </Grid>
           <img src={usuario.foto} alt={`Foto de perfil de ${usuario.nome}`} />
         </Grid>
 
@@ -121,7 +121,7 @@ function ContaUsuario() {
         <Typography style={{ textAlign: "center" }}> Categorias</Typography>
 
         <ListaCategoria />
-        {!removeLoad && <Loading />}
+                {!removeLoad && <Loading />}
       </Grid>
     </Grid>
   );
