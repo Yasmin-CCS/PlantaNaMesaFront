@@ -4,6 +4,8 @@ import LinkedInIcon from '@material-ui/icons/LinkedIn';
 import { useEffect, useState } from "react";
 import Loading from "../loading/Loading";
 import { Grid } from '@mui/material'
+import Cards from "../cardProf/CardProf";
+import"./Sobre.css"
 
 
 function Sobre() {
@@ -46,15 +48,7 @@ function Sobre() {
                 </Box>
 
             </Grid>
-            <footer>
-                <a href="https://www.linkedin.com/in/planta-na-mesa-828a1b272/" target="_blank" rel="noopener noreferrer">
-                    <LinkedInIcon className='redes' />
-                </a>
-                <a href="https://github.com/PI-PLANTA-NA-MESA/Planta-na-Mesa" target="_blank" rel="noopener noreferrer">
-                    <GitHubIcon className='redes1' />
-                </a>
-
-            </footer>
+            <Cards/>
         </>
     )
 }

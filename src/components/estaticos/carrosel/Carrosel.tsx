@@ -28,14 +28,14 @@ function Carrosel() {
           className="mySwiper"
         >
 
-          <SwiperSlide data-hash="slide1"><img src="https://mude1habito.unimedrio.com.br/wp-content/uploads/2021/11/pancs-noticia3.png" alt="" /></SwiperSlide>
-          <SwiperSlide data-hash="slide2"><img src="https://boomi.b-cdn.net/wp-content/uploads/2022/03/PANCs-conheca-as-plantas-alimenticias-nao-convencionais.png" alt="" /></SwiperSlide>
+          <SwiperSlide data-hash="slide1"><img src="https://sea.com.uy/wp-content/uploads/2020/01/pancs.jpg" alt="" /></SwiperSlide>
+          <SwiperSlide data-hash="slide2"><img src="https://phitoss.com.br/wp-content/uploads/2020/10/01-pancs.jpg" alt="" /></SwiperSlide>
 
-          <SwiperSlide data-hash="slide3"><img src="https://media.istockphoto.com/id/177688708/pt/foto/salada-grega.jpg?s=612x612&w=0&k=20&c=Ki9r5zf3rbChI2_PPtI8g6QfSuVOdcmO2wtr1bx7rqc=" alt="" /></SwiperSlide>
+          <SwiperSlide data-hash="slide3"><img src="https://phitoss.com.br/wp-content/uploads/2020/10/02-pancs.jpg" alt="" /></SwiperSlide>
 
-          <SwiperSlide data-hash="slide4"><img src="https://media.istockphoto.com/id/1139277687/pt/foto/various-plant-based-milk.jpg?s=612x612&w=0&k=20&c=WcxRqAYxQNpB6U8fZGcySlKYeJtVkelGYzGj7ejMReQ=" alt="" /></SwiperSlide>
+          <SwiperSlide data-hash="slide4"><img src="https://phitoss.com.br/wp-content/uploads/2020/10/04-pancs.jpg" alt="" /></SwiperSlide>
 
-          <SwiperSlide data-hash="slide5"><img src="https://brucalderon.com.br/wp-content/uploads/2020/05/Bolo-de-Lavanda.jpeg" alt="" /></SwiperSlide>
+          <SwiperSlide data-hash="slide5"><img src="https://phitoss.com.br/wp-content/uploads/2020/10/07-pancs.jpg" alt="" /></SwiperSlide>
 
         </Swiper>
       </Grid>
