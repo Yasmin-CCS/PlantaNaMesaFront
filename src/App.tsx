@@ -20,6 +20,7 @@ import 'react-toastify/dist/ReactToastify.css'
 import ContaUsuario from './paginas/contaUsuario/ContaUsuario';
 import AtualizarCadastro from './paginas/atualizarCadastro/AtualizarCadastro';
 import ModalProduto from './components/produto/modalProduto/ModalProduto';
+import Sobre from './components/estaticos/sobre/Sobre';
 
 
 function App() {
@@ -48,6 +49,8 @@ function App() {
             <Route path="/categoriascadastro" element={<CadastroCategoria />} />
             <Route path="/categoriascadastro/:id" element={<CadastroCategoria />} />
             <Route path="/deletarCategoria/:id" element={<DeletarCategoria />} />
+            <Route path="/sobre" element={<Sobre />} />
+
 
           </Routes>
         </div>

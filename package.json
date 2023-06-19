@@ -19,8 +19,8 @@
     "@mui/material": "5.0.6",
     "@types/redux": "3.6.0",
     "axios": "0.21.4",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
+    "react": "^17",
+    "react-dom": "^17",
     "react-redux": "7.2.5",
     "react-router-dom": "6",
     "react-toastify": "8.0.3",
@@ -28,8 +28,8 @@
     "swiper": "^9.4.1"
   },
   "devDependencies": {
-    "@types/react": "^17.0.59",
-    "@types/react-dom": "^17.0.20",
+    "@types/react": "^17",
+    "@types/react-dom": "^17",
     "@typescript-eslint/eslint-plugin": "^5.57.1",
     "@typescript-eslint/parser": "^5.57.1",
     "@vitejs/plugin-react": "^4.0.0",
